@@ -9,10 +9,13 @@ public class JumpingMonster : Enemy
     Vector2                 distance;
     bool                    isGround;
     bool                    onWalk;
-
+    float                   time = 0;
     override protected void Start()
     {
         base.Start();
+        gameObject.SetActive(false);
+        Invoke("OnSetActive", 1.5f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         isGround = true;
         onWalk = false;
     }
@@ -28,6 +31,19 @@ public class JumpingMonster : Enemy
 
     override protected void UpdateTarget()
     {
+
+        if(gameObject.activeSelf)
+        {
+            if (time <= 3f)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
+            }
+            time += Time.deltaTime;
+        }
+
+
+
+        //-----------------------------------
         distance = targetGameObject.transform.position - transform.position;
 
         if (distance.magnitude <= mag && isGround)
@@ -69,5 +85,9 @@ public class JumpingMonster : Enemy
     public void OffWalk()
     {
         onWalk = false;
+    }
+    void OnSetActive()
+    {
+        gameObject.SetActive(true);
     }
 }

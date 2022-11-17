@@ -4,8 +4,29 @@ using UnityEngine;
 
 public class RunningMonster : Enemy
 {
+    float time = 0;
+    override protected void Start()
+    {
+        base.Start();
+        gameObject.SetActive(false);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        Invoke("OnSetActive", 1.5f);
+    }
     override protected void UpdateTarget()
     {
+
+        if (gameObject.activeSelf)
+        {
+            if (time <= 3f)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
+            }
+            time += Time.deltaTime;
+        }
+
+
+        //-----------------------------------------------
+
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
         {
             Vector2 direction = (targetGameObject.transform.position - transform.position).normalized;
@@ -22,5 +43,9 @@ public class RunningMonster : Enemy
 
         if (rigid.velocity.magnitude == 0) animator.SetBool("walk", false);
         else animator.SetBool("walk", true);
+    }
+    void OnSetActive()
+    {
+        gameObject.SetActive(true);
     }
 }

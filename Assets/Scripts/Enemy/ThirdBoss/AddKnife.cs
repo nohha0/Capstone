@@ -14,9 +14,8 @@ public class AddKnife : MonoBehaviour
         rend = GameObject.Find("ThirdBoss").GetComponent<SpriteRenderer>();
         Rend = GetComponent<SpriteRenderer>();
         Invoke("OnDestroy", 5);
-
-        /*
-         * if (!rend.flipX) //왼쪽 보는 중
+        
+        if (!rend.flipX) //왼쪽 보는 중
         {
             if (script.Knife_Pattern == 1)//정면
             {
@@ -47,7 +46,6 @@ public class AddKnife : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 70);
             }
         }
-         * */
 
     }
 

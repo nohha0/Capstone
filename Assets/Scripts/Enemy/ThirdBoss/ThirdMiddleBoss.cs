@@ -36,10 +36,13 @@ public class ThirdMiddleBoss : Enemy
     float Difficulty = 6f;           //전환 속도, 난이도
     bool cooltime = false;
     bool telepo = false;
+    int SetMoster;              //소환 노멀타입 비행타입 결정 정수
     Vector3 pos;                //초기화 변수
 
     float Summoncurtime;
-    float Summoncooltime = 20;
+    float Summoncooltime = 30;
+
+    float retelepotime;
 
     override protected void Start()
     {
@@ -62,6 +65,8 @@ public class ThirdMiddleBoss : Enemy
         {
             telepo = false;
             ReTelepo();
+            retelepotime = 20;
+            
             SetSkillNum = Random.Range(0, 4);
         }
         if (cooltime)
@@ -93,7 +98,7 @@ public class ThirdMiddleBoss : Enemy
                     SummonSkill();
                     break;
                 case "Telepo":      //텔포
-                    if (BeforeSkill == 3)
+                    if (BeforeSkill == 3 && retelepotime > 0) 
                     {
                         SetSkillNum = Random.Range(0, 4);
                         break;
@@ -103,7 +108,7 @@ public class ThirdMiddleBoss : Enemy
             }
         }
         Summoncurtime -= Time.deltaTime;   //소환스킬 사용후 30초 지나 0이되면 다시 소환
-
+        retelepotime -= Time.deltaTime;
     }
 
     //스킬
@@ -122,14 +127,14 @@ public class ThirdMiddleBoss : Enemy
 
 
             Debug.Log("겁나 소환");
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 SummonSetPos();
                 Instantiate(MagicCircle, pos, transform.rotation);
                 Instantiate(Nomal_2, pos, transform.rotation);
 
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
 
                 SummonSetPos();
@@ -150,7 +155,7 @@ public class ThirdMiddleBoss : Enemy
                 {
                     //기본 4
                     Debug.Log("기본 소환");
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 3; i++)
                     {
 
                         SummonSetPos();
@@ -158,7 +163,7 @@ public class ThirdMiddleBoss : Enemy
                         Instantiate(Nomal_1, pos, transform.rotation);
 
                     }
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 1; i++)
                     {
 
                         SummonSetPos();
@@ -171,17 +176,19 @@ public class ThirdMiddleBoss : Enemy
                 {
                     //비행 4
                     Debug.Log("비행 소환");
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 3; i++)
                     {
 
                         SummonSetPos();
+                        Instantiate(MagicCircle, pos, transform.rotation);
                         Instantiate(Fly_1, pos, transform.rotation);
 
                     }
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 1; i++)
                     {
 
                         SummonSetPos();
+                        Instantiate(MagicCircle, pos, transform.rotation);
                         Instantiate(Fly_2, pos, transform.rotation);
 
                     }
@@ -200,7 +207,7 @@ public class ThirdMiddleBoss : Enemy
     void ForwardSKill()
     {
 
-        if (ForWardTime < 2f)
+        if (ForWardTime < 3f && ForWardTime > 0.5f) 
         {
             if (rend.flipX) //오른쪽 돌진
             {
@@ -269,16 +276,19 @@ public class ThirdMiddleBoss : Enemy
             int a;
             a = CurrentPos;
             CurrentPos = Random.Range(0, 3);   //텔포 위치 정하는 함수
-            if (CurrentPos == 2)   //중앙에 텔포가 된다면
+            if(Summoncurtime <=0)
             {
+                if (CurrentPos == 2)   //중앙에 텔포가 된다면
+                {
                 //중앙으로 이동하는 메소드 작성
                 transform.position = new Vector2(BasePos.position.x, BasePos.position.y + 50);
                 Invoke("SummonSkill", 2);
 
                 //다시 중앙외에 텔포
                 Invoke("ReTelepo", 2.5f);  //1초뒤 다시 텔포
-            }
-            else if (CurrentPos == 0)
+                } 
+            }           
+            if (CurrentPos == 0)
             {
 
                 if (a == 0)
@@ -294,7 +304,7 @@ public class ThirdMiddleBoss : Enemy
                     rend.flipX = true;
                 }
             }
-            else
+            else if(CurrentPos == 1)
             {
                 if (a == 1)
                 {
@@ -327,8 +337,9 @@ public class ThirdMiddleBoss : Enemy
     {
         if (CurrentPos == 3)  //중앙에 위치
         {
-            int x = Random.Range(-50, 51);
-            pos = new Vector3(BasePos.position.x + x, BossPos.position.y, 1);
+            int x = Random.Range(-55, 56);
+            pos = new Vector3(BasePos.position.x + x, BossPos.position.y + 30, 1);
+
         }
         else
         {
@@ -336,14 +347,14 @@ public class ThirdMiddleBoss : Enemy
             if (SetPosInt == 0)
             {
                 //보스를 기점한 포스값
-                int x = Random.Range(-20, 21);
-                int y = Random.Range(-10, 11);
+                int x = Random.Range(-40, 41);
+                int y = Random.Range(0, 11);
                 pos = new Vector3(BossPos.position.x + x, BossPos.position.y + y, 1);
             }
             if (SetPosInt == 1)
             {
                 int x = Random.Range(-40, 41);
-                int y = Random.Range(-10, 11);
+                int y = Random.Range(0, 11);
                 pos = new Vector3(PlayerPos.position.x + x, PlayerPos.position.y + y);
             }
         }
@@ -364,9 +375,11 @@ public class ThirdMiddleBoss : Enemy
         }
     }
 
+
     void cooltrue()
     {
         cooltime = true;
     }
+
 
 }
