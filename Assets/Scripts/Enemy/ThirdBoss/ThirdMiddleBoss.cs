@@ -21,23 +21,15 @@ public class ThirdMiddleBoss : Enemy
     [SerializeField] Transform PlayerPos;
     [SerializeField] Transform BasePos;
 
-    //소환위치를 정하기 위한 pos
-    [SerializeField] Transform pos;
-
-
-
     int CurrentPos;         //중보스에 현위치를 알려줌
     Transform SummonPos;    //몬스터 소환시 기점으로 하는 포스
     SpriteRenderer rend;    //중보스 
 
-
     //Skill : 0 = 칼 던지기스킬, 1 = 돌진, 2 = 소환, 3 = 텔포        
-    Transform SummonPos;     //몬스터 소환시 기점으로 하는 포스
-    public SpriteRenderer rend;
+   
     Rigidbody2D riged;
 
     float ForWardTime = 0;      //돌진 진행하는 시간
-    int CurrentPos;             //중보스에 현위치를 알려줌
     int BeforeSkill;            //중복이 되면 안되는 스킬이 있기 때문에 그걸 판단하는 정수 
     int SetSkillNum;
     float ForwardSpeed = 180;    //돌진 스피드  
