@@ -7,16 +7,17 @@ public class FirstMiddleBoss : Enemy
 {
     public GameObject scissors;
     public GameObject branch;
+    public float height;
 
     Vector3 branchPosition;
     Vector3 scissorsPosition;
-    int scissorsCount;
-    int branchCount;
-
+    
     float[] branchXs = { 1517, 1580, 1644 };
+
+    float timeUntilChangeState;
     bool onBranch;
     bool onScissors;
-    float timeUntilChangeState;
+    bool onRest;
     bool callBranch;
     bool callScissors;
 
@@ -27,6 +28,7 @@ public class FirstMiddleBoss : Enemy
         onBranch = false;
         callBranch = false;
         callScissors = false;
+        onRest = false;
         timeUntilChangeState = 0f;
     }
 
@@ -36,47 +38,57 @@ public class FirstMiddleBoss : Enemy
         ChangeState();
         if (onBranch && !callBranch) CreateBranch();
         if (onScissors && !callScissors) ThrowScissors();
+        if (onRest) Rest();
+        timeUntilChangeState -= Time.deltaTime;
     }
 
-    void ThrowScissors(int count)
+    void Rest()
     {
-        if (scissorsCount >= count)
-        {
-            scissorsCount = 0;
-            return;
-        }
-        scissorsCount++;
+
     }
 
     void CreateBranch()
     {
+        if (!onBranch) return;
         callBranch = true;
         Debug.Log("CreateBranch");
+
         int randPos = Random.Range(0, 3);
-        branchPosition = new Vector3(branchXs[randPos], transform.position.y - 50f, transform.position.z);
+        branchPosition = new Vector3(branchXs[randPos], transform.position.y - height, transform.position.z);
         Instantiate(branch, branchPosition, transform.rotation);
         Invoke("CreateBranch", 2);
     }
 
     void ThrowScissors()
     {
+        if (!onScissors) return;
         callScissors = true;
         Debug.Log("ThrowScissors");
+
         scissorsPosition = new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z);
         Instantiate(scissors, scissorsPosition, transform.rotation);
-        Invoke("ThrowScissors", 2);
+        Invoke("ThrowScissors", 1);
     }
 
 
     void ChangeState()
     {
-        timeUntilChangeState -= Time.deltaTime;
-
-        if (timeUntilChangeState <= 0)
+        if (!onRest && timeUntilChangeState <= 0)
         {
-            timeUntilChangeState = 10;
+            onScissors = false;
+            onBranch = false;
             callBranch = false;
             callScissors = false;
+            
+            onRest = true;
+            timeUntilChangeState = 5f;
+
+            
+        }
+        if(onRest && timeUntilChangeState <= 0)
+        {
+            onRest = false;
+            timeUntilChangeState = 10f;
 
             int rand = Random.Range(0, 2);
             Debug.Log(rand);
@@ -84,11 +96,9 @@ public class FirstMiddleBoss : Enemy
             if (rand == 0)
             {
                 onBranch = true;
-                onScissors = false;
             }
             else
             {
-                onBranch = false;
                 onScissors = true;
             }
         }
