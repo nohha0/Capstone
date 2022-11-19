@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 789906582936938032}
   - component: {fileID: 5648401833294439277}
   - component: {fileID: 5665030175032333928}
+  - component: {fileID: 6104434324619345435}
   m_Layer: 7
   m_Name: ThirdBoss
   m_TagString: Enemy
@@ -192,3 +193,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &6104434324619345435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509345777427173347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3f3b2475bf8543948a78e65d71f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  HP: 1000
+  attacked: 0
+  mag: 0
+  Knife_Pattern: 0
+  Nomal_1: {fileID: 7020963933655834123, guid: 35f90ef7dcd3707479aba31a2ba55be5, type: 3}
+  Nomal_2: {fileID: 5376135314819589707, guid: 4629c334f0d001045bf6bae93b942565, type: 3}
+  Fly_1: {fileID: 6326017333661545409, guid: 9a3039bcf00c3054dbb7341b29bbdc08, type: 3}
+  Fly_2: {fileID: 6326017333661545409, guid: 7a71ec2759f1b9b469de2158deb11c08, type: 3}
+  Knife: {fileID: 2199292534028456414, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}
+  MagicCircle: {fileID: 5978575417651614489, guid: 09e383f2194f40d4bb47739a93074174, type: 3}
+  BossPos: {fileID: 4982462741797400771}
+  PlayerPos: {fileID: 0}
+  BasePos: {fileID: 0}
