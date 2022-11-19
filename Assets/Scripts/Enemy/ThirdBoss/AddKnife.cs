@@ -8,40 +8,46 @@ public class AddKnife : MonoBehaviour
     SpriteRenderer rend;  //보스에 스프라이트렌더
     SpriteRenderer Rend;
     public float speed = 130;
+    bool add = false;
+    public Transform Base;
+    Vector2 direction;
+
+    Vector3 target;
     void Start()
     {
         script = GameObject.Find("Player").GetComponent<ThirdMiddleBoss>();
         rend = GameObject.Find("ThirdBoss").GetComponent<SpriteRenderer>();
         Rend = GetComponent<SpriteRenderer>();
         Invoke("OnDestroy", 5);
-        
-        if (!rend.flipX) //왼쪽 보는 중
+
+        int a = Random.Range(1, 3);  // 1=대각 위, 2 = 대각아래
+        if(a==1)
         {
-            if (script.Knife_Pattern == 1)//정면
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            if (script.Knife_Pattern == 2)//위로
+            Rend.flipX = true;
+            Pos();
+            direction = (target - transform.position).normalized;
+
+            if (!rend.flipX)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 70);
             }
-            if (script.Knife_Pattern == 3)//아래로
+            if (rend.flipX)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 115);
             }
         }
-        if(rend.flipX) //오른쪽 보는중
+        if(a==2)
         {
-            Rend.flipX = true;
-            if (script.Knife_Pattern == 1)//정면
+            Pos();
+            Vector3 ab = new Vector3(transform.position.x, transform.position.y + 40, 1);
+            transform.position = ab;
+            direction = (target - transform.position).normalized;
+
+            if(!rend.flipX)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 90);
+                transform.rotation = Quaternion.Euler(0, 0, 115);
             }
-            if (script.Knife_Pattern == 2)//위로
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 120);
-            }
-            if (script.Knife_Pattern == 3)//아래로
+            if(rend.flipX)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 70);
             }
@@ -52,11 +58,35 @@ public class AddKnife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.forward * speed * Time.deltaTime;
+        
+        if(add)
+        {
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
+
+        Invoke("Forward", 1f);
+        
     }
 
     private void OnDestroy()
     {
         Destroy(gameObject);
+    }
+
+    void Forward()
+    {
+        add = true;
+    }
+
+    void Pos()  //좌표
+    {
+        if(rend.flipX)
+        {
+            target = new Vector3(Base.position.x + 70, Base.position.y + 20, 1);
+        }
+        if(!rend.flipX)
+        {
+            target = new Vector3(Base.position.x - 70, Base.position.y + 20, 1);
+        }
     }
 }

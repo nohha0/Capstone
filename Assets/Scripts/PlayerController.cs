@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
-        Debug.Log("대쉬");
+        //Debug.Log("대쉬");
 
         rigid.velocity = Vector2.zero;
         
