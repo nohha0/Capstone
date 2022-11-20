@@ -188,9 +188,9 @@ MonoBehaviour:
   speed: 0
   HP: 1000
   attacked: 0
-  mag: 0
-  scissors: {fileID: 0}
-  branch: {fileID: 0}
+  mag: 500
+  scissors: {fileID: 4689022686975360636, guid: 42a52e7c2b415ff488f5024a3b84128c, type: 3}
+  branch: {fileID: 1324794314659666861, guid: 3f0c85aeb33629b47926150f499478e7, type: 3}
   height: 0
 --- !u!1 &5848415095306065021
 GameObject:
