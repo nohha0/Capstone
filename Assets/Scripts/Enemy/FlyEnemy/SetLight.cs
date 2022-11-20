@@ -52,4 +52,5 @@ public class SetLight : FlyingMonster
     {
         gameObject.SetActive(true);
     }
+
 }

@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("플레이어 공격!");
+        //Debug.Log("플레이어 공격!");
     }
 
     virtual protected void UpdateTarget()

@@ -9,7 +9,7 @@ public class FireRange : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             collision.GetComponent<Enemy>().TakeDamage(200);
-            Debug.Log("fireRange");
+            //Debug.Log("fireRange");
         }
     }
 }
