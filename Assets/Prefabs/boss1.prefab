@@ -186,9 +186,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 0
+  HP: 1000
   attacked: 0
   mag: 0
+  scissors: {fileID: 0}
+  branch: {fileID: 0}
+  height: 0
 --- !u!1 &5848415095306065021
 GameObject:
   m_ObjectHideFlags: 0

@@ -1682,7 +1682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219763293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1578.6, y: -267.8, z: 0}
+  m_LocalPosition: {x: 1541.9, y: -265.3, z: 0}
   m_LocalScale: {x: 5.0744295, y: 5.0744295, z: 5.0744295}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15222,13 +15222,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999099162}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fb58b4fa0421eb4eaddf387856334ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Big_Water: {fileID: 8355754147102144902, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}
+  Big_Water: {fileID: 1263350060056709761, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}
+  Summon_Monster: {fileID: 5848415093751964070, guid: 72e3854ebc96cf64cb285152ac2105af, type: 3}
+  MagicCircle: {fileID: 5644478833176881317, guid: 6f005f11c2dfb9345bad4fac287e3c8f, type: 3}
   Base: {fileID: 812723748}
+  PlayerPos: {fileID: 219763294}
 --- !u!114 &1999099168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15236,7 +15239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999099162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a63fd67475e264796396993db4cb8c, type: 3}
   m_Name: 
