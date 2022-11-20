@@ -12,9 +12,8 @@ public class Nohha : Enemy
     float timeUntilChangeState;
     bool onShooting;
     bool onWaterWave;
-    bool onJumping;
+    bool onRest;
     bool callWaterWave;
-    bool callJumping;
 
 
     protected override void Start()
@@ -26,8 +25,7 @@ public class Nohha : Enemy
         onShooting = false;
         onWaterWave = false;
         callWaterWave = false;
-        onJumping = false;
-        callJumping = false;
+        onRest = false;
     }
 
     protected override void Update()
@@ -37,56 +35,52 @@ public class Nohha : Enemy
 
         if (onShooting) Shooting.SetActive(true);
         else Shooting.SetActive(false);
-
         if (onWaterWave && !callWaterWave) Wave();
-        if (onJumping) Jumping();
+        if (onRest) Rest();
         timeUntilChangeState -= Time.deltaTime;
-
     }
 
-    void Jumping()
-    {
-        //최종보스는 점프가 아니라 대쉬or텔레포트 였나...?
-        if (!onJumping) return;
-        callJumping = true;
-
-        Vector2 JumpPosition = targetGameObject.transform.position;
-        rigid.AddForce(JumpPosition);
-    }
 
     void Wave()
     {
         if (!onWaterWave) return;
         callWaterWave = true;
 
-        Vector2 WavePosition = new Vector2(targetGameObject.transform.position.x, height);
+        Vector3 WavePosition = new Vector3(targetGameObject.transform.position.x, height, transform.position.z);
         Instantiate(WaterWave, WavePosition, transform.rotation);
         Invoke("Wave", 1);
     }
 
+    void Rest()
+    {
+
+    }
+
     void ChangeState()
     {
-        if (!onJumping && timeUntilChangeState <= 0)
+        if (!onRest && timeUntilChangeState <= 0)
         {
-            onJumping = true;
-            timeUntilChangeState = 5f;
+            onRest = true;
+            timeUntilChangeState = 1.5f;
             onWaterWave = false;
             callWaterWave = false;
             onShooting = false;
         }
-        if (onJumping && timeUntilChangeState <= 0)
+        if (onRest && timeUntilChangeState <= 0)
         {
-            onJumping = false;
-            timeUntilChangeState = 10f;
-            int rand = Random.Range(0, 2);
+            onRest = false;
+            timeUntilChangeState = 5f;
+            int rand = Random.Range(0, 1);
 
             if (rand == 0)
             {
                 onWaterWave = true;
+                Debug.Log("onWaterWave");
             }
             else
             {
                 onShooting = true;
+                Debug.Log("onShooting");
             }
         }
     }

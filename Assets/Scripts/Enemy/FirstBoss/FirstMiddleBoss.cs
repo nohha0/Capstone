@@ -82,8 +82,6 @@ public class FirstMiddleBoss : Enemy
 
             onRest = true;
             timeUntilChangeState = 5f;
-
-
         }
         if (onRest && timeUntilChangeState <= 0)
         {
