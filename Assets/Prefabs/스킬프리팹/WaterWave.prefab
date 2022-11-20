@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8448801111772020769}
   - component: {fileID: 8448801111772020774}
   - component: {fileID: 8448801111772020768}
+  - component: {fileID: 8889022660869551274}
+  - component: {fileID: -8839870779829686179}
   m_Layer: 7
   m_Name: WaterWave
   m_TagString: Enemy
@@ -340,3 +342,40 @@ PolygonCollider2D:
       - {x: 3.1899998, y: -10.24}
       - {x: 3.1999998, y: -10.23}
       - {x: 3.1999998, y: -10.09}
+--- !u!114 &8889022660869551274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448801111772020772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf71639197ddbd4bbb78c4ead50c8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 130
+  timeToState2: 1
+  timeToState3: 0.3
+  timeToDestroy: 1
+--- !u!50 &-8839870779829686179
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448801111772020772}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
