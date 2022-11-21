@@ -33,7 +33,7 @@ public class ThirdMiddleBoss : Enemy
     protected int BeforeSkill;            //중복이 되면 안되는 스킬이 있기 때문에 그걸 판단하는 정수 
     protected int SetSkillNum;
     protected float ForwardSpeed = 180;    //돌진 스피드  
-    protected float Difficulty = 6f;           //전환 속도, 난이도
+    //protected float Difficulty = 6f;           //전환 속도, 난이도
     protected bool cooltime = false;
     protected bool telepo = false;
     protected bool ForAdd = false;
@@ -43,7 +43,7 @@ public class ThirdMiddleBoss : Enemy
     protected float Summoncurtime = 0;
     protected float Summoncooltime = 30;
 
-    protected float retelepotime;
+    //protected float retelepotime;
 
 
 
@@ -117,7 +117,8 @@ public class ThirdMiddleBoss : Enemy
 
     void KnifeSkill()
     {
-        Instantiate(Knife, BossPos, transform);
+        Debug.Log("나이프");
+        Instantiate(Knife,transform);
     }
 
     void SummonSkill()
@@ -185,10 +186,7 @@ public class ThirdMiddleBoss : Enemy
                 //Invoke("Teleport", 7f);  //1초뒤 다시 텔포
             }
         }
-        //cooltime = false;
-        //Invoke("cooltrue", Difficulty);
-        //BeforeSkill = 2; //소환수행완료
-        //SetSkillNum = Random.Range(0, 4);  //새로운 스킬
+
 
     }
     //-------------------------------------------------------

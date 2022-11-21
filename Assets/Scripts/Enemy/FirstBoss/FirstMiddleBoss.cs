@@ -12,8 +12,7 @@ public class FirstMiddleBoss : Enemy
     Vector3 branchPosition;
     Vector3 scissorsPosition;
 
-    float[] branchXs = { 1517, 1580, 1644 };
-
+    float[] branchXs;
     float timeUntilChangeState;
     bool onBranch;
     bool onScissors;
@@ -30,6 +29,11 @@ public class FirstMiddleBoss : Enemy
         callScissors = false;
         onRest = false;
         timeUntilChangeState = 0f;
+        branchXs = new float[3];
+        branchXs[0] = transform.position.x;
+        branchXs[1] = transform.position.x - 70;
+        branchXs[2] = transform.position.x + 70;
+
     }
 
     override protected void Update()
@@ -43,6 +47,9 @@ public class FirstMiddleBoss : Enemy
             if (onRest) Rest();
             timeUntilChangeState -= Time.deltaTime;
         }
+        if (targetGameObject.transform.position.x > transform.position.x) spriteRend.flipX = true;
+        else if (targetGameObject.transform.position.x < transform.position.x) spriteRend.flipX = false;
+
     }
 
     void Rest()
@@ -57,7 +64,7 @@ public class FirstMiddleBoss : Enemy
         Debug.Log("CreateBranch");
 
         int randPos = Random.Range(0, 3);
-        branchPosition = new Vector3(branchXs[randPos], transform.position.y - height, transform.position.z);
+        branchPosition = new Vector3(branchXs[randPos], transform.position.y + height, transform.position.z);
         Instantiate(branch, branchPosition, transform.rotation);
         Invoke("CreateBranch", 2);
     }
@@ -68,9 +75,10 @@ public class FirstMiddleBoss : Enemy
         callScissors = true;
         Debug.Log("ThrowScissors");
 
-        scissorsPosition = new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z);
+        if(spriteRend.flipX) scissorsPosition = new Vector3(transform.position.x + 10f, transform.position.y - 10f, transform.position.z);
+        else scissorsPosition = new Vector3(transform.position.x -10f, transform.position.y - 10f, transform.position.z);
         Instantiate(scissors, scissorsPosition, transform.rotation);
-        Invoke("ThrowScissors", 1);
+        Invoke("ThrowScissors", 2);
     }
 
 
@@ -84,7 +92,7 @@ public class FirstMiddleBoss : Enemy
             callScissors = false;
 
             onRest = true;
-            timeUntilChangeState = 5f;
+            timeUntilChangeState = 2.5f;
         }
         if (onRest && timeUntilChangeState <= 0)
         {

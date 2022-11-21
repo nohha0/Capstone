@@ -29,13 +29,8 @@ public class SetKnife : ThirdMiddleBoss
         Debug.Log("나이프");
 
 
-        Instantiate(Knife, BossPos, transform);  //대각 위
+        Instantiate(Knife, transform);  //대각 위
 
-
-        cooltime = false;
-        Invoke("cooltrue", Difficulty);
-        BeforeSkill = 0; //나이프수행완료
-        SetSkillNum = Random.Range(0, 4);
     }
 
 }

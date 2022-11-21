@@ -7,6 +7,7 @@ public class PaticleKnife : MonoBehaviour
     public GameObject paticle;
     GameObject targetGameObject;
 
+    Transform ThrBoss;
     public Transform PlayerPos;
     float AddTime = 4;  //추격 끝내고 날라가는 시간
     float sp = 200;
@@ -18,8 +19,9 @@ public class PaticleKnife : MonoBehaviour
 
     void Start()
     {
+        ThrBoss = GameObject.Find("ThirdBoss").transform;
         PlayerPos = GameObject.Find("Player").transform;
-        transform.position = new Vector3(transform.position.x, transform.position.y + 40, 1);
+        transform.position = new Vector3(ThrBoss.position.x, ThrBoss.position.y + 30, 1);
         Invoke("OnDestroy", 7);
         Reset = transform;
     }

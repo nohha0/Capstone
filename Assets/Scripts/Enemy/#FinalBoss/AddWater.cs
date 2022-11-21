@@ -11,7 +11,7 @@ public class AddWater : MonoBehaviour
     public Transform PlayerPos;
     void Start()
     {
-
+        PlayerPos = GameObject.Find("Player").transform;
         speed = Random.Range(40, 70);
         Invoke("OnDestroy", 3);
         X = Random.Range(-500, 500);
