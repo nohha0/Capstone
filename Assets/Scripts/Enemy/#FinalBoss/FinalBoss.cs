@@ -56,16 +56,21 @@ public class FinalBoss : Enemy
     override protected void Update()
     {
         base.Update();
-        ChangeState();
 
-        if (onShooting) Shooting.SetActive(true);
-        else Shooting.SetActive(false);
-        if (onWaterWave && !callWaterWave) Wave();
-        if (onRest) Rest();
-        timeUntilChangeState -= Time.deltaTime;
-        if (Skill_SprayWater) Water_Teleport();
-        if (Skill_Teleport) Teleport();
-        if (Skill_Summon) Summon();
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+        {
+            ChangeState();
+
+            if (onShooting) Shooting.SetActive(true);
+            else Shooting.SetActive(false);
+            if (onWaterWave && !callWaterWave) Wave();
+            if (onRest) Rest();
+            timeUntilChangeState -= Time.deltaTime;
+            if (Skill_SprayWater) Water_Teleport();
+            if (Skill_Teleport) Teleport();
+            if (Skill_Summon) Summon();
+
+        }
     }
 
     //noh----------------------------------------------------
@@ -111,10 +116,10 @@ public class FinalBoss : Enemy
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
             }
-            else if (rand == 2)
+            else if (rand == 10) //2
             {
-                Skill_SprayWater = true;
-                timeUntilChangeState = 47;
+                //Skill_SprayWater = true;
+                //timeUntilChangeState = 47;
             }
             else if(rand == 3)
             {

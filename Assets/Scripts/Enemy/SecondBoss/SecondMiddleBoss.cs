@@ -46,30 +46,29 @@ public class SecondMiddleBoss : Enemy
 
     override protected void Update()
     {
+        
         base.Update();
 
-        if (firstPatten && viewing && pens == 0) ViewingPen();
-        else if (firstPatten && !viewing && rotatepens == 0)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
         {
-            CreateRotatePen();
-        }
-        else { }
+            if (firstPatten && viewing && pens == 0) ViewingPen();
+            else if (firstPatten && !viewing && rotatepens == 0) CreateRotatePen();
 
-
-        if (!OnPattern)
-        {
-            SetSkill = Random.RandomRange(0, 101);
-
-            if (SetSkill > 60)
+            if (!OnPattern)
             {
-                Invoke("Patten1", 2);
-                //Patten1();
-                Debug.Log("000000000");
-            }
-            else
-            {
-                Invoke("Setpos", 2);
-                Debug.Log("111111111");
+                SetSkill = Random.RandomRange(0, 101);
+
+                if (SetSkill > 60)
+                {
+                    Invoke("Patten1", 2);
+                    //Patten1();
+                    Debug.Log("000000000");
+                }
+                else
+                {
+                    Invoke("Setpos", 2);
+                    Debug.Log("111111111");
+                }
             }
         }
     }

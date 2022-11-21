@@ -24,7 +24,6 @@ public class RunningMonster : Enemy
             time += Time.deltaTime;
         }
 
-
         //-----------------------------------------------
 
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag)

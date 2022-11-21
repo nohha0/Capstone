@@ -35,11 +35,14 @@ public class FirstMiddleBoss : Enemy
     override protected void Update()
     {
         base.Update();
-        ChangeState();
-        if (onBranch && !callBranch) CreateBranch();
-        if (onScissors && !callScissors) ThrowScissors();
-        if (onRest) Rest();
-        timeUntilChangeState -= Time.deltaTime;
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+        {
+            ChangeState();
+            if (onBranch && !callBranch) CreateBranch();
+            if (onScissors && !callScissors) ThrowScissors();
+            if (onRest) Rest();
+            timeUntilChangeState -= Time.deltaTime;
+        }
     }
 
     void Rest()

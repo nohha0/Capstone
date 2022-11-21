@@ -86,30 +86,32 @@ public class ThirdMiddleBoss : Enemy
         base.Update();
         ChangeState();
 
-        if(start)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
         {
-            if (DashOn) ForwardSKill();
-            if (KnifeOn)
+            if (start)
             {
-                KnifeOn = false;
-                KnifeSkill();
-                Invoke("KnifeSkill", 6);
-                Invoke("Teleport", 5);
-
-            }
-            if (SummonOn)
-            {
-                SummonSkill();
-                SummonOn = false;
-                if (timeUntilChangeState <= 2)
+                if (DashOn) ForwardSKill();
+                if (KnifeOn)
                 {
-                    Teleport();
-                }
-            }
-            Summoncurtime -= Time.deltaTime;
-            timeUntilChangeState -= Time.deltaTime;
-        }
+                    KnifeOn = false;
+                    KnifeSkill();
+                    Invoke("KnifeSkill", 6);
+                    Invoke("Teleport", 5);
 
+                }
+                if (SummonOn)
+                {
+                    SummonSkill();
+                    SummonOn = false;
+                    if (timeUntilChangeState <= 2)
+                    {
+                        Teleport();
+                    }
+                }
+                Summoncurtime -= Time.deltaTime;
+                timeUntilChangeState -= Time.deltaTime;
+            }
+        }
     }
 
 
