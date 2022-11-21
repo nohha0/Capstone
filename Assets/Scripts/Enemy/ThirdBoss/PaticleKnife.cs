@@ -18,6 +18,8 @@ public class PaticleKnife : MonoBehaviour
 
     void Start()
     {
+        PlayerPos = GameObject.Find("Player").transform;
+        transform.position = new Vector3(transform.position.x, transform.position.y + 40, 1);
         Invoke("OnDestroy", 7);
         Reset = transform;
     }
@@ -37,7 +39,8 @@ public class PaticleKnife : MonoBehaviour
         {
             if(tr)
             {
-                direction = (PlayerPos.position - transform.position).normalized;  //마지막 추격pos 값
+                //direction = (PlayerPos.position - transform.position).normalized;  //마지막 추격pos 값
+                direction = PlayerPos.position;
                 tr = false; 
             }
             
@@ -46,7 +49,7 @@ public class PaticleKnife : MonoBehaviour
         {
             //transform.Translate(direction * sp * Time.deltaTime);
             transform.position = Vector3.MoveTowards(Reset.position, direction, sp * Time.deltaTime);
-            Instantiate(paticle, transform.position,transform.rotation);
+            Instantiate(paticle, transform.position,PlayerPos.rotation);
         }
         AddTime -= Time.deltaTime;
     }

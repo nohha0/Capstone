@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SetKnife : ThirdMiddleBoss
 {
+    bool KnifeOn = true;
     override protected void Start()
     {
         
@@ -12,6 +13,15 @@ public class SetKnife : ThirdMiddleBoss
     // Update is called once per frame
     override protected void Update()
     {
+        if (KnifeOn)
+        {
+            KnifeOn = false;
+            KnifeSkill();
+            Invoke("KnifeSkill", 6);
+            //Invoke("Teleport", 5);
+
+        }
+
     }
 
     void KnifeSkill()

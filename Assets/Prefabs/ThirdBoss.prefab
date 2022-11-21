@@ -214,8 +214,13 @@ MonoBehaviour:
   Nomal_2: {fileID: 5376135314819589707, guid: 4629c334f0d001045bf6bae93b942565, type: 3}
   Fly_1: {fileID: 6326017333661545409, guid: 9a3039bcf00c3054dbb7341b29bbdc08, type: 3}
   Fly_2: {fileID: 6326017333661545409, guid: 7a71ec2759f1b9b469de2158deb11c08, type: 3}
-  Knife: {fileID: 2199292534028456414, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}
+  Knife: {fileID: 1645852552249657770, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}
   MagicCircle: {fileID: 5978575417651614489, guid: 09e383f2194f40d4bb47739a93074174, type: 3}
   BossPos: {fileID: 4982462741797400771}
   PlayerPos: {fileID: 0}
   BasePos: {fileID: 0}
+  rend: {fileID: 0}
+  riged: {fileID: 0}
+  DashOn: 0
+  SummonOn: 0
+  KnifeOn: 0
