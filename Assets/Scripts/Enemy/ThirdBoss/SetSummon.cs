@@ -17,76 +17,72 @@ public class SetSummon : ThirdMiddleBoss
     void SummonSkill()
     {
         Debug.Log("소환");
-        if (Summoncurtime <= 0)
+        Summoncurtime = Summoncooltime;
+        int SetMoster;
+
+        if (CurrentPos != 2)
         {
-            Summoncurtime = Summoncooltime;
-            int SetMoster;
-
-            if (CurrentPos != 2)
+            SetMoster = Random.Range(0, 3);
+            if (SetMoster == 0)
             {
-                SetMoster = Random.Range(0, 3);
-                if (SetMoster == 0)
+                //기본 4
+                Debug.Log("기본 소환");
+                for (int i = 0; i < 3; i++)
                 {
-                    //기본 4
-                    Debug.Log("기본 소환");
-                    for (int i = 0; i < 3; i++)
-                    {
 
-                        SummonSetPos();
-                        Instantiate(MagicCircle, pos, transform.rotation);
-                        Instantiate(Nomal_1, pos, transform.rotation);
+                    SummonSetPos();
+                    Instantiate(MagicCircle, pos, transform.rotation);
+                    Instantiate(Nomal_1, pos, transform.rotation);
 
-                    }
-                    for (int i = 0; i < 1; i++)
-                    {
-
-                        SummonSetPos();
-                        Instantiate(MagicCircle, pos, transform.rotation);
-                        Instantiate(Nomal_2, pos, transform.rotation);
-
-                    }
                 }
-                if (SetMoster == 1)
+                for (int i = 0; i < 1; i++)
                 {
-                    //비행 4
-                    Debug.Log("비행 소환");
-                    for (int i = 0; i < 3; i++)
-                    {
 
-                        SummonSetPos();
-                        Instantiate(MagicCircle, pos, transform.rotation);
-                        Instantiate(Fly_1, pos, transform.rotation);
+                    SummonSetPos();
+                    Instantiate(MagicCircle, pos, transform.rotation);
+                    Instantiate(Nomal_2, pos, transform.rotation);
 
-                    }
-                    for (int i = 0; i < 1; i++)
-                    {
-
-                        SummonSetPos();
-                        Instantiate(MagicCircle, pos, transform.rotation);
-                        Instantiate(Fly_2, pos, transform.rotation);
-
-                    }
-                }
-                if (SetMoster == 2)   //중보스 위치가 중앙이라면
-                {
-                    //기본3, 비행 3 소환
-                    gameObject.SetActive(false);
-
-                    transform.position = new Vector2(BasePos.position.x, BasePos.position.y + 50);
-                    Debug.Log("겁나 소환");
-
-
-                    Invoke("OnSetActive", 1f);
-                    Invoke("summon3", 2);
-                    Invoke("Teleport", 7f);  //1초뒤 다시 텔포
                 }
             }
+            if (SetMoster == 1)
+            {
+                //비행 4
+                Debug.Log("비행 소환");
+                for (int i = 0; i < 3; i++)
+                {
 
+                    SummonSetPos();
+                    Instantiate(MagicCircle, pos, transform.rotation);
+                    Instantiate(Fly_1, pos, transform.rotation);
+
+                }
+                for (int i = 0; i < 1; i++)
+                {
+
+                    SummonSetPos();
+                    Instantiate(MagicCircle, pos, transform.rotation);
+                    Instantiate(Fly_2, pos, transform.rotation);
+
+                }
+            }
+            if (SetMoster == 2)   //중보스 위치가 중앙이라면
+            {
+                //기본3, 비행 3 소환
+                gameObject.SetActive(false);
+
+                transform.position = new Vector2(BasePos.position.x, BasePos.position.y + 50);
+                Debug.Log("겁나 소환");
+
+
+                Invoke("OnSetActive", 1f);
+                Invoke("summon3", 2);
+                //Invoke("Teleport", 7f);  //1초뒤 다시 텔포
+            }
         }
-        cooltime = false;
-        Invoke("cooltrue", Difficulty);
-        BeforeSkill = 2; //소환수행완료
-        SetSkillNum = Random.Range(0, 4);  //새로운 스킬
+        //cooltime = false;
+        //Invoke("cooltrue", Difficulty);
+        //BeforeSkill = 2; //소환수행완료
+        //SetSkillNum = Random.Range(0, 4);  //새로운 스킬
 
     }
 

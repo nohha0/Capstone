@@ -58,6 +58,7 @@ public class SprayWater : MonoBehaviour
         rend.flipX = false;
         Invoke("OnActive", 1f);
         Invoke("Set_BigWter", 1.5f);
+
     }
 
     void Summon()
