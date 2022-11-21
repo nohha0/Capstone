@@ -79,7 +79,7 @@ public class FinalBoss : Enemy
         if (!onWaterWave) return;
         callWaterWave = true;
 
-        Vector3 WavePosition = new Vector3(targetGameObject.transform.position.x, height, transform.position.z);
+        Vector3 WavePosition = new Vector3(targetGameObject.transform.position.x, targetGameObject.transform.position.y + height, transform.position.z);
         Instantiate(WaterWave, WavePosition, transform.rotation);
         Invoke("Wave", 1);
     }
@@ -112,11 +112,12 @@ public class FinalBoss : Enemy
             }
             else if (rand == 1)
             {
-                onShooting = true;
+                onWaterWave = true;
+                //onShooting = true;
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
             }
-            else if (rand == 10) //2
+            else if (rand == 2)
             {
                 Skill_SprayWater = true;
                 timeUntilChangeState = 47;

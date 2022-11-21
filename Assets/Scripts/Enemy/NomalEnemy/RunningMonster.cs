@@ -14,7 +14,6 @@ public class RunningMonster : Enemy
     }
     override protected void UpdateTarget()
     {
-
         if (gameObject.activeSelf)
         {
             if (time <= 3f)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1324794314659666851}
   - component: {fileID: 1324794314659666850}
   - component: {fileID: 1324794314659666848}
+  - component: {fileID: 8774737925552463773}
   m_Layer: 7
   m_Name: Branch
   m_TagString: Enemy
@@ -97,4 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335b032a03e1e894499319139e6d83b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 30
+  timeToState2: 0.3
+  timeToState3: 0.3
+  timeToState4: 0.6
+  timeToDestroy: 0.6
+--- !u!50 &8774737925552463773
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324794314659666861}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

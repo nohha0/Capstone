@@ -49,7 +49,8 @@ public class DashMonster : FlyingMonster
                 forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
                 setLook = false;
             }
-            transform.Translate(forward * Dashspeed * Time.deltaTime);
+            if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+                transform.Translate(forward * Dashspeed * Time.deltaTime);
             Invoke("SETCUR", 1.5f);
 
         }
