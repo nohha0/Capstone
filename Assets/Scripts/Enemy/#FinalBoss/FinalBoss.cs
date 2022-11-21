@@ -118,8 +118,8 @@ public class FinalBoss : Enemy
             }
             else if (rand == 10) //2
             {
-                //Skill_SprayWater = true;
-                //timeUntilChangeState = 47;
+                Skill_SprayWater = true;
+                timeUntilChangeState = 47;
             }
             else if(rand == 3)
             {

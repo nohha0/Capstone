@@ -66,7 +66,7 @@ public class SecondMiddleBoss : Enemy
                 }
                 else
                 {
-                    Invoke("Setpos", 2);
+                    //Invoke("Setpos", 2);
                     Debug.Log("111111111");
                 }
             }
