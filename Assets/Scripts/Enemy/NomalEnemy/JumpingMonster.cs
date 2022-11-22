@@ -34,7 +34,7 @@ public class JumpingMonster : Enemy
 
         if(gameObject.activeSelf)
         {
-            if (time <= 3f)
+            if (time <= 1f)
             {
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
             }

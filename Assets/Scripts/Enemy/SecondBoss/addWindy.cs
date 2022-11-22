@@ -24,18 +24,10 @@ public class addWindy : MonoBehaviour
         Invoke("OnDestroy", 10);
         script = GameObject.Find("Main Camera").GetComponent<data>();            //스크립트 접근
 
-        fastspeed = speed = 160;
+        fastspeed += speed;
 
-        // 카운트 하기 위한 Filp 구분
-        if (!secondboss.GetComponent<SpriteRenderer>().flipX)
-        {
-            Debug.Log(script.Lcount);
-            script.Lcount++;
-        }
-        if (secondboss.GetComponent<SpriteRenderer>().flipX)
-        {
-            script.Rcount++;
-        }
+        Debug.Log(script.Lcount);
+
     }
 
 
@@ -45,13 +37,13 @@ public class addWindy : MonoBehaviour
 
         if (script.Lcount == 6)
         {
-            Invoke("Backright", 1.2f);
-            Invoke("set", 4);
+            Invoke("Backright", 2f);
+            Invoke("set", 2);
         }
         if (script.Rcount == 6)
         {
-            Invoke("Backleft", 1.2f);
-            Invoke("set", 4);
+            Invoke("Backleft", 2f);
+            Invoke("set", 2);
         }
 
     }
@@ -76,7 +68,7 @@ public class addWindy : MonoBehaviour
         XFcon();
         if (Xcon)
         {
-            if (backmove <= 0.8f)
+            if (backmove <= 1.2f)
             {
                 rend.flipX = true;
                 transform.Translate(transform.right * speed * Time.deltaTime);
@@ -90,7 +82,7 @@ public class addWindy : MonoBehaviour
         }
         else if (!Xcon)
         {
-            if (backmove <= 0.8f)
+            if (backmove <= 1.2f)
             {
                 rend.flipX = false;
                 transform.Translate(transform.right * -1 * speed * Time.deltaTime);

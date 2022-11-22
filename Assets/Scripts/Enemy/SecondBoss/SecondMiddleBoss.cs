@@ -32,12 +32,15 @@ public class SecondMiddleBoss : Enemy
     Vector3 setpos;
     int i = 0;
 
-    float SetSkill;
+    private data script;
 
-    
+    float SetSkill;
+    bool SetWindy = false;
+
     override protected void Start()
     {
         base.Start();
+        script = GameObject.Find("Main Camera").GetComponent<data>();
         firstPatten = false;
         viewing = false;
 
@@ -58,15 +61,18 @@ public class SecondMiddleBoss : Enemy
             {
                 SetSkill = Random.RandomRange(0, 101);
 
-                if (SetSkill > 60)
+                if (SetSkill > 90)
                 {
                     Invoke("Patten1", 2);
                     //Patten1();
                     Debug.Log("000000000");
                 }
-                else
+                else if(SetSkill < 90)
                 {
-                    //Invoke("Setpos", 2);
+                    i = 0;
+                    curtime = 0;
+                    OnPattern = true;
+                    Setpos();
                     Debug.Log("111111111");
                 }
             }
@@ -88,7 +94,7 @@ public class SecondMiddleBoss : Enemy
     {
         firstPatten = true;
         distance = targetGameObject.transform.position - transform.position;
-        rigid.AddForce(new Vector2(distance.x * jumpSpeed, jumpForce));
+        //rigid.AddForce(new Vector2(distance.x * jumpSpeed, jumpForce));
         //Invoke("Jump", 3);
     }
 
@@ -116,6 +122,7 @@ public class SecondMiddleBoss : Enemy
             return;
         }
 
+
         rotatepens++;
         //float penX = Random.RandomRange(1509f, 1652f);
         //float penY = Random.RandomRange(-524f, -483f);
@@ -135,50 +142,54 @@ public class SecondMiddleBoss : Enemy
         pens = 0;
     }
 
-    //Wind ------------------------------------------------------------------------------------
+    //Wind ------------------------------------------------------------------
 
 
     void Setpos()
     {
-        OnPattern = true;
 
-        if (i >= 7)
-        {
-            i = 0;
-            OnPattern = false;
-            return;
-        }
+        SetWindy = true;
+        
+    }
 
-        if (i < 7)
+    void InstantDOWN()
+    {
+        Vector3 setpos1 = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
+        Instantiate(Windywave, setpos1, transform.rotation);
+        script.Lcount++;
+    }
+    void InstantUP()
+    {
+        Vector3 setpos2 = new Vector3(transform.position.x + 10, transform.position.y + 45, transform.position.z);
+        Instantiate(Windywave, setpos2, transform.rotation);
+        script.Lcount++;
+    }
+
+    private void FixedUpdate()
+    {
+        if (SetWindy)
         {
-            if (!spriteRend.flipX)  //캐릭터가 오른쪽에 있을경우  
+            if (!spriteRend.flipX)
             {
                 if (curtime <= 0 && i < 3)
                 {
-                    Vector3 setpos1 = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
-                    Instantiate(Windywave, setpos1, transform.rotation);
-                    curtime = delray;
-                    i++;
-
-                }
-                else if (i == 3 && curtime <= 0)
-                {
-                    curtime = 0.6f;
-                    i++;
-                }
-                else if (i > 3 && curtime <= 0)
-                {
-                    Vector3 setpos2 = new Vector3(transform.position.x + 10, transform.position.y + 45, transform.position.z);
-                    Instantiate(Windywave, setpos2, transform.rotation);
+                    InstantDOWN();
+                    Invoke("InstantUP", 0.2f);
                     curtime = delray;
                     i++;
                 }
-                
             }
             curtime -= Time.deltaTime;
         }
-
-        Setpos();
+        if (i >= 3)
+        {
+            SetWindy = false;
+            Invoke("OnPettern", 7);
+            i = 0;
+        }
     }
-
+    void OnPettern()
+    {
+        OnPattern = false;
+    }
 }
