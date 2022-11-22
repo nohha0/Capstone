@@ -1137,7 +1137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219763293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3757.2, y: -62.9, z: 0}
+  m_LocalPosition: {x: 2645.6, y: -35, z: 0}
   m_LocalScale: {x: 5.0744295, y: 5.0744295, z: 5.0744295}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4756,6 +4756,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9152027149765750394, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: fd28646ff520fff48bfcaa5309d3e330, type: 2}
     - target: {fileID: 9152027149765750395, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4804,14 +4808,14 @@ PrefabInstance:
       propertyPath: mag
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 9152027149765750399, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
-      propertyPath: HP
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152027149765750399, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
-      propertyPath: mag
-      value: 100
-      objectReference: {fileID: 0}
+    - target: {fileID: 9152027149765750396, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
+      propertyPath: rotatePenPosObj
+      value: 
+      objectReference: {fileID: 1467707589}
+    - target: {fileID: 9152027149765750397, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: fd28646ff520fff48bfcaa5309d3e330, type: 2}
     - target: {fileID: 9152027149765750406, guid: 58a12b3b20f2e16438d9ae3e7649d7bd, type: 3}
       propertyPath: m_Name
       value: SecondBoss
@@ -9957,6 +9961,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459288967}
   m_CullTransparentMesh: 1
+--- !u!1 &1467707589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467707590}
+  m_Layer: 0
+  m_Name: rotatingPenPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1467707590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467707589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2691.7, y: -34, z: 4.006382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1513076374
 GameObject:
   m_ObjectHideFlags: 0
@@ -12077,7 +12112,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1857008694}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fd28646ff520fff48bfcaa5309d3e330, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

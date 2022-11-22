@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PEN : MonoBehaviour
 {
+    GameObject bossObj;
+
     void Start()
     {
+        bossObj = GameObject.Find("SecondBoss");
         Invoke("Destroy", 2);
     }
 
     void Update()
     {
-        //시간되면 머리위에서 플레이어한테 날아가는 벡터 만들어서 쏘는 패턴까지
+        transform.position = new Vector2(bossObj.transform.position.x, bossObj.transform.position.y + 30f);
     }
 
     void Destroy()

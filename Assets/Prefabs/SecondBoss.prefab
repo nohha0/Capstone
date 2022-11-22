@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9152027149765750397}
   - component: {fileID: 9152027149765750394}
   - component: {fileID: 9152027149765750396}
-  - component: {fileID: 9152027149765750399}
   m_Layer: 7
   m_Name: SecondBoss
   m_TagString: Enemy
@@ -148,10 +147,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -170,35 +169,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 1000
+  HP: 100
   attacked: 0
-  mag: 1000
+  mag: 100
   pen: {fileID: 5617122244858268443, guid: 1b5eb302f51a0e84fb4c905f2cff125e, type: 3}
   rotatingPen: {fileID: 5617122244858268443, guid: c9fc9211e0e380343975e22c9fa2b3ac, type: 3}
-  jumpForce: 50
-  jumpSpeed: 50
+  rotatePenPosObj: {fileID: 0}
+  jumpForce: 200
+  jumpSpeed: 8
   Windywave: {fileID: 6199148143398611340, guid: 5d379d4a90de7eb408205623b983b809, type: 3}
   delray: 0.3
---- !u!114 &9152027149765750399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9152027149765750406}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929826531bba64b4584e08a02961f439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  HP: 1000
-  attacked: 0
-  mag: 1000
-  pen: {fileID: 5617122244858268443, guid: 1b5eb302f51a0e84fb4c905f2cff125e, type: 3}
-  rotatingPen: {fileID: 5617122244858268443, guid: c9fc9211e0e380343975e22c9fa2b3ac, type: 3}
-  jumpForce: 100
-  jumpSpeed: 100
 --- !u!1 &9152027151352039764
 GameObject:
   m_ObjectHideFlags: 0

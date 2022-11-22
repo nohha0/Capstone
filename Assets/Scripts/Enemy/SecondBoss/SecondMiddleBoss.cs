@@ -8,6 +8,8 @@ public class SecondMiddleBoss : Enemy
     //Pen ------------------------------------------------------------------------------------
     public GameObject pen;
     public GameObject rotatingPen;
+    public GameObject rotatePenPosObj;
+
     public int jumpForce;
     public float jumpSpeed;
 
@@ -15,8 +17,8 @@ public class SecondMiddleBoss : Enemy
     Vector3 rotatingPenPosition;
     Vector2 distance;
 
-    float[] penXs = { 1510, 1557, 1604, 1649 };
-    float[] penYs = { -524, -494 };
+    float[] penXs;
+    float[] penYs;
 
     bool OnPattern = false;
     bool viewing;
@@ -45,11 +47,21 @@ public class SecondMiddleBoss : Enemy
         viewing = false;
 
         curtime = delray;
+
+        penXs = new float[4];
+        penYs = new float[2];
+
+        penXs[0] = rotatePenPosObj.transform.position.x;
+        penXs[1] = rotatePenPosObj.transform.position.x - 50f;
+        penXs[2] = rotatePenPosObj.transform.position.x - 100f;
+        penXs[3] = rotatePenPosObj.transform.position.x - 150f;
+
+        penYs[0] = rotatePenPosObj.transform.position.y - 15f;
+        penYs[1] = rotatePenPosObj.transform.position.y + 15f;
     }
 
     override protected void Update()
     {
-        
         base.Update();
 
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
@@ -59,15 +71,14 @@ public class SecondMiddleBoss : Enemy
 
             if (!OnPattern)
             {
-                SetSkill = Random.RandomRange(0, 101);
+                SetSkill = Random.Range(0, 2);
 
-                if (SetSkill > 90)
+                if (SetSkill == 0)
                 {
-                    Invoke("Patten1", 2);
-                    //Patten1();
+                    Patten1();
                     Debug.Log("000000000");
                 }
-                else if(SetSkill < 90)
+                else
                 {
                     i = 0;
                     curtime = 0;
@@ -84,23 +95,16 @@ public class SecondMiddleBoss : Enemy
 
     void Patten1()
     {
-        Invoke("Jump1", 3);
-        viewing = true;
         OnPattern = true;
+        Jump();
     }
 
-
-    void Jump1()
+    void Jump()
     {
+        Invoke("OnViewing", 2);
         firstPatten = true;
         distance = targetGameObject.transform.position - transform.position;
-        //rigid.AddForce(new Vector2(distance.x * jumpSpeed, jumpForce));
-        //Invoke("Jump", 3);
-    }
-
-    void Jump2()
-    {
-
+        rigid.AddForce(new Vector2(distance.x * jumpSpeed, jumpForce));
     }
 
     void ViewingPen()
@@ -122,10 +126,7 @@ public class SecondMiddleBoss : Enemy
             return;
         }
 
-
         rotatepens++;
-        //float penX = Random.RandomRange(1509f, 1652f);
-        //float penY = Random.RandomRange(-524f, -483f);
         int Xindex = Random.Range(0, 4); //0,1,2,3
         int Yindex = Random.Range(0, 2); //0,1,2
 
@@ -134,6 +135,11 @@ public class SecondMiddleBoss : Enemy
 
         Invoke("CreateRotatePen", 2);
 
+    }
+
+    void OnViewing()
+    {
+        viewing = true;
     }
 
     void OffViewing()

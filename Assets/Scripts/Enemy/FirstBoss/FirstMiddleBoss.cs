@@ -78,7 +78,7 @@ public class FirstMiddleBoss : Enemy
         if(spriteRend.flipX) scissorsPosition = new Vector3(transform.position.x + 10f, transform.position.y - 10f, transform.position.z);
         else scissorsPosition = new Vector3(transform.position.x -10f, transform.position.y - 10f, transform.position.z);
         Instantiate(scissors, scissorsPosition, transform.rotation);
-        Invoke("ThrowScissors", 2);
+        Invoke("ThrowScissors", 1);
     }
 
 
