@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SecondMiddleBoss : Enemy
 {
-
     //Pen ------------------------------------------------------------------------------------
     public GameObject pen;
     public GameObject rotatingPen;
+    public GameObject rotatePenPosObj; //인스펙터창에서 게임오브젝트 집어넣기
+
     public int jumpForce;
     public float jumpSpeed;
 
@@ -15,8 +16,8 @@ public class SecondMiddleBoss : Enemy
     Vector3 rotatingPenPosition;
     Vector2 distance;
 
-    float[] penXs = { 1510, 1557, 1604, 1649 };
-    float[] penYs = { -524, -494 };
+    float[] penXs; 
+    float[] penYs;
 
     bool OnPattern = false;
     bool viewing;
@@ -31,17 +32,27 @@ public class SecondMiddleBoss : Enemy
     float curtime;
     Vector3 setpos;
     int i = 0;
-
     float SetSkill;
 
     
+
     override protected void Start()
     {
         base.Start();
         firstPatten = false;
         viewing = false;
-
         curtime = delray;
+
+        penXs = new float[4];
+        penYs = new float[2];
+
+        penXs[0] = rotatePenPosObj.transform.position.x;
+        penXs[1] = rotatePenPosObj.transform.position.x - 50f;
+        penXs[2] = rotatePenPosObj.transform.position.x - 100f;
+        penXs[3] = rotatePenPosObj.transform.position.x - 150f;
+
+        penYs[0] = rotatePenPosObj.transform.position.y - 15f;
+        penYs[1] = rotatePenPosObj.transform.position.y + 15f;
     }
 
     override protected void Update()
@@ -55,6 +66,7 @@ public class SecondMiddleBoss : Enemy
         }
         else { }
 
+<<<<<<< Updated upstream
 
         if (!OnPattern)
         {
@@ -70,6 +82,22 @@ public class SecondMiddleBoss : Enemy
             {
                 Invoke("Setpos", 2);
                 Debug.Log("111111111");
+=======
+            if (!OnPattern)
+            {
+                SetSkill = Random.RandomRange(0, 2);
+
+                if (SetSkill == 0)
+                {
+                    Patten1();
+                    Debug.Log("000000000");
+                }
+                else
+                {
+                    //Invoke("Setpos", 2);
+                    Debug.Log("111111111");
+                }
+>>>>>>> Stashed changes
             }
         }
     }
@@ -79,29 +107,25 @@ public class SecondMiddleBoss : Enemy
 
     void Patten1()
     {
-        Invoke("Jump1", 3);
         viewing = true;
         OnPattern = true;
+        Invoke("Jump", 1);
     }
 
-
-    void Jump1()
+    void Jump()
     {
         firstPatten = true;
-        distance = targetGameObject.transform.position - transform.position;
+        distance = (targetGameObject.transform.position - transform.position);
         rigid.AddForce(new Vector2(distance.x * jumpSpeed, jumpForce));
-        //Invoke("Jump", 3);
-    }
-
-    void Jump2()
-    {
-
+        //rigid.velocity = Vector2.zero;
+        //rigid.AddForce(new Vector2(distance.normalized.x * jumpSpeed, jumpForce));
+        Debug.Log("점프..");
     }
 
     void ViewingPen()
     {
         pens++;
-        penPosition = new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z);
+        penPosition = new Vector3(transform.position.x, transform.position.y + 50f, transform.position.z);
         Instantiate(pen, penPosition, transform.rotation);
 
         Invoke("OffViewing", 1);
@@ -127,7 +151,6 @@ public class SecondMiddleBoss : Enemy
         Instantiate(rotatingPen, rotatingPenPosition, transform.rotation);
 
         Invoke("CreateRotatePen", 2);
-
     }
 
     void OffViewing()
@@ -137,7 +160,6 @@ public class SecondMiddleBoss : Enemy
     }
 
     //Wind ------------------------------------------------------------------------------------
-
 
     void Setpos()
     {

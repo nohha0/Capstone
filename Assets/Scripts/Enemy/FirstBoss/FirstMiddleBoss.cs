@@ -64,7 +64,7 @@ public class FirstMiddleBoss : Enemy
         Debug.Log("ThrowScissors");
         scissorsPosition = new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z);
         Instantiate(scissors, scissorsPosition, transform.rotation);
-        Invoke("ThrowScissors", 2);
+        Invoke("ThrowScissors", 1);
     }
 
 

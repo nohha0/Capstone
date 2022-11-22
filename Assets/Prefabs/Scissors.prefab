@@ -99,6 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcf17fc49a5672408a26eea5a9a3ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:Assets/Prefabs/Scissors.prefab
+=======
+  throwSpeed: 100
+  rotateForce: 7
+>>>>>>> Stashed changes:Assets/Prefabs/스킬프리팹/Scissors.prefab
 --- !u!50 &332158957170183515
 Rigidbody2D:
   serializedVersion: 4

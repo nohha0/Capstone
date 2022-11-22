@@ -6,6 +6,11 @@ PhysicsMaterial2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Resources/Material/EnemyFriction.physicsMaterial2D
   m_Name: EnemyFriction
   friction: 1
+=======
+  m_Name: Friction 0
+  friction: 0
+>>>>>>> Stashed changes:Assets/Resources/Material/Friction 0.physicsMaterial2D
   bounciness: 0

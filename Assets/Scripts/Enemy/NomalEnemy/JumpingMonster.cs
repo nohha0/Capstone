@@ -9,6 +9,10 @@ public class JumpingMonster : Enemy
     Vector2                 distance;
     bool                    isGround;
     bool                    onWalk;
+<<<<<<< Updated upstream
+=======
+    float                   time = 0;
+>>>>>>> Stashed changes
 
     override protected void Start()
     {
