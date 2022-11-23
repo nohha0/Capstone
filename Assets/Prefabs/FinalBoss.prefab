@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7142135515186692239
+--- !u!1 &6468151837208939397
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7142135515186692236}
-  - component: {fileID: 7142135515186692237}
-  - component: {fileID: 7142135515186692238}
+  - component: {fileID: 6468151837208939398}
+  - component: {fileID: 6468151837208939399}
+  - component: {fileID: 6468151837208939396}
   m_Layer: 0
   m_Name: ShootingWater
   m_TagString: Enemy
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &7142135515186692236
+--- !u!4 &6468151837208939398
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135515186692239}
+  m_GameObject: {fileID: 6468151837208939397}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.883322, y: 1.7344443, z: 0}
-  m_LocalScale: {x: 0.9335029, y: 0.134563, z: 0.134563}
+  m_LocalPosition: {x: -14.543, y: 1.448, z: 0}
+  m_LocalScale: {x: 0.8112115, y: 0.11693489, z: 0.11693489}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7142135517023518347}
+  m_Father: {fileID: 6468151839046350209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7142135515186692237
+--- !u!212 &6468151837208939399
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135515186692239}
+  m_GameObject: {fileID: 6468151837208939397}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,13 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7142135515186692238
+--- !u!61 &6468151837208939396
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135515186692239}
+  m_GameObject: {fileID: 6468151837208939397}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30.639942, y: 2.1072702}
   m_EdgeRadius: 0
---- !u!1 &7142135515466700778
+--- !u!1 &6468151838035057888
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7142135515466700777}
-  - component: {fileID: 7142135515466700776}
+  - component: {fileID: 6468151838035057891}
+  - component: {fileID: 6468151838035057890}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Enemy
@@ -128,28 +128,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7142135515466700777
+--- !u!4 &6468151838035057891
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135515466700778}
+  m_GameObject: {fileID: 6468151838035057888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7142135517023518347}
+  m_Father: {fileID: 6468151839046350209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7142135515466700776
+--- !u!61 &6468151838035057890
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135515466700778}
+  m_GameObject: {fileID: 6468151838035057888}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -169,7 +169,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.64441, y: 6.822115}
   m_EdgeRadius: 0
---- !u!1 &7142135517023518349
+--- !u!1 &6468151839046350215
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,11 +177,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7142135517023518347}
-  - component: {fileID: 7142135517023518348}
-  - component: {fileID: 7142135517023518346}
-  - component: {fileID: 7142135517023518345}
-  - component: {fileID: 7142135517023518344}
+  - component: {fileID: 6468151839046350209}
+  - component: {fileID: 6468151839046350214}
+  - component: {fileID: 6468151839046350208}
+  - component: {fileID: 6468151839046350211}
+  - component: {fileID: 6468151839046350268}
   m_Layer: 7
   m_Name: FinalBoss
   m_TagString: Enemy
@@ -189,30 +189,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7142135517023518347
+--- !u!4 &6468151839046350209
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135517023518349}
+  m_GameObject: {fileID: 6468151839046350215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1625.3427, y: -256.70065, z: 0}
+  m_LocalPosition: {x: 4283.1, y: -77.100006, z: 0}
   m_LocalScale: {x: 5.35617, y: 5.35617, z: 5.35617}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7142135515466700777}
-  - {fileID: 7142135515186692236}
+  - {fileID: 6468151838035057891}
+  - {fileID: 6468151837208939398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7142135517023518348
+--- !u!212 &6468151839046350214
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135517023518349}
+  m_GameObject: {fileID: 6468151839046350215}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -258,20 +258,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7142135517023518346
+--- !u!61 &6468151839046350208
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135517023518349}
+  m_GameObject: {fileID: 6468151839046350215}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5979495, y: 0.32934773}
+  m_Offset: {x: 0.5979495, y: 0.019587755}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -282,16 +282,16 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3905668, y: 7.094593}
+  m_Size: {x: 2.3905668, y: 7.7141128}
   m_EdgeRadius: 0
---- !u!50 &7142135517023518345
+--- !u!50 &6468151839046350211
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135517023518349}
+  m_GameObject: {fileID: 6468151839046350215}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -304,18 +304,27 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &7142135517023518344
+  m_Constraints: 7
+--- !u!114 &6468151839046350268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142135517023518349}
+  m_GameObject: {fileID: 6468151839046350215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb58b4fa0421eb4eaddf387856334ca, type: 3}
+  m_Script: {fileID: 11500000, guid: f96f47ad9052e0c4e8cd55974b642791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Big_Water: {fileID: 8355754147102144902, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}
+  speed: 0
+  HP: 100
+  attacked: 0
+  mag: 100
+  WaterWave: {fileID: 8448801111772020772, guid: 1c91e54b5a9528844bd21a9fda456533, type: 3}
+  height: -20
+  Big_Water: {fileID: 1263350060056709761, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}
+  Summon_Monster: {fileID: 5848415093751964070, guid: 72e3854ebc96cf64cb285152ac2105af, type: 3}
+  MagicCircle: {fileID: 5644478833176881317, guid: 6f005f11c2dfb9345bad4fac287e3c8f, type: 3}
   Base: {fileID: 0}
+  PlayerPos: {fileID: 0}
