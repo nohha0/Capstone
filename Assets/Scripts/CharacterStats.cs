@@ -11,7 +11,8 @@ public class CharacterStats : MonoBehaviour
     float attackRange;           //공격범위
     protected int attackPower = 20;        //공격력
     int avoidanceRate = 0;       //회피율
-    int maxHP = 10;               //최대 목숨
+    public int maxHP = 10;               //최대 목숨
+    public int currentmaxHP;
     public int currentHP;               //현재 목숨
     int attackPowerCount = 0;
     int attackSpeedCount = 0;
@@ -21,8 +22,9 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
-        currentHP = maxHP;
-        Image spr1 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn1").transform.Find("Image1").GetComponent<Image>();
+        currentmaxHP = 4;
+        currentHP = currentmaxHP;
+    Image spr1 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn1").transform.Find("Image1").GetComponent<Image>();
         Image spr2 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn2").transform.Find("Image2").GetComponent<Image>();
         Image spr3 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn3").transform.Find("Image3").GetComponent<Image>();
         btn1.onClick.AddListener(delegate { StatUp(spr1.sprite.name); });
