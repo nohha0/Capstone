@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private Attack script;
     CharacterStats HP;
 
+    //마지막 바닥 기억
+    GameObject obj;
+
 
     void Start()
     {
@@ -80,6 +83,9 @@ public class PlayerController : MonoBehaviour
             Invoke("DashOn", 1);
         }
         DIE();
+
+
+
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성
@@ -97,8 +103,21 @@ public class PlayerController : MonoBehaviour
         {
             this.jumpCount = 0;
             animator.SetBool("jump", false);
+
+            //----------------------------------------------
+            obj = other.gameObject;
+
+        }
+        if(other.gameObject.CompareTag("thorn"))  //가시충돌
+        {
+            rigid.velocity = Vector2.zero;
+            script.AttackRightOn = false;
+            script.AttackLeftOn = false;
+            Invoke("TrnsForm", 0.7f);
         }
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -135,6 +154,24 @@ public class PlayerController : MonoBehaviour
             rigid.AddForce(new Vector2(dashSpeed, dashUpForce));
         }
     }
+
+    //가시 충돌시
+    void TrnsForm()
+    {
+        Transform pos = obj.GetComponent<Transform>();
+        float Wid = obj.GetComponent<RectTransform>().rect.width;
+        Wid = (Wid / 4);
+
+        Debug.Log(Wid);
+
+        transform.position = new Vector3(pos.position.x + Wid, pos.position.y + 15, 1);
+
+        script.AttackRightOn = true;
+        script.AttackLeftOn = true;
+
+    }
+
+
 
     public void attackOn()
     {
