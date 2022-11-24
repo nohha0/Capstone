@@ -11,8 +11,8 @@ public class Level : MonoBehaviour
 
     public int level = 1;
     public int levelCount = 0;
-    int expCurrent = 0;      //현재경험치
-    int expLeft = 1000;      //변수. 레벨업에 필요한 경험치
+    public float expCurrent = 0;             //현재경험치
+    public float expLeft = 1000;             //변수. 레벨업에 필요한 경험치
     int expBase = 1000;             //상수. 레벨1→레벨2 필요한 경험치
     float expMod = 1.21f;           //경험치 증가량 (지수)
 
@@ -20,7 +20,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] UpgradePanelManager upgradePanel;
 
-    int TO_LEVEL_UP
+    float TO_LEVEL_UP
     {
         get 
         {
@@ -87,6 +87,12 @@ public class Level : MonoBehaviour
         img1.sprite = Images[list[0]];
         img2.sprite = Images[list[1]];
         img3.sprite = Images[list[2]];
+
+    }
+
+
+    void MaxValueCon()
+    {
 
     }
 }

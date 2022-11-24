@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,20 +12,27 @@ public class GameManager : MonoBehaviour
 
     public Sprite Change_img;
     public Image[] UiLife;
-    
+    public Image Enhance_Slider;
 
     //-----------------------
     CharacterStats Stats;
+    Level Bar;
+
+    float itemCooldownTime = 5.0f;
+    float updateTime = 0.0f;
 
     void Start()
     {
         Stats = GameObject.Find("Player").GetComponent<CharacterStats>();
+        Bar = GameObject.Find("Player").GetComponent<Level>();
     }
 
     void Update()
     {
         MaxLifeUpdate();
         LifeUpdate();
+        //Bar_con();
+        Bar_con();
     }
 
     void MaxLifeUpdate()
@@ -46,4 +54,22 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    void Bar_con()
+    {
+        float bar = Bar.expCurrent / Bar.expLeft;
+        if (Enhance_Slider.fillAmount >= 1)
+        {
+            Enhance_Slider.fillAmount = 0;
+            updateTime = 0;
+        }
+        if (Enhance_Slider.fillAmount <= bar)
+        {
+
+            updateTime -= Time.deltaTime;
+            Enhance_Slider.fillAmount += Time.deltaTime;
+        }
+
+
+    }
+
 }

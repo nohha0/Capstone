@@ -227,8 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  HP: 1000
+  HP: 100
   attacked: 0
   mag: 70
+  Enhance_value: 200
   number: 0
   jumpForce: 500

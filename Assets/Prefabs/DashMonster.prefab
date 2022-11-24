@@ -149,9 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  HP: 100
+  HP: 200
   attacked: 0
   mag: 100
+  Enhance_value: 350
   pos: {fileID: 4447416834613828650}
 --- !u!50 &4534426435434823116
 Rigidbody2D:

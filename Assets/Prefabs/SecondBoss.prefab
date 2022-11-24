@@ -169,9 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 100
+  HP: 1500
   attacked: 0
   mag: 100
+  Enhance_value: 12000
   pen: {fileID: 5617122244858268443, guid: 1b5eb302f51a0e84fb4c905f2cff125e, type: 3}
   rotatingPen: {fileID: 5617122244858268443, guid: c9fc9211e0e380343975e22c9fa2b3ac, type: 3}
   rotatePenPosObj: {fileID: 0}

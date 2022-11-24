@@ -169,9 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  HP: 100
+  HP: 50
   attacked: 0
   mag: 100
+  Enhance_value: 100
 --- !u!1 &7020963933907008169
 GameObject:
   m_ObjectHideFlags: 0

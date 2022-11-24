@@ -206,13 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 1000
+  HP: 2300
   attacked: 0
   mag: 0
+  Enhance_value: 24500
   Knife_Pattern: 0
   Nomal_1: {fileID: 7020963933655834123, guid: 35f90ef7dcd3707479aba31a2ba55be5, type: 3}
-  Nomal_2: {fileID: 5376135314819589707, guid: 4629c334f0d001045bf6bae93b942565, type: 3}
-  Fly_1: {fileID: 6326017333661545409, guid: 9a3039bcf00c3054dbb7341b29bbdc08, type: 3}
   Fly_2: {fileID: 6326017333661545409, guid: 7a71ec2759f1b9b469de2158deb11c08, type: 3}
   Knife: {fileID: 1645852552249657770, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}
   MagicCircle: {fileID: 5978575417651614489, guid: 09e383f2194f40d4bb47739a93074174, type: 3}

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     //어택 스크립트
     private Attack script;
+    CharacterStats HP;
 
 
     void Start()
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         script = GameObject.Find("Player").GetComponent<Attack>();  //공격 스크립트 접근
+        HP = GameObject.Find("Player").GetComponent<CharacterStats>();
     }
 
     void Update()
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
             Dash();
             Invoke("DashOn", 1);
         }
+        DIE();
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성
@@ -142,4 +145,12 @@ public class PlayerController : MonoBehaviour
     {
         dashOn = false;
     }    
+
+    void DIE()
+    {
+        if(HP.currentHP<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

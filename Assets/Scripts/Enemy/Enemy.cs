@@ -10,12 +10,14 @@ public class Enemy : MonoBehaviour
     public int          HP;
     public bool         attacked;
     public float        mag;
+    public float        Enhance_value;
+
 
     protected GameObject        targetGameObject;
     protected Rigidbody2D       rigid;
     protected SpriteRenderer    spriteRend;
     protected Animator          animator;
-
+    Level GiveValue;        //경험치 드랍
 
     virtual protected void Start()
     {
@@ -24,6 +26,8 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        GiveValue = GameObject.Find("Player").GetComponent<Level>();
     }
 
     virtual protected void Update()
@@ -74,7 +78,10 @@ public class Enemy : MonoBehaviour
 
     public void DIE()
     {
+
         Destroy(gameObject);
+        GiveValue.expCurrent += Enhance_value;
+
     }
 
     
