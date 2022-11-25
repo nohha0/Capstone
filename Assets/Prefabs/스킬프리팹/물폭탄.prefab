@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5220717575404904113}
   - component: {fileID: 1634777133761284532}
   - component: {fileID: 2113448451743186790}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: "\uBB3C\uD3ED\uD0C4"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -32,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 1587.5891, y: -218.86597, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7564496676880876688}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,51 +149,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 5.795532}
   serializedVersion: 2
   m_Radius: 27.730316
---- !u!1 &3472055066087768183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7564496676880876688}
-  - component: {fileID: 8881203138415753812}
-  m_Layer: 7
-  m_Name: trigger
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7564496676880876688
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472055066087768183}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6975829523957990588}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8881203138415753812
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472055066087768183}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 5.641144}
-  serializedVersion: 2
-  m_Radius: 28.678558

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8448801111772020768}
   - component: {fileID: 8889022660869551274}
   - component: {fileID: -8839870779829686179}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: WaterWave
   m_TagString: Enemy
   m_Icon: {fileID: 0}

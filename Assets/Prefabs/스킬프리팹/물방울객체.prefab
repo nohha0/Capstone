@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3585260052174077364}
   - component: {fileID: 3585260052174077365}
   - component: {fileID: 3585260052174077366}
+  - component: {fileID: 2855277553896871822}
   m_Layer: 0
   m_Name: "\uBB3C\uBC29\uC6B8\uAC1D\uCCB4"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f28d40e97df3f4d9533c688340d65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerPos: {fileID: 0}
 --- !u!95 &3585260052174077366
 Animator:
   serializedVersion: 4
@@ -118,3 +120,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2855277553896871822
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585260052174077362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.6
