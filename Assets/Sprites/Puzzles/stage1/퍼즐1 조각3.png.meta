@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -109,11 +121,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 895
-        y: 641
-        width: 1016
-        height: 766
+        y: 642
+        width: 257
+        height: 765
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,6 +133,48 @@ TextureImporter:
       bones: []
       spriteID: 92116bd7f954ee44e87020fc4cffdbe3
       internalID: 1371403864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD37C\uC9901 \uC870\uAC013_1"
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 642
+        width: 255
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e8550714c02c25449fed0db402bb634
+      internalID: 1956895852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD37C\uC9901 \uC870\uAC013_2"
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 642
+        width: 502
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3970a84df8b51d441875c5f054417c99
+      internalID: -1495917312
       vertices: []
       indices: 
       edges: []
@@ -136,7 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      "\uD37C\uC9901 \uC870\uAC013_2": -1495917312
       "\uD37C\uC9901 \uC870\uAC013_0": 1371403864
+      "\uD37C\uC9901 \uC870\uAC013_1": 1956895852
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
