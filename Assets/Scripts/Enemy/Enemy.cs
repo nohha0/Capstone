@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public bool         attacked;
     public float        mag;
     public float        Enhance_value;
+    public ParticleSystem ps;
 
 
     protected GameObject        targetGameObject;
@@ -78,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     public void DIE()
     {
-
+        //ps.Play();
         Destroy(gameObject);
         GiveValue.expCurrent += Enhance_value;
 

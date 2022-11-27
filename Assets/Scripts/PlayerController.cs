@@ -22,12 +22,15 @@ public class PlayerController : MonoBehaviour
     public bool onPuzzle = false;
     public bool movable = true;
 
+
     //어택 스크립트
     private Attack script;
     CharacterStats HP;
 
     //마지막 바닥 기억
     GameObject obj;
+    public bool CameraController = false;
+
 
     public GameObject puzzle1;
     public GameObject puzzle2;
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
         script = GameObject.Find("Player").GetComponent<Attack>();  //공격 스크립트 접근
         HP = GameObject.Find("Player").GetComponent<CharacterStats>();
+        //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
     }
 
     void Update()
@@ -99,7 +103,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("퍼즐 비활성화!");
         }
 
-        CheckDie();
+        //CheckDie();
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성
@@ -122,12 +126,28 @@ public class PlayerController : MonoBehaviour
             obj = other.gameObject;
 
         }
-        if(other.gameObject.CompareTag("thorn"))  //가시충돌
+        if (other.gameObject.CompareTag("thorn") && !hasAttacked)  //가시충돌
         {
+            stats.TakeDamage();
+            hasAttacked = true;
+            Invoke("attackOn", 3);
+            //
             rigid.velocity = Vector2.zero;
             script.AttackRightOn = false;
             script.AttackLeftOn = false;
-            Invoke("TrnsForm", 0.7f);
+            //
+            CameraController = true;
+            animator.SetTrigger("Damage");
+            //
+            if (HP.currentHP <= 0)
+            {
+                animator.SetTrigger("Die");
+                Destroy(gameObject, 1);
+            }
+            else
+            {
+                Invoke("TrnsForm", 0.7f);
+            }
         }
     }
 
@@ -135,10 +155,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
         {
+
             stats.TakeDamage();
             hasAttacked = true;
             Invoke("attackOn", 3);
-            Debug.Log("목숨 -1");
+            //
+            CameraController = true;
+            animator.SetTrigger("Damage");
+            //
+            if (HP.currentHP <= 0)
+            {
+                animator.SetTrigger("Die");
+                Destroy(gameObject, 2);
+            }
         }
     }
 
@@ -227,7 +256,9 @@ public class PlayerController : MonoBehaviour
     {
         if(HP.currentHP<=0)
         {
-            Destroy(gameObject);
+            animator.SetTrigger("Die");
+            Destroy(gameObject,2);
         }
     }
+
 }

@@ -6,10 +6,11 @@ public class DashMonster : FlyingMonster
 {
     Vector2 forward;
     bool setLook = true;
-    float cooltime = 4;
+    float cooltime = 6;
     float curtime;
     float Dashspeed = 110;
     float time = 0;
+    bool ani = true;
 
     override protected void Start()
     {
@@ -18,7 +19,7 @@ public class DashMonster : FlyingMonster
         curtime = 2;
         gameObject.SetActive(false);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-        Invoke("OnSetActive", 1.5f);
+        Invoke("OnSetActive", 1f);
     }
 
     // Update is called once per frame
@@ -27,9 +28,9 @@ public class DashMonster : FlyingMonster
 
         if (gameObject.activeSelf)
         {
-            if (time <= 3f)
+            if (time <= 1f)
             {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 1);
             }
             time += Time.deltaTime;
         }
@@ -42,9 +43,14 @@ public class DashMonster : FlyingMonster
 
         UpdateTarget();
 
+        if(curtime<=0.5f)
+        {
+            animator.SetTrigger("DashAttack");
+        }
         if(curtime <=0)
         {
-            if(setLook)
+            
+            if (setLook)
             {
                 forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
                 setLook = false;
@@ -61,6 +67,7 @@ public class DashMonster : FlyingMonster
     {
         curtime = cooltime;
         setLook = true;
+        ani = true;
     }
     void OnSetActive()
     {

@@ -15,7 +15,7 @@ public class SetLight : FlyingMonster
         curtime = 2;
         gameObject.SetActive(false);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-        Invoke("OnSetActive", 1.5f);
+        Invoke("OnSetActive", 1f);
     }
 
     override protected void Update()
@@ -23,9 +23,9 @@ public class SetLight : FlyingMonster
 
         if (gameObject.activeSelf)
         {
-            if (time <= 3f)
+            if (time <= 1f)
             {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 1);
             }
             time += Time.deltaTime;
         }

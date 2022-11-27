@@ -8,11 +8,11 @@ public class FlyingMonster : Enemy
     public Transform pos;     //해당 에너미의 위치좌표 저장 자식 클래스에서도 사용
 
     protected bool SetOn = false;
-    
+    float cool =  2;
+
     override protected void Start()
     {
         base.Start();
-        //InvokeRepeating("UpdateTarget", 0f, 0.25f); //0초 후에 0.25초마다 함수 실행
         InvokeRepeating("SETON", 0f, 0.15f);
     }
 
@@ -44,6 +44,8 @@ public class FlyingMonster : Enemy
                 rigid.velocity = direction * speed;
             }
         }
+
+
     }
 
     public void SETON()

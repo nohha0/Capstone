@@ -8,25 +8,27 @@ public class CameraShake : MonoBehaviour
 
     Quaternion m_originRot;
 
+    PlayerController Shake;
+
     private void Start()
     {
         m_originRot = transform.rotation;
+        Shake = GameObject.Find("Player").GetComponent<PlayerController>();
+
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Shake.CameraController)
         {
             StartCoroutine(ShakeCoroution());
+            Shake.CameraController = false;
+            Invoke("Stopcoroutin", 0.5f);
+
         }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            StopCoroutine(ShakeCoroution());
-            StartCoroutine(Reset());
-            StopAllCoroutines();
-        }
+
     }
 
-    IEnumerator ShakeCoroution()
+    public IEnumerator ShakeCoroution()
     {
         Vector3 t_orginEuler = transform.eulerAngles;
         while (true)
@@ -45,9 +47,17 @@ public class CameraShake : MonoBehaviour
             }
             yield return null;
         }
+
+    }
+    void Stopcoroutin()
+    {
+        StopCoroutine(ShakeCoroution());
+        StartCoroutine(Reset());
+        StopAllCoroutines();
     }
 
-    IEnumerator Reset()
+
+    public IEnumerator Reset()
     {
         while (Quaternion.Angle(transform.rotation, m_originRot) > 0f)
         {
@@ -55,5 +65,4 @@ public class CameraShake : MonoBehaviour
             yield return null;
         }
     }
-
 }

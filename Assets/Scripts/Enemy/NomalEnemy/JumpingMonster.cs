@@ -14,7 +14,7 @@ public class JumpingMonster : Enemy
     {
         base.Start();
         gameObject.SetActive(false);
-        Invoke("OnSetActive", 1.5f);
+        Invoke("OnSetActive", 1f);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         isGround = true;
         onWalk = false;
@@ -36,7 +36,7 @@ public class JumpingMonster : Enemy
         {
             if (time <= 1f)
             {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 3);
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 1);
             }
             time += Time.deltaTime;
         }
