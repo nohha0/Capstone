@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public bool isLongJump = false;
     public bool hasAttacked = false;   //피격 중복 금지
     public bool dashOn = false;
+    public bool onPuzzle = false;
+    public bool movable = true;
 
     //어택 스크립트
     private Attack script;
@@ -26,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     //마지막 바닥 기억
     GameObject obj;
+
+    public GameObject puzzle1;
+    public GameObject puzzle2;
+    public GameObject puzzle3;
 
 
     void Start()
@@ -44,7 +50,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("run", false);
 
         //캐릭터 이동/점프
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2 && movable)
         {
             Jump();
             animator.SetBool("jump", true);
@@ -56,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
             isLongJump = false;
 
-        if (Input.GetKey(KeyCode.LeftArrow)&&script.AttackLeftOn)
+        if (Input.GetKey(KeyCode.LeftArrow)&&script.AttackLeftOn && movable)
         {
             direction = 1;
             spriteRenderer.flipX = false;
@@ -66,7 +72,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && script.AttackRightOn)
+        if (Input.GetKey(KeyCode.RightArrow) && script.AttackRightOn && movable)
         {
             direction = 2;
             spriteRenderer.flipX = true;
@@ -76,16 +82,24 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashOn)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashOn && movable)
         {
             dashOn = true;
             Dash();
             Invoke("DashOn", 1);
         }
-        DIE();
 
+        if (Input.GetKeyDown(KeyCode.P) && onPuzzle)
+        {
+            onPuzzle = false;
+            movable = true;
+            if (puzzle1.activeSelf) puzzle1.SetActive(false);
+            if (puzzle2.activeSelf) puzzle2.SetActive(false);
+            if (puzzle3.activeSelf) puzzle3.SetActive(false);
+            Debug.Log("퍼즐 비활성화!");
+        }
 
-
+        CheckDie();
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성
@@ -117,8 +131,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
@@ -128,6 +140,36 @@ public class PlayerController : MonoBehaviour
             Invoke("attackOn", 3);
             Debug.Log("목숨 -1");
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PuzzleSpot"))
+        {
+            if (Input.GetKeyDown(KeyCode.P) && !onPuzzle)
+            {
+                Invoke("OnPuzzle", 0.5f);
+                movable = false;
+                switch (other.gameObject.name)
+                {
+                    case "Puzzle1Spot":
+                        puzzle1.SetActive(true);
+                        break;
+                    case "Puzzle2Spot":
+                        puzzle2.SetActive(true);
+                        break;
+                    case "Puzzle3Spot":
+                        puzzle3.SetActive(true);
+                        break;
+                }
+                Debug.Log("퍼즐 활성화!");
+            }
+        }
+    }
+
+    void OnPuzzle()
+    {
+        onPuzzle = true;
     }
 
     //점프
@@ -171,8 +213,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
     public void attackOn()
     {
         hasAttacked = false;
@@ -183,7 +223,7 @@ public class PlayerController : MonoBehaviour
         dashOn = false;
     }    
 
-    void DIE()
+    void CheckDie()
     {
         if(HP.currentHP<=0)
         {

@@ -108,9 +108,9 @@ TextureImporter:
       name: "\uD37C\uC9903 \uC870\uAC011_0"
       rect:
         serializedVersion: 2
-        x: 1605
+        x: 1163
         y: 106
-        width: 230
+        width: 672
         height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -121,27 +121,6 @@ TextureImporter:
       bones: []
       spriteID: ffb34a62fb30c9642b91b24b8776bbb4
       internalID: 2074943086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uD37C\uC9903 \uC870\uAC011_1"
-      rect:
-        serializedVersion: 2
-        x: 1389
-        y: 115
-        width: 215
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f97950c555faa82469a837133431f6fc
-      internalID: -908598789
       vertices: []
       indices: 
       edges: []

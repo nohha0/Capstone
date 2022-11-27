@@ -9,6 +9,7 @@ TagManager:
   - NextStage
   - thorn
   - FireRange
+  - PuzzleSpot
   layers:
   - Default
   - TransparentFX

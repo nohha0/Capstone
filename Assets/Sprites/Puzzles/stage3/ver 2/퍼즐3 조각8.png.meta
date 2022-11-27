@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4cb8b302fea742946b9e0dfb2e3baed8
+guid: f755b29cf11cf3f45a46fc61bfbeb455
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "1\uAC70\uC2E4 \uC11C\uB78D_0"
+      name: "\uD37C\uC9903 \uC870\uAC018_0"
       rect:
         serializedVersion: 2
-        x: 99
-        y: 243
-        width: 3309
-        height: 2343
+        x: 945
+        y: 770
+        width: 665
+        height: 227
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30f4fefb149fcb8438bacd7c25c8335c
-      internalID: -1293140325
+      spriteID: 01899854a58862b49b8e3a84fab220f0
+      internalID: -517692336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD37C\uC9903 \uC870\uAC018_1"
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 328
+        width: 667
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534d3ba80290e1c46a7461681f86bcb4
+      internalID: -479293490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD37C\uC9903 \uC870\uAC018_2"
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 556
+        width: 227
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7127b0a77fdaf34dbfb6b0ca715d3be
+      internalID: 2002323349
       vertices: []
       indices: 
       edges: []
@@ -136,7 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "1\uAC70\uC2E4 \uC11C\uB78D_0": -1293140325
+      "\uD37C\uC9903 \uC870\uAC018_1": -479293490
+      "\uD37C\uC9903 \uC870\uAC018_0": -517692336
+      "\uD37C\uC9903 \uC870\uAC018_2": 2002323349
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
