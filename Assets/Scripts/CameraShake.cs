@@ -22,7 +22,7 @@ public class CameraShake : MonoBehaviour
         {
             StartCoroutine(ShakeCoroution());
             Shake.CameraController = false;
-            Invoke("Stopcoroutin", 0.5f);
+            Invoke("Stopcoroutin", 0.8f);
 
         }
 

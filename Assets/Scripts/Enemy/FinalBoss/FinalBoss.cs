@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FinalBoss : Enemy
 {
+    Animator animator;
     //noh-----------------------------------------------
     public GameObject WaterWave; //ÇÁ¸®ÆÕ °¡Á®¿È
     public float height;
@@ -30,6 +31,9 @@ public class FinalBoss : Enemy
     bool Skill_SprayWater = false;
     bool Skill_Teleport = false;
     bool Skill_Summon = false;
+
+    float summoncool = 60;
+    //
 
 
     //-----------------------------------------
@@ -125,8 +129,9 @@ public class FinalBoss : Enemy
             else if(rand == 3)
             {
                 Skill_Summon = true;
-                timeUntilChangeState = 12f;
+                timeUntilChangeState = 10f;
             }
+
 
         }
     }
@@ -160,7 +165,7 @@ public class FinalBoss : Enemy
         Vector2 a = new Vector2(Base.position.x, Base.position.y - 10);
         Instantiate(MagicCircle, a, transform.rotation);
         Invoke("Summon_boss", 1f);
-        Invoke("OnActive", 11f);
+        Invoke("OnActive", 10f);
     }
 
 
@@ -177,11 +182,16 @@ public class FinalBoss : Enemy
     }
     void OnActive()
     {
+        spriteRend.color = new Color(1, 1, 1, 1);
         gameObject.SetActive(true);
+        animator.SetTrigger("tel");
     }
+
 
     void Summon_boss()
     {
         Instantiate(Summon_Monster, Base.position, transform.rotation);
     }
+
+
 }

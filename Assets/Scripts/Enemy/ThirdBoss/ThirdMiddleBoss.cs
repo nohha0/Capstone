@@ -10,10 +10,7 @@ public class ThirdMiddleBoss : Enemy
     public int Knife_Pattern;     //나이프 패턴, 접근 가능
 
     //몬스터 소환프리팹
-    [SerializeField] protected GameObject Nomal_1;
-    //[SerializeField] protected GameObject Nomal_2;
-    //[SerializeField] protected GameObject Fly_1;
-    [SerializeField] protected GameObject Fly_2;
+    [SerializeField] protected GameObject Fly_1;
     [SerializeField] protected GameObject Knife;
     [SerializeField] protected GameObject MagicCircle;
 
@@ -41,13 +38,12 @@ public class ThirdMiddleBoss : Enemy
 
     //protected float retelepotime;
 
-
-
+    Vector3 m_offset;
 
     //------------------------------------
-    public bool DashOn = false;
-    public bool SummonOn = false;
-    public bool KnifeOn = false;
+    bool DashOn = false;
+    bool SummonOn = false;
+    bool KnifeOn = false;
     bool start = false;
 
 
@@ -60,9 +56,10 @@ public class ThirdMiddleBoss : Enemy
         rend = GetComponent<SpriteRenderer>();
         riged = GetComponent<Rigidbody2D>();
 
-        Invoke("Teleport", 2); //중앙에있던 보스를 텔포로 위치 잡기
-        Invoke("OnStart", 2);
+        //Invoke("Teleport", 2); //중앙에있던 보스를 텔포로 위치 잡기
+        //Invoke("OnStart", 2);
         InvokeRepeating("OnActive", 5, 3);
+
 
 
     }
@@ -82,7 +79,7 @@ public class ThirdMiddleBoss : Enemy
                     KnifeOn = false;
                     KnifeSkill();
                     Invoke("KnifeSkill", 6);
-                    Invoke("Teleport", 5);
+                    Invoke("Teleport", 8);
 
                 }
                 if (SummonOn)
@@ -115,18 +112,9 @@ public class ThirdMiddleBoss : Enemy
 
             SummonSetPos();
             Instantiate(MagicCircle, pos, transform.rotation);
-            Instantiate(Nomal_1, pos, transform.rotation);
+            Instantiate(Fly_1, pos, transform.rotation);
 
         }
-        for (int i = 0; i < 1; i++)
-        {
-
-            SummonSetPos();
-            Instantiate(MagicCircle, pos, transform.rotation);
-            Instantiate(Fly_2, pos, transform.rotation);
-
-        }
-
 
     }
     //-------------------------------------------------------
@@ -245,13 +233,13 @@ public class ThirdMiddleBoss : Enemy
         {
             //보스를 기점한 포스값
             int x = Random.Range(-40, 41);
-            int y = Random.Range(0, 11);
+            int y = Random.Range(10, 15);
             pos = new Vector3(BossPos.position.x + x, BossPos.position.y + y, 1);
         }
         if (SetPosInt == 1)
         {
             int x = Random.Range(-40, 41);
-            int y = Random.Range(0, 11);
+            int y = Random.Range(10, 15);
             pos = new Vector3(PlayerPos.position.x + x, PlayerPos.position.y + y);
         }
     }
@@ -268,5 +256,23 @@ public class ThirdMiddleBoss : Enemy
     void OnStart()
     {
         start = true;
+    }
+
+    void Shake()
+    {
+        Debug.Log("shake");
+        Vector3 root = transform.position;
+        for (float cool = 10f;cool >=0;)
+        {
+            float randx = Random.Range(-1f, 1f);
+            float randy = Random.Range(-1f, 1f);
+
+            m_offset = new Vector2(transform.position.x + randx, transform.position.y + randy);
+            transform.position = m_offset;
+
+            cool -= Time.deltaTime;
+        }
+        transform.position = root;
+
     }
 }

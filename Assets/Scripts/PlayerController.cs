@@ -165,6 +165,8 @@ public class PlayerController : MonoBehaviour
             //
             if (HP.currentHP <= 0)
             {
+                movable = false;
+                Invoke("movabletrue", 4);
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 2);
             }
@@ -259,6 +261,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Die");
             Destroy(gameObject,2);
         }
+    }
+
+    void movabletrue()
+    {
+        movable = true;
     }
 
 }
