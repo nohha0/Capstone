@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -139,7 +139,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "4\uBCF5\uB3C41 \uBC1C\uD310_0"
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 1393
+        width: 203
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21dfdc0121054c249b610c95a4a15730
+      internalID: 989697895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "4\uBCF5\uB3C41 \uBC1C\uD310_1"
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1022
+        width: 450
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db31b14622ab8342ad41518e8cdb1b3
+      internalID: -217788675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "4\uBCF5\uB3C41 \uBC1C\uD310_2"
+      rect:
+        serializedVersion: 2
+        x: 3954
+        y: 1093
+        width: 240
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d471557e88372a449ac7aea5f94c62e
+      internalID: -147666108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -150,7 +213,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "4\uBCF5\uB3C41 \uBC1C\uD310_0": 989697895
+      "4\uBCF5\uB3C41 \uBC1C\uD310_2": -147666108
+      "4\uBCF5\uB3C41 \uBC1C\uD310_1": -217788675
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

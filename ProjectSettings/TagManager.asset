@@ -11,6 +11,7 @@ TagManager:
   - FireRange
   - PuzzleSpot
   - Walls
+  - SavePoint
   layers:
   - Default
   - TransparentFX

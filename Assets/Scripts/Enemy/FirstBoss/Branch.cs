@@ -32,6 +32,7 @@ public class Branch : MonoBehaviour
     {
         if (state1)
         {
+            gameObject.tag = "Untagged";
             rb.velocity = new Vector2(0, speed);
             //transform.Translate(new Vector2(0, speed));
             timeToState2 -= Time.deltaTime;
@@ -54,6 +55,7 @@ public class Branch : MonoBehaviour
         }
         if (state3)
         {
+            gameObject.tag = "Enemy";
             rb.velocity = new Vector2(0, speed * 2);
             //transform.Translate(new Vector2(0, speed * 2));
             timeToState4 -= Time.deltaTime;

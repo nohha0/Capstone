@@ -28,6 +28,7 @@ public class WaterWave : MonoBehaviour
     {
         if (state1)
         {
+            gameObject.tag = "Untagged";
             rb.velocity = Vector2.zero;
             timeToState2 -= Time.deltaTime;
             if (timeToState2 <= 0)
@@ -38,6 +39,7 @@ public class WaterWave : MonoBehaviour
         }
         if (state2)
         {
+            gameObject.tag = "Enemy";
             rb.velocity = new Vector2(0, speed);
             //transform.Translate(new Vector2(0, speed));
             timeToState3 -= Time.deltaTime;
