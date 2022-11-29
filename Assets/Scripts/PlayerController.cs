@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("Platform")|| other.gameObject.CompareTag("Platform2"))
         {
             this.jumpCount = 0;
             animator.SetBool("jump", false);
@@ -233,11 +233,11 @@ public class PlayerController : MonoBehaviour
     {
         Transform pos = obj.GetComponent<Transform>();
         float Wid = obj.GetComponent<RectTransform>().rect.width;
-        Wid = (Wid / 4);
+        Wid = (Wid / 5);
 
         Debug.Log(Wid);
 
-        transform.position = new Vector3(pos.position.x + Wid, pos.position.y + 15, 1);
+        transform.position = new Vector3(pos.position.x + Wid, pos.position.y + 20, 1);
 
         script.AttackRightOn = true;
         script.AttackLeftOn = true;

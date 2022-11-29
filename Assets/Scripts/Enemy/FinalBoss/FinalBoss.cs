@@ -54,6 +54,7 @@ public class FinalBoss : Enemy
         //shin-------------------------------------------
         rend = GetComponent<SpriteRenderer>();
         Pos = new Vector3(Base.position.x + 4, Base.position.y + 55, 1);
+        InvokeRepeating("OnActive", 5, 2);
 
     }
 
@@ -128,8 +129,8 @@ public class FinalBoss : Enemy
             }
             else if(rand == 3)
             {
-                Skill_Summon = true;
-                timeUntilChangeState = 10f;
+                //Skill_Summon = true;
+                //timeUntilChangeState = 10f;
             }
 
 
@@ -160,12 +161,12 @@ public class FinalBoss : Enemy
 
     void Summon()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         Skill_Summon = false;
         Vector2 a = new Vector2(Base.position.x, Base.position.y - 10);
         Instantiate(MagicCircle, a, transform.rotation);
         Invoke("Summon_boss", 1f);
-        Invoke("OnActive", 10f);
+        //Invoke("OnActive", 10f);
     }
 
 
@@ -173,18 +174,16 @@ public class FinalBoss : Enemy
 
     void Teleport()    //ÅÚÆ÷
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         Skill_Teleport = false;
         float X = Random.Range(-50, 50);
 
         transform.position = new Vector2(PlayerPos.position.x + X, Base.position.y);
-        Invoke("OnActive", 1.5f);
+        //Invoke("OnActive", 1.5f);
     }
     void OnActive()
     {
-        spriteRend.color = new Color(1, 1, 1, 1);
         gameObject.SetActive(true);
-        animator.SetTrigger("tel");
     }
 
 

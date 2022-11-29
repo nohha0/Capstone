@@ -56,8 +56,8 @@ public class ThirdMiddleBoss : Enemy
         rend = GetComponent<SpriteRenderer>();
         riged = GetComponent<Rigidbody2D>();
 
-        //Invoke("Teleport", 2); //중앙에있던 보스를 텔포로 위치 잡기
-        //Invoke("OnStart", 2);
+        Invoke("Teleport", 2); //중앙에있던 보스를 텔포로 위치 잡기
+        Invoke("OnStart", 2);
         InvokeRepeating("OnActive", 5, 3);
 
 

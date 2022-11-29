@@ -12,6 +12,7 @@ TagManager:
   - PuzzleSpot
   - Walls
   - SavePoint
+  - platform2
   layers:
   - Default
   - TransparentFX
