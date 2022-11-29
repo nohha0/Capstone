@@ -233,11 +233,11 @@ public class PlayerController : MonoBehaviour
     {
         Transform pos = obj.GetComponent<Transform>();
         float Wid = obj.GetComponent<RectTransform>().rect.width;
-        Wid = (Wid / 5);
+        Wid = (Wid / 6);
 
         Debug.Log(Wid);
 
-        transform.position = new Vector3(pos.position.x + Wid, pos.position.y + 20, 1);
+        transform.position = new Vector3(pos.position.x + Wid, pos.position.y + 23, 1);
 
         script.AttackRightOn = true;
         script.AttackLeftOn = true;

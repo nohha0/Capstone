@@ -84,7 +84,7 @@ public class FinalBoss : Enemy
         if (!onWaterWave) return;
         callWaterWave = true;
 
-        Vector3 WavePosition = new Vector3(targetGameObject.transform.position.x, targetGameObject.transform.position.y + height, transform.position.z);
+        Vector3 WavePosition = new Vector3(targetGameObject.transform.position.x, Base.position.y + height, transform.position.z);
         Instantiate(WaterWave, WavePosition, transform.rotation);
         Invoke("Wave", 1);
     }

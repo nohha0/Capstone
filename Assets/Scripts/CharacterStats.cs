@@ -22,7 +22,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
-        currentmaxHP = 4;
+        currentmaxHP = 10;
         currentHP = currentmaxHP;
     Image spr1 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn1").transform.Find("Image1").GetComponent<Image>();
         Image spr2 = GameObject.Find("Canvas").transform.Find("UpgradePanel").transform.Find("UpgradeBtn2").transform.Find("Image2").GetComponent<Image>();
