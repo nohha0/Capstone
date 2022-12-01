@@ -6,13 +6,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
     int Life;       // 현재 깎여진 목숨
     int MaxLife;    //현재 플레이어가 갖고 있는 최대목숨
 
     public Sprite Change_img;
     public Image[] UiLife;
     public Image Enhance_Slider;
+
+    public GameObject dialogueBox;
+    public Text dialogue;
+    public GameObject scanObject;
+    public bool isAction;
+    public PlayerController playerCon;
 
     //-----------------------
     CharacterStats Stats;
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
     void Bar_con()
     {
         float bar = Bar.expCurrent / Bar.expLeft;
@@ -70,6 +76,20 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+    public void Action()
+    {
+        if(isAction){
+            playerCon.movable = true;
+            isAction = false;
+        }else{
+            playerCon.movable = false;
+            isAction = true;
+            //scanObject = scanObj;
+            dialogue.text = "T를 누르면 생겨나고 한번 더 누르면 사라져요~!";
+        }
+        dialogueBox.SetActive(isAction);
     }
 
 }
