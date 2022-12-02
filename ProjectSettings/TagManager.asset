@@ -13,6 +13,7 @@ TagManager:
   - Walls
   - SavePoint
   - platform2
+  - CameraSetPlatform
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,12 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1233169951
+    locked: 0
+  - name: backsai
+    uniqueID: 3916047915
+    locked: 0
+  - name: backsai2
+    uniqueID: 26727875
     locked: 0
   - name: Char
     uniqueID: 143119999

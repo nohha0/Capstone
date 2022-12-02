@@ -50,7 +50,7 @@ public class Attack : CharacterStats
 
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponent<Enemy>().TakeDamage(attackPower);
+                        collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
                         curTime = attackSpeed;
                     }
 
@@ -69,7 +69,7 @@ public class Attack : CharacterStats
 
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponent<Enemy>().TakeDamage(attackPower);
+                        collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
                         curTime = attackSpeed;
                     }
                 }
