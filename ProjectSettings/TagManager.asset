@@ -48,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: mainers
+    uniqueID: 2082887677
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

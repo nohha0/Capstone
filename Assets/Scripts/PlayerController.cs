@@ -123,13 +123,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Platform")|| other.gameObject.CompareTag("Platform2"))
+        if (other.gameObject.CompareTag("Platform")||other.gameObject.CompareTag("platform2")
+            || other.gameObject.CompareTag("CameraSetPlatform"))
         {
             this.jumpCount = 0;
             animator.SetBool("jump", false);
 
             //----------------------------------------------
-            obj = other.gameObject;
+            if (other.gameObject.CompareTag("Platform"))
+            {
+                obj = other.gameObject;
+            }
 
         }
         if (other.gameObject.CompareTag("thorn") && !hasAttacked)  //가시충돌
