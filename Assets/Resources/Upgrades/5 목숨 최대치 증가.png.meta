@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fb0718a9b41e01b4a81ffde31ad373bb
+guid: 093795c17bb09fe479355295bcec0aa8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,29 +101,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Avoidance_0
+      name: "5 \uBAA9\uC228 \uCD5C\uB300\uCE58 \uC99D\uAC00_0"
       rect:
         serializedVersion: 2
-        x: 80
-        y: 148
-        width: 2431
-        height: 3212
+        x: 551
+        y: 258
+        width: 976
+        height: 1324
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9012c413659c66c40a03ade5d5aeec13
-      internalID: -366326554
+      spriteID: ade72cbf9ca495841bc7a86c362d59dd
+      internalID: -1757944267
       vertices: []
       indices: 
       edges: []
@@ -148,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Avoidance_0: -366326554
+      "5 \uBAA9\uC228 \uCD5C\uB300\uCE58 \uC99D\uAC00_0": -1757944267
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
