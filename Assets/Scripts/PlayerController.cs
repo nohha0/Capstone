@@ -126,15 +126,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Platform")||other.gameObject.CompareTag("platform2")
             || other.gameObject.CompareTag("CameraSetPlatform"))
         {
-            this.jumpCount = 0;
-            animator.SetBool("jump", false);
-
-            //----------------------------------------------
-            if (other.gameObject.CompareTag("Platform"))
-            {
+            if (other.contacts[0].normal.y >= 0.8f){
+                this.jumpCount = 0;
+                animator.SetBool("jump", false);
+            }
+            if (other.gameObject.CompareTag("Platform")){
                 obj = other.gameObject;
             }
-
         }
         if (other.gameObject.CompareTag("thorn") && !hasAttacked)  //가시충돌
         {
