@@ -14,6 +14,7 @@ TagManager:
   - SavePoint
   - platform2
   - CameraSetPlatform
+  - Door
   layers:
   - Default
   - TransparentFX

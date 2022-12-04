@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     CharacterStats stats;
     Animator animator;
+    data SavePos;
 
     public GameManager manager;
     GameObject scanObject;
+    public GameObject Heal;
 
     public float walkSpeed;
     public float jumpForce;
@@ -24,7 +26,8 @@ public class PlayerController : MonoBehaviour
     public bool dashOn = false;
     public bool onPuzzle = false;
     public bool movable = true;
-
+    bool IsDash = false;
+    float time = 0.1f;
 
     //어택 스크립트
     private Attack script;
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         stats = GetComponent<CharacterStats>();
         animator = GetComponent<Animator>();
+        SavePos = GameObject.Find("Main Camera").GetComponent<data>();
 
         script = GameObject.Find("Player").GetComponent<Attack>();  //공격 스크립트 접근
         HP = GameObject.Find("Player").GetComponent<CharacterStats>();
@@ -92,8 +96,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable)
         {
             dashOn = true;
-            Dash();
+            time = 0.1f;
+            IsDash = true;
             Invoke("DashOn", 1);
+
+            if (direction == 1) animator.SetTrigger("LeftDash");
+            if (direction == 2) animator.SetTrigger("RightDash");
         }
 
         if (Input.GetKeyDown(KeyCode.P) && onPuzzle)
@@ -104,6 +112,31 @@ public class PlayerController : MonoBehaviour
             if (puzzle2.activeSelf) puzzle2.SetActive(false);
             if (puzzle3.activeSelf) puzzle3.SetActive(false);
             Debug.Log("퍼즐 비활성화!");
+        }
+        if(IsDash)
+        {
+            //rigid.gravityScale = 0f;
+            if (time >=0)
+            {
+                if (direction == 1)
+                {
+                    rigid.gravityScale = 0f;
+                    transform.Translate(Vector3.right * -1 * 250 * Time.deltaTime);
+                }
+
+                if (direction == 2)
+                {
+                    rigid.gravityScale = 0f;
+                    transform.Translate(Vector3.right * 250 * Time.deltaTime);
+                }
+            }
+            else
+            {
+                IsDash = false;
+                rigid.velocity = Vector2.zero;
+                rigid.gravityScale = 20.0f;
+            }
+            time -= Time.deltaTime;
         }
 
         //CheckDie();
@@ -178,6 +211,19 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 2);
             }
+        }
+        if (other.gameObject.CompareTag("thorn"))
+        {
+            movable = false;
+            Invoke("movabletrue", 1);
+        }
+        if (other.gameObject.CompareTag("SavePoint")&&Input.GetKeyDown(KeyCode.Space))
+        {
+            stats.currentHP = stats.currentmaxHP;
+            //회복 애니메이션
+            Instantiate(Heal, new Vector2(transform.position.x, transform.position.y + 10), transform.rotation);
+            SavePos.Respawn = other.gameObject.transform;
+
         }
     }
 
@@ -268,6 +314,9 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Die");
             Destroy(gameObject,2);
+
+            //화면 어두어짐
+            Invoke("respown", 3);
         }
     }
 
@@ -276,4 +325,10 @@ public class PlayerController : MonoBehaviour
         movable = true;
     }
 
+    void respown()
+    {
+        transform.position = SavePos.Respawn.position;
+        stats.currentHP = stats.currentmaxHP;
+        //회복 애니메이션
+    }
 }
