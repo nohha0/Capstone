@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashOn && movable)
+        if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable)
         {
             dashOn = true;
             Dash();

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
+    [SerializeField]
     Sprite[] Images;
 
     public int level = 1;
@@ -28,6 +29,11 @@ public class Level : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Images = Resources.LoadAll<Sprite>("Upgrades");
+    }
+
     private void Update()
     {
         CheckLevelUp();
@@ -38,11 +44,12 @@ public class Level : MonoBehaviour
             Enhance();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.X))
         {
             GainExp(10000);
             Debug.Log("경험치 10000 획득");
-        }
+        }*/
     }
 
     public void GainExp(int amount)
@@ -76,7 +83,7 @@ public class Level : MonoBehaviour
             list[rnd] = temp;
         }
 
-        Images = Resources.LoadAll<Sprite>("Upgrades");
+        //Images = Resources.LoadAll<Sprite>("Upgrades");
 
         upgradePanel.OpenPanel();
 

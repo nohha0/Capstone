@@ -58,7 +58,7 @@ public class ForwardFireWave : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(200);
+            collision.GetComponentInParent<Enemy>().TakeDamage(200);
         }
     }
 

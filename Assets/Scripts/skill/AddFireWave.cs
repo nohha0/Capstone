@@ -18,7 +18,7 @@ public class AddFireWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && curtime <= 0)
+        if (Input.GetKey(KeyCode.A) && curtime <= 0)
         {
             Instantiate(firewave, pos.position, transform.rotation);
             curtime = cooltime;

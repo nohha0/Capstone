@@ -32,7 +32,7 @@ public class Attack : CharacterStats
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C) && curTime <=0) // 공격버튼을 눌렀다면
+        if (Input.GetKeyDown(KeyCode.Z) && curTime <=0) // 공격버튼을 눌렀다면
         {
 
             if (rend.flipX)  //오른쪽 시선
@@ -46,17 +46,13 @@ public class Attack : CharacterStats
                 {
                     //공격 이팩트 소환
                     //Instantiate(AttackBox, Rpos.position, transform.rotation);
-
-
                     if (collider.tag == "Enemy")
                     {
                         collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
                         curTime = attackSpeed;
                     }
-
                 }
-            }
-            else if(!rend.flipX)
+            }else if(!rend.flipX)
             {
                 animator.SetTrigger("attack");
                 AttackRightOn = false;  //왼쪽 시선 금지
@@ -66,23 +62,20 @@ public class Attack : CharacterStats
                 {
                     //공격 이팩트 소환
                     //Instantiate(AttackBox, Lpos.position, transform.rotation);
-
                     if (collider.tag == "Enemy")
                     {
                         collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
                         curTime = attackSpeed;
                     }
                 }
-                
             }
             curTime = attackSpeed;
-        }
-        else //누르지 않는다면 시간 단축
+        }else //누르지 않는다면 시간 단축
         {
             curTime -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.V) && !fireRangeOn)
+        if (Input.GetKeyDown(KeyCode.S) && !fireRangeOn)
         {
             fireRangeOn = true;
             Vector2 playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
