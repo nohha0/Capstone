@@ -97,8 +97,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable)
         {
             dashOn = true;
+            Dash();
             time = 0.1f;
-            IsDash = true;
+            //IsDash = true;
             Invoke("DashOn", 1);
 
             if (direction == 1) animator.SetTrigger("LeftDash");

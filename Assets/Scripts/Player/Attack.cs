@@ -78,9 +78,9 @@ public class Attack : CharacterStats
         if (Input.GetKeyDown(KeyCode.S) && !fireRangeOn)
         {
             fireRangeOn = true;
-            Vector2 playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+            Vector2 playerPos = new Vector2(transform.position.x, transform.position.y+7);
             range_object = Instantiate(rangeObject, playerPos, transform.rotation);
-            Invoke("fireRangeOff", 3);
+            Invoke("fireRangeOff", 1.5f);
         }
     }
 

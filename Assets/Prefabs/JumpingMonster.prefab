@@ -230,7 +230,7 @@ MonoBehaviour:
   HP: 100
   attacked: 0
   mag: 70
-  Enhance_value: 240
+  Enhance_value: 290
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   number: 0

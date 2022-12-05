@@ -14,7 +14,7 @@ public class ForwardFireWave : MonoBehaviour
     {
         player = GameObject.Find("Player");
         rend = GetComponent<SpriteRenderer>();
-        Invoke("OnDestroy", 2);
+        Invoke("OnDestroy", 0.8f);
     }
 
     void Update()
