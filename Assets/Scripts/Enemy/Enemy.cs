@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float        speed;
-    public int          HP;
+    public float        HP;
     public bool         attacked;
     public float        mag;
     public float        Enhance_value;
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         //내용은 ~Monster 자식 클래스에서 구현
     }
 
-    virtual public void TakeDamage(int damage)
+    virtual public void TakeDamage(float damage)
     {
         if (!attacked)
         {

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     void MaxLifeUpdate()
     {
-        int MaxLife = Stats.currentmaxHP;
+        int MaxLife = Stats.maxHP;
         for (int i = MaxLife; i < UiLife.Length; i++)
         {
             UiLife[i].color = new Color(1, 1, 1, 0);

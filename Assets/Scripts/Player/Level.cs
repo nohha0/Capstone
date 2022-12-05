@@ -44,12 +44,11 @@ public class Level : MonoBehaviour
             Enhance();
         }
 
-        /*
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             GainExp(10000);
             Debug.Log("경험치 10000 획득");
-        }*/
+        }
     }
 
     public void GainExp(int amount)
@@ -94,7 +93,6 @@ public class Level : MonoBehaviour
         img1.sprite = Images[list[0]];
         img2.sprite = Images[list[1]];
         img3.sprite = Images[list[2]];
-
     }
 
 

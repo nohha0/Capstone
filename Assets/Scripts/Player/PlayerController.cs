@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("SavePoint")&&Input.GetKeyDown(KeyCode.Space))
         {
-            stats.currentHP = stats.currentmaxHP;
+            stats.currentHP = stats.maxHP;
             //회복 애니메이션
             Instantiate(Heal, new Vector2(transform.position.x, transform.position.y + 10), transform.rotation);
             SavePos.Respawn = other.gameObject.transform;
@@ -328,7 +328,7 @@ public class PlayerController : MonoBehaviour
     void respown()
     {
         transform.position = SavePos.Respawn.position;
-        stats.currentHP = stats.currentmaxHP;
+        stats.currentHP = stats.maxHP;
         //회복 애니메이션
     }
 }

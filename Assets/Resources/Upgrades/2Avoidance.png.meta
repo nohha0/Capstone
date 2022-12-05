@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5b656963e437aa64aba18a814e0d6fd0
+guid: c10b395e6599168449f27370e2b1abc4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "3 \uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00_0"
+      name: 2Avoidance_0
       rect:
         serializedVersion: 2
         x: 551
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e21644fee704d624dac22a5e362ecc40
-      internalID: 1019533186
+      spriteID: 289232500dba462429979bda178535ab
+      internalID: 927569505
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "3 \uACF5\uACA9\uC18D\uB3C4 \uC99D\uAC00_0": 1019533186
+      2Avoidance_0: 927569505
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

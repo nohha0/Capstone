@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb81af55931d4064abb2c01717d729b2
+guid: 093795c17bb09fe479355295bcec0aa8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "1 \uACF5\uACA9\uB825 \uC99D\uAC00_0"
+      name: 5HpUp_0
       rect:
         serializedVersion: 2
         x: 551
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3942f2ddde72db419cada81dee78191
-      internalID: 2142252598
+      spriteID: ce237c38fc782dd4c97c4e005bd8ae86
+      internalID: 9773626
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "1 \uACF5\uACA9\uB825 \uC99D\uAC00_0": 2142252598
+      5HpUp_0: 9773626
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
