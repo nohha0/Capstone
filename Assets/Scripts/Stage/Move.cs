@@ -7,13 +7,14 @@ public class Move : MonoBehaviour
     public int ToStage;
     GameObject PlayerPos;
     public Vector2 MoveSetPos;
-
+    public Animator penelani;
     data stage;
 
     public bool asDoor = false;
 
     private void Start()
     {
+        penelani = GameObject.Find("Ææ³Ú").GetComponent<Animator>();
         stage = GameObject.Find("Main Camera").GetComponent<data>();
         PlayerPos = GameObject.Find("Player");
     }
@@ -22,16 +23,19 @@ public class Move : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && !asDoor)
         {
+            penelani.SetTrigger("Ææ³Ú °¡µ¿");
             PlayerPos.transform.position = MoveSetPos;
             stage.Stage = ToStage;
         }
-        if (other.gameObject.CompareTag("Player") && asDoor)
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+
+        if (other.tag == "Player" && asDoor && Input.GetKey(KeyCode.Space))
         {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                PlayerPos.transform.position = MoveSetPos;
-                stage.Stage = ToStage;
-            }
+            penelani.SetTrigger("Ææ³Ú °¡µ¿");
+            PlayerPos.transform.position = MoveSetPos;
+            stage.Stage = ToStage;
         }
     }
 

@@ -247,7 +247,7 @@ SpriteRenderer:
   m_SortingLayerID: 143119999
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 287514344, guid: 1f592c55010f37f42af03dcaed5b0357, type: 3}
+  m_Sprite: {fileID: -541336150, guid: 6a6b6a75080c7d747857ee2279a7672d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -275,7 +275,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.0916667, y: 7.8333335}
+    oldSize: {x: 14.849999, y: 22.871946}
     newSize: {x: 6.57, y: 9.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -323,6 +323,7 @@ MonoBehaviour:
   mag: 100
   Enhance_value: 0
   ps: {fileID: 0}
+  GiveValue: {fileID: 0}
   WaterWave: {fileID: 8448801111772020772, guid: 1c91e54b5a9528844bd21a9fda456533, type: 3}
   height: -20
   Big_Water: {fileID: 1263350060056709761, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}

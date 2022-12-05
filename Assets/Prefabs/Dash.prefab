@@ -124,7 +124,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 143119999
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1484880626, guid: 3bff807c1ca0bae43b66f570171f5162, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -209,7 +209,8 @@ MonoBehaviour:
   speed: 20
   HP: 200
   attacked: 0
-  mag: 100
+  mag: 60
   Enhance_value: 350
   ps: {fileID: 7135793322511580446, guid: 36414cf29dd9b19489512a9036ed7266, type: 3}
+  GiveValue: {fileID: 0}
   pos: {fileID: 460047192360777597}

@@ -18,10 +18,13 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D       rigid;
     protected SpriteRenderer    spriteRend;
     protected Animator          animator;
-    Level GiveValue;        //경험치 드랍
+    protected bool Istargeting = false;
+    public Level GiveValue;        //경험치 드랍
 
+    bool One;
     virtual protected void Start()
     {
+        One = true;
         attacked = false;
         targetGameObject = GameObject.FindWithTag("Player");
         rigid = GetComponent<Rigidbody2D>();
@@ -33,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     virtual protected void Update()
     {
-        if (HP <= 0) DIE();
+        if (HP <= 0) Invoke("DIE",1f);
         UpdateTarget();
     }
 
@@ -77,13 +80,18 @@ public class Enemy : MonoBehaviour
         spriteRend.color = new Color(1, 1, 1);
     }
 
-    public void DIE()
+    virtual public void DIE()
     {
         //ps.Play();
-        Destroy(gameObject);
-        GiveValue.expCurrent += Enhance_value;
+        speed = 0;
+        if(One)
+        {
+            GiveValue.expCurrent += Enhance_value;
+            Destroy(gameObject);
+            One = false;
+        }
 
     }
 
-    
+
 }
