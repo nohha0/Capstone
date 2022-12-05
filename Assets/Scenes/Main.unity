@@ -2511,6 +2511,7 @@ Transform:
   m_Children:
   - {fileID: 245369542}
   - {fileID: 1562201043}
+  - {fileID: 923087936}
   m_Father: {fileID: 1283264155}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4495,7 +4496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 4
   MoveSetPos: {x: 2215, y: 2}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1 &292623310
 GameObject:
@@ -7430,7 +7431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 3
   MoveSetPos: {x: 1934, y: 140}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!1 &459273679
 GameObject:
@@ -8538,7 +8539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 7
   MoveSetPos: {x: 4910, y: 230}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1001 &518475049
 PrefabInstance:
@@ -10241,7 +10242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 1
   MoveSetPos: {x: 350, y: -32}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!4 &630360470 stripped
 Transform:
@@ -12893,7 +12894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 5
   MoveSetPos: {x: 3615.5, y: -1106}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1 &798640861
 GameObject:
@@ -15557,7 +15558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &923087936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15566,17 +15567,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923087935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.7245836}
+  m_LocalScale: {x: 1.0349334, y: 1.0349334, z: 1.0349334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1283264155}
-  m_RootOrder: 8
+  m_Father: {fileID: 140734640}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 143.85574, y: -413.9734}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923087937
 MonoBehaviour:
@@ -16660,7 +16661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 8
   MoveSetPos: {x: 5360.9, y: -71}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1001 &1006322687
 PrefabInstance:
@@ -17307,7 +17308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 5
   MoveSetPos: {x: 3384.7, y: -641.1}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!1001 &1088597071
 PrefabInstance:
@@ -20370,7 +20371,6 @@ RectTransform:
   - {fileID: 723806788}
   - {fileID: 1891205725}
   - {fileID: 118401517}
-  - {fileID: 923087936}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24053,7 +24053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 5
   MoveSetPos: {x: 3659, y: -462}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1 &1496367895
 GameObject:
@@ -24471,7 +24471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 2
   MoveSetPos: {x: 1125, y: 51}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1 &1509122373
 GameObject:
@@ -25262,7 +25262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 4
   MoveSetPos: {x: 3031.1, y: 32}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!1 &1545679428
 GameObject:
@@ -25962,7 +25962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 3
   MoveSetPos: {x: 1624, y: 152}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!61 &1584267914
 BoxCollider2D:
@@ -26063,7 +26063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 2
   MoveSetPos: {x: 541, y: -32}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 0
 --- !u!1 &1594258919
 GameObject:
@@ -29808,7 +29808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToStage: 6
   MoveSetPos: {x: 3546, y: 211}
-  penelani: {fileID: 0}
+  penelani: {fileID: 923087939}
   asDoor: 1
 --- !u!1001 &1837863392
 PrefabInstance:
