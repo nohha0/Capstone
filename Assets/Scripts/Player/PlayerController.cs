@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     data SavePos;
 
-    public Animator penelani;
     public GameManager manager;
     GameObject scanObject;
     public GameObject Heal;
@@ -44,14 +43,13 @@ public class PlayerController : MonoBehaviour
     public GameObject puzzle2;
     public GameObject puzzle3;
 
-    float healtime = 0.4f;
+    float healtime = 0.7f;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         stats = GetComponent<CharacterStats>();
         animator = GetComponent<Animator>();
-        penelani = GameObject.Find("펜넬").GetComponent<Animator>();
         SavePos = GameObject.Find("Main Camera").GetComponent<data>();
 
         script = GameObject.Find("Player").GetComponent<Attack>();  //공격 스크립트 접근
@@ -247,7 +245,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space) && healtime <= 0)
             {
-                healtime = 0.4f;
+                healtime = 0.7f;
                 Debug.Log("세이브");
                 stats.currentHP = stats.maxHP;
                 Instantiate(Heal, transform.position, transform.rotation);

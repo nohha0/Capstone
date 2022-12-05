@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     int MaxLife;    //현재 플레이어가 갖고 있는 최대목숨
 
     public Sprite Change_img;
+    public Sprite Defult_img;
     public Image[] UiLife;
     public Image Enhance_Slider;
 
@@ -57,7 +58,10 @@ public class GameManager : MonoBehaviour
         {
             UiLife[i].sprite = Change_img;
         }
-
+        for (int i = 0; i < currentLife; i++)
+        {
+            UiLife[i].sprite = Defult_img;
+        }
     }
 
     void Bar_con()

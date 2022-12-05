@@ -172,7 +172,7 @@ MonoBehaviour:
   HP: 50
   attacked: 0
   mag: 100
-  Enhance_value: 100
+  Enhance_value: 130
   ps: {fileID: 7135793322511580446, guid: 36414cf29dd9b19489512a9036ed7266, type: 3}
   GiveValue: {fileID: 0}
   Destroy: 0

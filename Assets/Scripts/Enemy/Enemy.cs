@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     virtual protected void Update()
     {
-        if (HP <= 0) Invoke("DIE",1f);
+        if (HP <= 0) Invoke("DIE",0.5f);
         UpdateTarget();
     }
 
