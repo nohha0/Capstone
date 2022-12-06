@@ -97,9 +97,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable)
         {
             dashOn = true;
-            Dash();
+            //Dash();
             time = 0.1f;
-            //IsDash = true;
+            IsDash = true;
             Invoke("DashOn", 1);
 
             if (direction == 1) animator.SetTrigger("LeftDash");
@@ -124,12 +124,14 @@ public class PlayerController : MonoBehaviour
                 if (direction == 1)
                 {
                     rigid.gravityScale = 0f;
+                    rigid.velocity = Vector3.zero;
                     transform.Translate(Vector3.right * -1 * 280 * Time.deltaTime);
                 }
 
                 if (direction == 2)
                 {
                     rigid.gravityScale = 0f;
+                    rigid.velocity = Vector3.zero;
                     transform.Translate(Vector3.right * 280 * Time.deltaTime);
                 }
             }
@@ -154,7 +156,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isLongJump) //rigid.velocity.y ¡∂∞« ¿·±Ò ª©≥ı¿Ω
             rigid.gravityScale = 15.0f;
-        else if(!isLongJump&&!IsDash)
+        else if (!isLongJump && !IsDash)
             rigid.gravityScale = 20.0f;
     }
 
