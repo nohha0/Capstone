@@ -48,16 +48,17 @@ public class SecondMiddleBoss : Enemy
 
         curtime = delray;
 
-        penXs = new float[4];
+        penXs = new float[5];
         penYs = new float[2];
 
-        penXs[0] = rotatePenPosObj.transform.position.x;
-        penXs[1] = rotatePenPosObj.transform.position.x - 50f;
-        penXs[2] = rotatePenPosObj.transform.position.x - 100f;
-        penXs[3] = rotatePenPosObj.transform.position.x - 150f;
+        penXs[0] = rotatePenPosObj.transform.position.x - 140f;
+        penXs[1] = rotatePenPosObj.transform.position.x - 70f;
+        penXs[2] = rotatePenPosObj.transform.position.x;
+        penXs[3] = rotatePenPosObj.transform.position.x + 70f;
+        penXs[4] = rotatePenPosObj.transform.position.x + 140f;
 
-        penYs[0] = rotatePenPosObj.transform.position.y - 15f;
-        penYs[1] = rotatePenPosObj.transform.position.y + 15f;
+        penYs[0] = rotatePenPosObj.transform.position.y;
+        penYs[1] = rotatePenPosObj.transform.position.y + 50f;
     }
 
     override protected void Update()
@@ -66,6 +67,9 @@ public class SecondMiddleBoss : Enemy
 
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
         {
+            if (targetGameObject.transform.position.x > transform.position.x) spriteRend.flipX = true;
+            else if (targetGameObject.transform.position.x < transform.position.x) spriteRend.flipX = false;
+
             if (firstPatten && viewing && pens == 0) ViewingPen();
             else if (firstPatten && !viewing && rotatepens == 0) CreateRotatePen();
 
@@ -127,8 +131,8 @@ public class SecondMiddleBoss : Enemy
         }
 
         rotatepens++;
-        int Xindex = Random.Range(0, 4); //0,1,2,3
-        int Yindex = Random.Range(0, 2); //0,1,2
+        int Xindex = Random.Range(0, 5); //0,1,2,3,4
+        int Yindex = Random.Range(0, 2); //0,1
 
         rotatingPenPosition = new Vector3(penXs[Xindex], penYs[Yindex], transform.position.z);
         Instantiate(rotatingPen, rotatingPenPosition, transform.rotation);

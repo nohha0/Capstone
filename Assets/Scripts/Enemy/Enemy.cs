@@ -36,7 +36,11 @@ public class Enemy : MonoBehaviour
 
     virtual protected void Update()
     {
-        if (HP <= 0) Invoke("DIE",0.5f);
+        if (HP <= 0)
+        {
+            animator.SetBool("Die", true);
+            Invoke("DIE", 2f);
+        }
         UpdateTarget();
     }
 
@@ -84,6 +88,7 @@ public class Enemy : MonoBehaviour
     {
         //ps.Play();
         speed = 0;
+
         if(One)
         {
             GiveValue.expCurrent += Enhance_value;
