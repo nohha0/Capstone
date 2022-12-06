@@ -234,4 +234,4 @@ MonoBehaviour:
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   number: 0
-  jumpForce: 500
+  jumpForce: 450

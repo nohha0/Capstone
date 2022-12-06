@@ -62,16 +62,16 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("run", false);
 
         //캐릭터 이동/점프
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2 && movable&& IsJump)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && jumpCount < 2 && movable&& IsJump)
         {
             Jump();
             animator.SetBool("jump", true);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftControl))
             isLongJump = true;
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.LeftControl))
             isLongJump = false;
 
         if (Input.GetKey(KeyCode.LeftArrow)&&script.AttackLeftOn && movable)
