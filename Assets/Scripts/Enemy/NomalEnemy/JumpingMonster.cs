@@ -31,22 +31,17 @@ public class JumpingMonster : Enemy
 
     override protected void UpdateTarget()
     {
-
-      
-
-
-
-        //-----------------------------------
         distance = targetGameObject.transform.position - transform.position;
 
-        if (distance.magnitude <= mag && isGround)
+        if (distance.magnitude <= mag && isGround && !onWalk)
         {
-            number = Random.Range(1, 11);
+            number = Random.Range(1, 3);
 
-            if (number > 1) //°É¾î¿È
+            if (number == 1) //°É¾î¿È
             {
-                //onWalk = true;
-                //Invoke("OffWalk", 2);
+                onWalk = true;
+                Invoke("OffWalk", 2);
+                
                 rigid.velocity = new Vector2(distance.normalized.x * speed, 0f);
             }
             else //Á¡ÇÁÇÔ
@@ -79,6 +74,7 @@ public class JumpingMonster : Enemy
     {
         onWalk = false;
     }
+
     void OnSetActive()
     {
         gameObject.SetActive(true);
