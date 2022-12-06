@@ -48,7 +48,7 @@ public class Attack : CharacterStats
                     //Instantiate(AttackBox, Rpos.position, transform.rotation);
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
+                        collider.GetComponentInParent<Enemy>().TakeDamage(25 * attackPower);
                         curTime = attackSpeed;
                     }
                 }
@@ -64,7 +64,7 @@ public class Attack : CharacterStats
                     //Instantiate(AttackBox, Lpos.position, transform.rotation);
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponentInParent<Enemy>().TakeDamage(attackPower);
+                        collider.GetComponentInParent<Enemy>().TakeDamage(25 * attackPower);
                         curTime = attackSpeed;
                     }
                 }

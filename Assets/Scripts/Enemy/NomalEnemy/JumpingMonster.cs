@@ -13,9 +13,9 @@ public class JumpingMonster : Enemy
     override protected void Start()
     {
         base.Start();
-        gameObject.SetActive(false);
-        Invoke("OnSetActive", 1f);
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        //gameObject.SetActive(false);
+        //Invoke("OnSetActive", 1f);
+        //GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         isGround = true;
         onWalk = false;
     }
@@ -32,14 +32,7 @@ public class JumpingMonster : Enemy
     override protected void UpdateTarget()
     {
 
-        if(gameObject.activeSelf)
-        {
-            if (time <= 1f)
-            {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 1);
-            }
-            time += Time.deltaTime;
-        }
+      
 
 
 
