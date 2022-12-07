@@ -15,12 +15,14 @@ public class Branch : MonoBehaviour
     public float timeToState4;
     public float timeToDestroy;
     Rigidbody2D rb;
+    SpriteRenderer sprite;
 
     //  0.5up/0.5down/1up/1down
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         state1 = true;
         //timeToState2 = 0.5f;
         //timeToState3 = 0.5f;
@@ -33,6 +35,7 @@ public class Branch : MonoBehaviour
         if (state1)
         {
             gameObject.tag = "Untagged";
+            sprite.color = new Color(0.5f, 0.5f, 0.5f);
             rb.velocity = new Vector2(0, speed);
             //transform.Translate(new Vector2(0, speed));
             timeToState2 -= Time.deltaTime;
@@ -56,7 +59,8 @@ public class Branch : MonoBehaviour
         if (state3)
         {
             gameObject.tag = "Enemy";
-            rb.velocity = new Vector2(0, speed * 2);
+            sprite.color = new Color(1,1,1);
+            rb.velocity = new Vector2(0, speed);
             //transform.Translate(new Vector2(0, speed * 2));
             timeToState4 -= Time.deltaTime;
             if (timeToState4 <= 0)
@@ -67,7 +71,7 @@ public class Branch : MonoBehaviour
         }
         if (state4)
         {
-            rb.velocity = new Vector2(0, -speed * 2);
+            rb.velocity = new Vector2(0, -speed);
             //transform.Translate(new Vector2(0, -speed * 2));
             timeToDestroy -= Time.deltaTime;
             if (timeToDestroy <= 0)

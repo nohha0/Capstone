@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1324794314659666861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1579.9, y: -527.3029, z: 0}
-  m_LocalScale: {x: 4.4030643, y: 7, z: 4.4030643}
+  m_LocalScale: {x: 9.04936, y: 7.4515, z: 4.4030643}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335b032a03e1e894499319139e6d83b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  timeToState2: 0.3
-  timeToState3: 0.3
-  timeToState4: 0.6
-  timeToDestroy: 0.6
+  speed: 60
+  timeToState2: 0.5
+  timeToState3: 0.5
+  timeToState4: 1
+  timeToDestroy: 1
 --- !u!50 &8774737925552463773
 Rigidbody2D:
   serializedVersion: 4
