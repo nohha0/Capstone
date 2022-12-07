@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public GameObject scanObject;
     public bool isAction;
     public PlayerController playerCon;
+    public data currentStage;
+    bool SettedOn;
 
     //-----------------------
     CharacterStats Stats;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         Stats = GameObject.Find("Player").GetComponent<CharacterStats>();
         Bar = GameObject.Find("Player").GetComponent<Level>();
+        SettedOn = false;
     }
 
     void Update()
@@ -39,6 +42,12 @@ public class GameManager : MonoBehaviour
         LifeUpdate();
         //Bar_con();
         Bar_con();
+
+        if(currentStage.Stage == 8 && !SettedOn)
+        {
+            SettedOn = true;
+            Invoke("OnDialog", 2f);
+        }
     }
 
     void MaxLifeUpdate()
@@ -74,26 +83,21 @@ public class GameManager : MonoBehaviour
         }
         if (Enhance_Slider.fillAmount <= bar)
         {
-
             updateTime -= Time.deltaTime;
             Enhance_Slider.fillAmount += Time.deltaTime;
         }
-
-
     }
 
-    public void Action()
+    public void OnDialog()
     {
-        if(isAction){
-            playerCon.movable = true;
-            isAction = false;
-        }else{
-            playerCon.movable = false;
-            isAction = true;
-            //scanObject = scanObj;
-            dialogue.text = "T를 누르면 생겨나고 한번 더 누르면 사라져요~!";
-        }
-        dialogueBox.SetActive(isAction);
+        playerCon.movable = false;
+        dialogue.text = "하이루ㅋ T 누르면 사라집니다";
+        dialogueBox.SetActive(true);
     }
 
+    public void OffDialog()
+    {
+        playerCon.movable = true;
+        dialogueBox.SetActive(false);
+    }
 }

@@ -8717,7 +8717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lcount: 0
   Rcount: 0
-  Stage: 3
+  Stage: 7
   Respawn: {fileID: 0}
 --- !u!114 &519420035
 MonoBehaviour:
@@ -25729,6 +25729,7 @@ MonoBehaviour:
   scanObject: {fileID: 0}
   isAction: 0
   playerCon: {fileID: 1748849761}
+  currentStage: {fileID: 519420034}
 --- !u!114 &1522714300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41144,11 +41145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1867
+      value: 5113
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.z

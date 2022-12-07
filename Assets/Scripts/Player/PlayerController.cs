@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
         CheckDie();
 
-        if(Input.GetKeyDown(KeyCode.T)) manager.Action();
+        if(Input.GetKeyDown(KeyCode.T)) manager.OffDialog();
 
     }
 
