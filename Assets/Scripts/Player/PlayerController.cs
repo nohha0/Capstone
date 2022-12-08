@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public GameObject puzzle3;
 
     float healtime = 0.7f;
+    int DieMoveStage;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -253,6 +254,8 @@ public class PlayerController : MonoBehaviour
                 stats.currentHP = stats.maxHP;
                 Instantiate(Heal, transform.position, transform.rotation);
                 SavePos.Respawn = other.gameObject.transform;
+
+                DieMoveStage = other.GetComponent<SaveStage>().SetStage;
             }
             healtime -= Time.deltaTime;
         }
@@ -334,9 +337,9 @@ public class PlayerController : MonoBehaviour
 
     void respown()
     {
+        SavePos.Stage = DieMoveStage;
         transform.position = SavePos.Respawn.position;
         stats.currentHP = stats.maxHP;
         Instantiate(Heal, transform.position, transform.rotation);
-        //회복 애니메이션
     }
 }

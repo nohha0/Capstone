@@ -15495,6 +15495,7 @@ GameObject:
   - component: {fileID: 918130657}
   - component: {fileID: 918130656}
   - component: {fileID: 918130655}
+  - component: {fileID: 918130658}
   m_Layer: 0
   m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8 (2)"
   m_TagString: SavePoint
@@ -15615,6 +15616,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &918130658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918130653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3678989baa76eb4fb8ff6a016ed306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetStage: 2
 --- !u!1 &918310538
 GameObject:
   m_ObjectHideFlags: 0
@@ -19197,6 +19211,7 @@ GameObject:
   - component: {fileID: 1144968961}
   - component: {fileID: 1144968960}
   - component: {fileID: 1144968959}
+  - component: {fileID: 1144968962}
   m_Layer: 0
   m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8 (1)"
   m_TagString: SavePoint
@@ -19317,6 +19332,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1144968962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144968957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3678989baa76eb4fb8ff6a016ed306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetStage: 3
 --- !u!1 &1146189160
 GameObject:
   m_ObjectHideFlags: 0
@@ -23508,6 +23536,7 @@ GameObject:
   - component: {fileID: 1429903221}
   - component: {fileID: 1429903220}
   - component: {fileID: 1429903223}
+  - component: {fileID: 1429903224}
   m_Layer: 0
   m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8"
   m_TagString: SavePoint
@@ -23628,6 +23657,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 41.4787, y: 21.03306}
   m_EdgeRadius: 0
+--- !u!114 &1429903224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429903219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3678989baa76eb4fb8ff6a016ed306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetStage: 5
 --- !u!1001 &1436495413
 PrefabInstance:
   m_ObjectHideFlags: 0
