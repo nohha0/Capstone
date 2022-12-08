@@ -147,9 +147,6 @@ public class PlayerController : MonoBehaviour
         }
 
         CheckDie();
-
-        if(Input.GetKeyDown(KeyCode.T)) manager.OffDialog();
-
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성

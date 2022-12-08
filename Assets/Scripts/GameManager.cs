@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     public Image Enhance_Slider;
 
     public GameObject dialogueBox;
-    public Text dialogue;
-    public GameObject scanObject;
+    public Sprite dialogue;
+
     public bool isAction;
     public PlayerController playerCon;
     public data currentStage;
     bool SettedOn;
+    bool onDialogue;
+    bool changed;
 
     //-----------------------
     CharacterStats Stats;
@@ -34,6 +36,8 @@ public class GameManager : MonoBehaviour
         Stats = GameObject.Find("Player").GetComponent<CharacterStats>();
         Bar = GameObject.Find("Player").GetComponent<Level>();
         SettedOn = false;
+        onDialogue = false;
+        changed = false;
     }
 
     void Update()
@@ -46,7 +50,22 @@ public class GameManager : MonoBehaviour
         if(currentStage.Stage == 8 && !SettedOn)
         {
             SettedOn = true;
-            Invoke("OnDialog", 2f);
+            Invoke("OnDialog", 1f);
+        }
+
+        if (onDialogue && Input.GetKeyDown(KeyCode.Space))
+        {
+            //스프라이트 바꾸기
+            //currentToon.sprite = Toons[toonIndex];
+            if (!changed)
+            {
+                dialogueBox.GetComponent<Image>().sprite = dialogue;
+                changed = true;
+            }
+            else
+            {
+                OffDialog();
+            }
         }
     }
 
@@ -90,13 +109,16 @@ public class GameManager : MonoBehaviour
 
     public void OnDialog()
     {
+        onDialogue = true;
         playerCon.movable = false;
-        dialogue.text = "하이루ㅋ T 누르면 사라집니다";
         dialogueBox.SetActive(true);
     }
 
     public void OffDialog()
     {
+        if (!changed) return;
+
+        onDialogue = false;
         playerCon.movable = true;
         dialogueBox.SetActive(false);
     }
