@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour
     protected Animator          animator;
     protected bool Istargeting = false;
     public Level GiveValue;        //경험치 드랍
+    data DiecurStage;
+
+    public int DieStage;  //외 스테이지에서는 죽는다
 
     bool One;
     virtual protected void Start()
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        DiecurStage = GameObject.Find("Main Camera").GetComponent<data>();
 
         GiveValue = GameObject.Find("Player").GetComponent<Level>();
     }
@@ -42,6 +46,12 @@ public class Enemy : MonoBehaviour
             Invoke("DIE", 2f);
         }
         UpdateTarget();
+
+        //플레이어가 해당 에너미 외에 스테이지에 위치할 경우 삭제
+        if(DiecurStage.Stage == DieStage)
+        {
+            Destroy(gameObject);
+        }
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
