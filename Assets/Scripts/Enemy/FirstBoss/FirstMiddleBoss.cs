@@ -78,34 +78,23 @@ public class FirstMiddleBoss : Enemy
     {
         if (!onBranch) return;
         callBranch = true;
-        Debug.Log("CreateBranch");
 
         int randPos = Random.Range(0, 2);
         branchPosition = new Vector3(branchXs[randPos], bigbasePosition.position.y, transform.position.z);
         Instantiate(branch, branchPosition, transform.rotation);
         Invoke("CreateBranch", 3);
-
-
     }
 
     void ThrowScissors()
     {
         if (!onScissors) return;
         callScissors = true;
-        Debug.Log("ThrowScissors");
 
         smallBranchPos = new Vector3(smallbranchXs[smallPosNum], basePosition.position.y, transform.position.z);
         Instantiate(smallBranch, smallBranchPos, transform.rotation);
         smallPosNum++;
         if(smallPosNum >= 20) smallPosNum = 0;
         Invoke("ThrowScissors", 0.08f);
-
-        /*
-        if (spriteRend.flipX) scissorsPosition = new Vector3(transform.position.x + 10f, transform.position.y - 5f, transform.position.z);
-        else scissorsPosition = new Vector3(transform.position.x -10f, transform.position.y - 5f, transform.position.z);
-        Instantiate(scissors, scissorsPosition, transform.rotation);
-        Invoke("ThrowScissors", 1);
-        */
     }
 
 

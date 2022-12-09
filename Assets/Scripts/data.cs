@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class data : MonoBehaviour
 {
+    public Transform Respawn;
+
     public int Lcount;             //왼쪽으로 공격 시작
     public int Rcount;             //오른쪽으로 공격시작
 
@@ -23,6 +25,7 @@ public class data : MonoBehaviour
     public GameObject E2;
     public GameObject E3;
     public GameObject E4;
+
     private void Start()
     {
         Lcount = 0;

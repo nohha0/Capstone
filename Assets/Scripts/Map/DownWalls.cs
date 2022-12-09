@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class DownWalls : MonoBehaviour
 {
-    public GameObject wall; 
+    public GameObject wall;
+    public GameObject BOSS;
+    bool firstTime;
     Animator animator;
     CharacterStats Die;
+
     void Start()
     {
+        firstTime = true;
         animator = wall.GetComponent<Animator>();
         Die = GameObject.Find("Player").GetComponent<CharacterStats>();
     }
@@ -26,7 +30,16 @@ public class DownWalls : MonoBehaviour
             Debug.Log("Ãæµ¹");
             animator.SetTrigger("Down");
             animator.SetBool("DownUpdate", true);
-
+            if(firstTime)
+            {
+                firstTime = false;
+                Invoke("SetOnBoss", 5f);
+            }
         }
+    }
+
+    void SetOnBoss()
+    {
+        BOSS.SetActive(true);
     }
 }
