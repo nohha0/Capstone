@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DownWalls : MonoBehaviour
 {
+    public GameObject wall; 
     Animator animator;
     CharacterStats Die;
     void Start()
     {
-        animator = GameObject.Find("º®").GetComponent<Animator>();
+        animator = wall.GetComponent<Animator>();
         Die = GameObject.Find("Player").GetComponent<CharacterStats>();
     }
 
