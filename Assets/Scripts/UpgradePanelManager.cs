@@ -10,13 +10,6 @@ public class UpgradePanelManager : MonoBehaviour
     public GameObject panel;
     public Button btn1, btn2, btn3;
 
-    //여기서 해야하는것
-    //1. 7번 강화 끝난 스텟은 이미지 어둡게 처리하고 밑에 "최대 강화 횟수를 모두 소진하였습니다." Text 띄우기?
-    //2. 강화 끝난 스텟은 클릭해도 강화창이 안 꺼지게 하기
-
-    //일단 무슨 버튼을 눌렀는지를 알아야함.
-
-
     private void Start()
     {
         level = GameObject.Find("Player").GetComponent<Level>();

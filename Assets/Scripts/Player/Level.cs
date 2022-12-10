@@ -18,6 +18,8 @@ public class Level : MonoBehaviour
     float expMod = 1.21f;           //경험치 증가량 (지수)
 
     public bool Wait = false;
+    public bool isFirstUpgrade;
+    public GameObject FirstUpgrade;
 
     [SerializeField] UpgradePanelManager upgradePanel;
 
@@ -31,6 +33,7 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
+        isFirstUpgrade = true;
         Images = Resources.LoadAll<Sprite>("Upgrades");
     }
 
@@ -48,6 +51,11 @@ public class Level : MonoBehaviour
         {
             GainExp(10000);
             Debug.Log("경험치 10000 획득");
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            FirstUpgrade.SetActive(false);
         }
     }
 
@@ -69,6 +77,12 @@ public class Level : MonoBehaviour
 
     public void Enhance()
     {
+        if(isFirstUpgrade)
+        {
+            isFirstUpgrade = false;
+            FirstUpgrade.SetActive(true);
+        }
+
         levelCount--;
 
         List<int> list = new List<int>() { 0, 1, 2, 3, 4 };
