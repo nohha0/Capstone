@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RunningMonster : Enemy
 {
-    float time = 0;
+    //float time = 0;
 
     public bool Destroy;
     override protected void Start()
@@ -14,6 +14,7 @@ public class RunningMonster : Enemy
         //gameObject.SetActive(false);
         //GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         //Invoke("OnSetActive", 1f);
+        DieStage = 2;
     }
     override protected void UpdateTarget()
     {
@@ -31,10 +32,17 @@ public class RunningMonster : Enemy
             rigid.velocity = Vector2.zero;
         }
 
-        if(Istargeting)
+        if(MoveOn)
         {
-            Vector2 direction = (targetGameObject.transform.position - transform.position).normalized;
-            rigid.velocity = new Vector2(direction.x * speed, 0f);
+            if (Istargeting)
+            {
+                Vector2 direction = (targetGameObject.transform.position - transform.position).normalized;
+                rigid.velocity = new Vector2(direction.x * speed, 0f);
+            }
+        }
+        if(!MoveOn)
+        {
+            rigid.velocity = Vector2.zero;
         }
 
         if (rigid.velocity.x > 0) spriteRend.flipX = true;
@@ -44,22 +52,11 @@ public class RunningMonster : Enemy
         if (rigid.velocity.magnitude == 0) animator.SetBool("walk", false);
         else animator.SetBool("walk", true);
 
-    }
-    void OnSetActive()
-    {
-        gameObject.SetActive(true);
-    }
+        if (DiecurStage.Stage != DieStage)
+        {
+            Destroy(gameObject);
+        }
 
-    public override void DIE()
-    {
-        animator.SetTrigger("»ç¸Á");
-        base.DIE();
-
-    }
-    public override void TakeDamage(float damage)
-    {
-        base.TakeDamage(damage);
-        animator.SetTrigger("ÇÇ°Ý");
     }
 
 }

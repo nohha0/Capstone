@@ -20,7 +20,9 @@ public class Enemy : MonoBehaviour
     protected Animator          animator;
     protected bool Istargeting = false;
     public Level GiveValue;        //경험치 드랍
-    data DiecurStage;
+    protected data DiecurStage;
+
+    protected bool MoveOn = true;
 
     public int DieStage;  //외 스테이지에서는 죽는다
 
@@ -42,16 +44,13 @@ public class Enemy : MonoBehaviour
     {
         if (HP <= 0)
         {
-            animator.SetBool("Die", true);
-            Invoke("DIE", 2f);
+            rigid.gravityScale = 300f;
+            animator.SetTrigger("다이");
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            Invoke("DIE", 1.7f);
         }
         UpdateTarget();
 
-        //플레이어가 해당 에너미 외에 스테이지에 위치할 경우 삭제
-        if(DiecurStage.Stage == DieStage)
-        {
-            Destroy(gameObject);
-        }
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
@@ -81,6 +80,12 @@ public class Enemy : MonoBehaviour
             attacked = true;
             Invoke("attackedOn", 1f);
             Invoke("SpriteOn", 0.1f);
+            MoveOn = false;
+            if (HP > 0)
+            {
+                animator.SetTrigger("피격");
+                Invoke("IsMove", 0.5f);
+            }
         }
     }
 
@@ -98,14 +103,18 @@ public class Enemy : MonoBehaviour
     {
         //ps.Play();
         speed = 0;
-
-        if(One)
+        if (One)
         {
             GiveValue.expCurrent += Enhance_value;
             Destroy(gameObject);
             One = false;
         }
 
+    }
+
+    void IsMove()
+    {
+        MoveOn = true;
     }
 
 

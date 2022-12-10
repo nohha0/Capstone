@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
             //rigid.gravityScale = 0f;
             if (time >=0)
             {
-                Destroy(gameObject.GetComponent<Rigidbody>());
+                //Destroy(gameObject.GetComponent<Rigidbody>());
                 if (direction == 1)
                 {
                     rigid.gravityScale = 0f;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                gameObject.AddComponent<Rigidbody>();
+                //gameObject.AddComponent<Rigidbody>();
                 IsDash = false;
                 rigid.velocity = Vector2.zero;
                 rigid.gravityScale = 20.0f;

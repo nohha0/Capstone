@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 3019643092784667982}
   - component: {fileID: 3019643092784667981}
   - component: {fileID: 3019643092784667977}
+  - component: {fileID: -1844888380682839819}
   m_Layer: 7
   m_Name: FlyMonster
   m_TagString: Enemy
@@ -196,3 +197,23 @@ MonoBehaviour:
   pos: {fileID: 3019643092784667976}
   FlipOn: 1
   Lightwave: {fileID: 9148211034722907798, guid: 8de24a915730166489e21503756b5b03, type: 3}
+--- !u!95 &-1844888380682839819
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019643092784667980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2870b7919de36d419d3bc2977e56727, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

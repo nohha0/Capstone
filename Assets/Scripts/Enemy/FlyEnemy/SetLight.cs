@@ -13,29 +13,22 @@ public class SetLight : FlyingMonster
     {
         base.Start();
         curtime = 2;
-        gameObject.SetActive(false);
-        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-        Invoke("OnSetActive", 1f);
+        DieStage = 7;
     }
 
     override protected void Update()
     {
 
-        if (gameObject.activeSelf)
+        if (HP <= 0)
         {
-            if (time <= 1f)
-            {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 1);
-            }
-            time += Time.deltaTime;
+            rigid.gravityScale = 300f;
+            animator.SetTrigger("´ÙÀÌ");
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            Invoke("DIE", 1.7f);
         }
-
-
         //-----------------------------------------------
 
 
-
-        if (HP <= 0) DIE();
 
         UpdateTarget();
 
@@ -47,10 +40,20 @@ public class SetLight : FlyingMonster
         }
         curtime -= Time.deltaTime;
 
+
+        if (DiecurStage.Stage != DieStage && DiecurStage.Stage != 5)
+        {
+
+            Destroy(gameObject);
+        }
+
     }
     void OnSetActive()
     {
         gameObject.SetActive(true);
     }
-
+    public override void DIE()
+    {
+        base.DIE();
+    }
 }

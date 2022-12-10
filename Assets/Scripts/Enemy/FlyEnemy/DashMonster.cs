@@ -9,8 +9,7 @@ public class DashMonster : FlyingMonster
     float cooltime = 6;
     float curtime;
     float Dashspeed = 110;
-    float time = 0;
-    bool ani = true;
+    public bool ani = false;
 
     override protected void Start()
     {
@@ -20,6 +19,7 @@ public class DashMonster : FlyingMonster
         //gameObject.SetActive(false);
         //GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         //Invoke("OnSetActive", 1f);
+        DieStage = 6;
     }
 
     // Update is called once per frame
@@ -27,36 +27,49 @@ public class DashMonster : FlyingMonster
     {
 
 
-
+        if (HP <= 0)
+        {
+            rigid.gravityScale = 300f;
+            animator.SetTrigger("다이");
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            Invoke("DIE", 1.7f);
+        }
         //-----------------------------------------------
 
 
-        if (HP <= 0) DIE();
 
         UpdateTarget();
 
-        if(curtime<=0.5f)
-        {
-            animator.SetTrigger("DashAttack");
-        }
         if(curtime <=0)
         {
-            
-            if (setLook)
+            if(ani)
             {
-                forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
-                setLook = false;
+
+                if (setLook)
+                {
+                    forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
+                    setLook = false;
+                    FlipOn = false;
+                }
+                if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+                    transform.Translate(forward * Dashspeed * Time.deltaTime);
+                Invoke("SETCUR", 1.5f);
             }
-            if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
-                transform.Translate(forward * Dashspeed * Time.deltaTime);
-            Invoke("SETCUR", 1.5f);
 
         }
         curtime -= Time.deltaTime;
+
+
+        if (DiecurStage.Stage != DieStage && DiecurStage.Stage != 5)
+        {
+
+            Destroy(gameObject);
+        }
     }
 
     void SETCUR()
     {
+        FlipOn = true;
         curtime = cooltime;
         setLook = true;
         ani = true;
@@ -64,5 +77,9 @@ public class DashMonster : FlyingMonster
     void OnSetActive()
     {
         gameObject.SetActive(true);
+    }
+    public override void DIE()
+    {
+        base.DIE();
     }
 }

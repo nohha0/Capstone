@@ -9,7 +9,8 @@ public class JumpingMonster : Enemy
     Vector2                 distance;
     bool                    isGround;
     bool                    onWalk;
-    float                   time = 0;
+    float                   jumptime;
+    bool                    NotRun = false;
     override protected void Start()
     {
         base.Start();
@@ -18,6 +19,8 @@ public class JumpingMonster : Enemy
         //GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         isGround = true;
         onWalk = false;
+        DieStage = 3;
+        jumptime = 2f;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -35,39 +38,52 @@ public class JumpingMonster : Enemy
 
         if (distance.magnitude <= mag && isGround && !onWalk)
         {
-            number = Random.Range(1, 3);
-
-            if (number == 1) //°É¾î¿È
+            if(!NotRun&&MoveOn)
             {
-                onWalk = true;
-                Invoke("OffWalk", 2);
-                
-                rigid.velocity = new Vector2(distance.normalized.x * speed, 0f);
+                Vector2 direction = (targetGameObject.transform.position - transform.position).normalized;
+                rigid.velocity = new Vector2(direction.x * speed, 0f);
             }
-            else //Á¡ÇÁÇÔ
+            if(NotRun&&MoveOn)
             {
                 rigid.velocity = Vector2.zero;
                 rigid.AddForce(new Vector2(distance.normalized.x * speed * 5, jumpForce));
                 isGround = false;
+                NotRun = false;
             }
+            jumptime -= Time.deltaTime;
         }
-        else if(isGround)
+        else if (isGround)
         {
             rigid.velocity = Vector2.zero;
         }
-        else { }
+
+        if (jumptime <= 0)
+        {
+            NotRun = true;
+            jumptime = 2f;
+        }
+        if (!MoveOn)
+        {
+            rigid.velocity = Vector2.zero;
+        }
 
 
         if (rigid.velocity.x > 0)
             spriteRend.flipX = true;
         else if (rigid.velocity.x < 0)
             spriteRend.flipX = false;
-        else { }
 
         if (rigid.velocity.magnitude == 0)
             animator.SetBool("walk", false);
         else
             animator.SetBool("walk", true);
+
+
+        if (DiecurStage.Stage != DieStage)
+        {
+            
+            Destroy(gameObject);
+        }
     }
 
     public void OffWalk()
@@ -78,5 +94,12 @@ public class JumpingMonster : Enemy
     void OnSetActive()
     {
         gameObject.SetActive(true);
+    }
+
+    public override void DIE()
+    {
+        //animator.SetTrigger("»ç¸Á");
+        base.DIE();
+        rigid.gravityScale = 100f;
     }
 }
