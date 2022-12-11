@@ -1,0 +1,23 @@
+{
+    "level": 1,
+    "exp": 0.0,
+    "spawnPoint": {
+        "x": 1537.4149169921875,
+        "y": 66.804443359375,
+        "z": 0.0
+    },
+    "life": 10,
+    "stat1_AP": 1.0,
+    "stat2_AR": 1.0,
+    "stat3_AS": 1.0,
+    "stat4_AV": 1.0,
+    "stat5_HP": 10,
+    "stat1_APCount": 0,
+    "stat2_ARCount": 0,
+    "stat3_ASCount": 0,
+    "stat4_AVCount": 0,
+    "stat5_HPCount": 0,
+    "gotSkillDash": false,
+    "gotSkillBall": false,
+    "gotSkillRange": false
+}

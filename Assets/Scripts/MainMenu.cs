@@ -6,41 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public bool haveSaveFile;
-    public bool clearAllGame;
-
     public Sprite keepSpr;
     public Sprite storySpr;
 
     public Button KeepBtn;
     public Button StoryBtn;
     
-
-    private void Start()
-    {
-        haveSaveFile = false;
-        clearAllGame = false;
-    }
     private void Update()
     {
-        if(haveSaveFile) KeepBtn.image.sprite = keepSpr;
-        if(clearAllGame) StoryBtn.image.sprite = storySpr;
+        if(SaveManager.Instance.haveSaveFile) KeepBtn.image.sprite = keepSpr;
+        if(SaveManager.Instance.clearAllGame) StoryBtn.image.sprite = storySpr;
     }
 
     public void GameStart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Intro");
     }
+
     public void KeepGame()
     {
-
+        SaveManager.Instance.settingPlayer = true;
+        SceneManager.LoadScene("Main");
     }
+
     public void StoryOfGame()
     {
 
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
 }

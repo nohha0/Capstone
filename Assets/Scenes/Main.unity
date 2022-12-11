@@ -25803,7 +25803,7 @@ GameObject:
   - component: {fileID: 918130655}
   - component: {fileID: 918130658}
   m_Layer: 0
-  m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8 (2)"
+  m_Name: savePoint_stage2
   m_TagString: SavePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29767,7 +29767,7 @@ GameObject:
   - component: {fileID: 1144968959}
   - component: {fileID: 1144968962}
   m_Layer: 0
-  m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8 (1)"
+  m_Name: savePoint_stage3
   m_TagString: SavePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34215,7 +34215,7 @@ GameObject:
   - component: {fileID: 1429903223}
   - component: {fileID: 1429903224}
   m_Layer: 0
-  m_Name: "\uD68C\uBCF5\uC138\uC774\uBE0C \uD3EC\uC778\uD2B8"
+  m_Name: savePoint_stage5
   m_TagString: SavePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

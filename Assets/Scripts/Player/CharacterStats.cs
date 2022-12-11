@@ -19,7 +19,7 @@ public class CharacterStats : MonoBehaviour
     public int maxHP = 10;              //플레이어의 최대 목숨
 
     //각 스텟은 최대 7회까지 강화 가능함
-    public int APCount = 7;
+    public int APCount = 0;
     public int AvoidCount = 0;
     public int ASCount = 0;
     public int ARCount = 0;

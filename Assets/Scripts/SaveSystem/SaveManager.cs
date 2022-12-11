@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+using UnityEngine.SceneManagement;
+
 
 /* 데이터 타입 */
 
@@ -24,17 +26,22 @@ public class PlayerData
     [Header("플레이어 데이터")]
 
     public int level;
-    public int exp;
-    public int stage;
+    public float exp;
 
-    public int savePointNum;
+    public Vector3 spawnPoint;
     public int life;
 
-    public int stat1_AP;
-    public int stat2_AR;
-    public int stat3_AS;
-    public int stat4_AV;
+    public float stat1_AP;
+    public float stat2_AR;
+    public float stat3_AS;
+    public float stat4_AV;
     public int stat5_HP;
+
+    public int stat1_APCount;
+    public int stat2_ARCount;
+    public int stat3_ASCount;
+    public int stat4_AVCount;
+    public int stat5_HPCount;
 
     public bool gotSkillDash;
     public bool gotSkillBall;
@@ -48,6 +55,9 @@ public class SaveManager : MonoBehaviour
 {
     public GameData _gameData;
     public PlayerData _playerData;
+    public bool haveSaveFile;
+    public bool clearAllGame;
+    public bool settingPlayer;
 
     private static SaveManager instance = null;
 
@@ -61,10 +71,20 @@ public class SaveManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            Debug.Log("인스턴스 파괴~");
         }
 
-        LoadGameDataFromJson();
+        //LoadGameDataFromJson();
         LoadPlayerDataFromJson();
+    }
+
+    private void Update()
+    {
+        if(settingPlayer)
+        {
+            settingPlayer = false;
+            Invoke("SetPlayerDataValues", 3f);
+        }
     }
 
     public static SaveManager Instance
@@ -109,6 +129,7 @@ public class SaveManager : MonoBehaviour
     [ContextMenu("To Json PlayerData")]
     public void SavePlayerDataToJson()
     {
+        GetPlayerDataValues();
         string jsonData = JsonUtility.ToJson(_playerData, true);
         string filePath = Path.Combine(Application.dataPath, "PlayerData.json");
         File.WriteAllText(filePath, jsonData);
@@ -132,4 +153,50 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    public void PlayerSpawn()
+    {
+        //; //Main Scene
+    }
+
+    public void GetGameDataValues()
+    {
+        //퍼즐 매니저
+        //보스 킬 여부
+    }
+
+    public void GetPlayerDataValues()
+    {
+        GameObject player = GameObject.Find("Player");
+
+        Level playerLevel = player.GetComponent<Level>();
+        _playerData.level = playerLevel.level;
+        _playerData.exp = playerLevel.expCurrent;
+        
+        CharacterStats playerStat = player.GetComponent<CharacterStats>();
+        _playerData.life = playerStat.maxHP;
+        _playerData.stat1_AP = playerStat.attackPower;
+        _playerData.stat2_AR = playerStat.attackRange;
+        _playerData.stat3_AS = playerStat.attackSpeed;
+        _playerData.stat4_AV = playerStat.avoidanceRate;
+        _playerData.stat5_HP = playerStat.maxHP;
+        _playerData.stat1_APCount = playerStat.APCount;
+        _playerData.stat2_ARCount = playerStat.ARCount;
+        _playerData.stat3_ASCount = playerStat.ASCount;
+        _playerData.stat4_AVCount = playerStat.AvoidCount;
+        _playerData.stat5_HPCount = playerStat.HPCount;
+
+        data playerData = GameObject.Find("Main Camera").GetComponent<data>();
+        _playerData.spawnPoint = playerData.Respawn.position;
+    }
+
+    public void SetPlayerDataValues()
+    {
+        GameObject player = GameObject.Find("Player");
+        CharacterStats playerStat = player.gameObject.GetComponent<CharacterStats>();
+
+        playerStat.maxHP = _playerData.life;
+        //player.transform.position = new Vector3(0, 0, 0);
+        player.transform.position = _playerData.spawnPoint;
+
+    }
 }

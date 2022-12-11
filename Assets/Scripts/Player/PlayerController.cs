@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool IsJump = true;
     bool IsDash = false;
     float time = 0.1f;
+    float StartCheckTime = 3f;
 
     //어택 스크립트
     private Attack script;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     float healtime = 0.7f;
     int DieMoveStage;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -118,6 +121,7 @@ public class PlayerController : MonoBehaviour
             if (puzzle3.activeSelf) puzzle3.SetActive(false);
             Debug.Log("퍼즐 비활성화!");
         }
+
         if(IsDash)
         {
             //rigid.gravityScale = 0f;
@@ -148,7 +152,13 @@ public class PlayerController : MonoBehaviour
             time -= Time.deltaTime;
         }
 
-        CheckDie();
+        if(StartCheckTime >= 0)
+        {
+            StartCheckTime -= Time.deltaTime;
+        }else
+        {
+            CheckDie();
+        }
     }
 
     //Rigidbody(물리연산)를 이용할 때는 FixedUpdate에 작성
@@ -205,6 +215,7 @@ public class PlayerController : MonoBehaviour
             CameraController = true;
             animator.SetTrigger("Damage");
             //
+            /*
             if (HP.currentHP <= 0)
             {
                 movable = false;
@@ -212,6 +223,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 2);
             }
+            */
         }
         if (other.gameObject.CompareTag("thorn"))
         {
@@ -253,8 +265,11 @@ public class PlayerController : MonoBehaviour
                 stats.currentHP = stats.maxHP;
                 Instantiate(Heal, transform.position, transform.rotation);
                 SavePos.Respawn = other.gameObject.transform;
-
                 DieMoveStage = other.GetComponent<SaveStage>().SetStage;
+                
+                //JSON 파일 업데이트
+                SaveManager.Instance.SavePlayerDataToJson();
+                SaveManager.Instance.haveSaveFile = true;
             }
             healtime -= Time.deltaTime;
         }
@@ -337,10 +352,12 @@ public class PlayerController : MonoBehaviour
         if(HP.currentHP<=0)
         {
             animator.SetTrigger("Die");
-            Destroy(gameObject,2);
+            //Destroy(gameObject,2);
+
+            SceneManager.LoadScene("Title");
 
             //화면 어두어짐
-            Invoke("respown", 3);
+            //Invoke("respown", 3);
         }
     }
 

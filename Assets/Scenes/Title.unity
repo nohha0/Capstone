@@ -309,8 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc756455aa3a30741a7993a9918daee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveSaveFile: 0
-  clearAllGame: 0
   keepSpr: {fileID: 21300000, guid: 3ea6ce8abe1572440840006690819278, type: 3}
   storySpr: {fileID: 21300000, guid: bd049a7a0d82e854284fc4e5e51143fa, type: 3}
   KeepBtn: {fileID: 1540605370}
@@ -530,6 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8ef06666ebadc45a0a6c72faadca17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  haveSaveFile: 0
+  clearAllGame: 0
 --- !u!4 &1228316125
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1540605371}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 289781032}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: KeepGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1540605371
 MonoBehaviour:
   m_ObjectHideFlags: 0
