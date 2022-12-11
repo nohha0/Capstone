@@ -125,4 +125,13 @@ public class FirstMiddleBoss : Enemy
                 onScissors = true;
         }
     }
+
+    void DieAni()
+    {
+        //플레이어 못움직이게
+        //파티클이 플레이어한테 흡수
+        //if 애니가 끝나면
+        //강해진것 같다는 텍스트 창 이후
+        //Invoke 스킬 튜토리얼
+    }
 }

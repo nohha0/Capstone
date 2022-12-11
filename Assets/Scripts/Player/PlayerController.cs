@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     CharacterStats stats;
     Animator animator;
     data SavePos;
+    GameController KeyController;
 
     public GameManager manager;
     GameObject scanObject;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
         script = GameObject.Find("Player").GetComponent<Attack>();  //공격 스크립트 접근
         HP = GameObject.Find("Player").GetComponent<CharacterStats>();
+        KeyController = GameObject.Find("GameManager").GetComponent<GameController>();
         //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
     }
 
@@ -255,6 +257,21 @@ public class PlayerController : MonoBehaviour
                 DieMoveStage = other.GetComponent<SaveStage>().SetStage;
             }
             healtime -= Time.deltaTime;
+        }
+        if (other.gameObject.CompareTag("Start"))
+        {
+            if (!KeyController.FirstStart)
+            {
+                KeyController.FirstStart = true;
+                movable = false;
+                GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.SetActive(true);
+
+                
+            }
+            if(!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
+            {
+                movable = true;
+            }
         }
 
     }
