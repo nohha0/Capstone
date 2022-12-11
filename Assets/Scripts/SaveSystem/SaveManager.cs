@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 
 /* 데이터 타입 */
 
-public class GameData
+public class PlayerData
 {
-    [Header("퍼즐, 중간보스 클리어")]
+    public bool haveSaveFile;
+    public bool clearAllGame;
 
     public bool solvedPuzzle1;
     public bool solvedPuzzle2;
@@ -19,11 +20,6 @@ public class GameData
     public bool killedBoss1;
     public bool killedBoss2;
     public bool killedBoss3;
-}
-
-public class PlayerData
-{
-    [Header("플레이어 데이터")]
 
     public int level;
     public float exp;
@@ -53,10 +49,8 @@ public class PlayerData
 
 public class SaveManager : MonoBehaviour
 {
-    public GameData _gameData;
     public PlayerData _playerData;
-    public bool haveSaveFile;
-    public bool clearAllGame;
+    
     public bool settingPlayer;
 
     private static SaveManager instance = null;
@@ -100,32 +94,6 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("To Json GameData")]
-    public void SaveGameDataToJson()
-    {
-        string jsonData = JsonUtility.ToJson(_gameData, true);
-        string filePath = Path.Combine(Application.dataPath, "GameData.json");
-        File.WriteAllText(filePath, jsonData);
-    }
-
-    [ContextMenu("From Json GameData")]
-    public void LoadGameDataFromJson()
-    {
-        string filePath = Path.Combine(Application.dataPath, "GameData.json");
-
-        if (File.Exists(filePath))
-        {
-            Debug.Log("Game Data Load");
-            string jsonData = File.ReadAllText(filePath);
-            _gameData = JsonUtility.FromJson<GameData>(jsonData);
-        }
-        else
-        {
-            Debug.Log("New Game Data");
-            _gameData = new GameData();
-        }
-    }
-
     [ContextMenu("To Json PlayerData")]
     public void SavePlayerDataToJson()
     {
@@ -151,17 +119,6 @@ public class SaveManager : MonoBehaviour
             Debug.Log("New Player Data");
             _playerData = new PlayerData();
         }
-    }
-
-    public void PlayerSpawn()
-    {
-        //; //Main Scene
-    }
-
-    public void GetGameDataValues()
-    {
-        //퍼즐 매니저
-        //보스 킬 여부
     }
 
     public void GetPlayerDataValues()

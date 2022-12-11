@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
                 
                 //JSON 파일 업데이트
                 SaveManager.Instance.SavePlayerDataToJson();
-                SaveManager.Instance.haveSaveFile = true;
+                SaveManager.Instance._playerData.haveSaveFile = true;
             }
             healtime -= Time.deltaTime;
         }

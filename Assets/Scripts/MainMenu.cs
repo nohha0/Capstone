@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
     
     private void Update()
     {
-        if(SaveManager.Instance.haveSaveFile) KeepBtn.image.sprite = keepSpr;
-        if(SaveManager.Instance.clearAllGame) StoryBtn.image.sprite = storySpr;
+        if(SaveManager.Instance._playerData.haveSaveFile) KeepBtn.image.sprite = keepSpr;
+        if(SaveManager.Instance._playerData.clearAllGame) StoryBtn.image.sprite = storySpr;
     }
 
     public void GameStart()
@@ -25,6 +25,8 @@ public class MainMenu : MonoBehaviour
 
     public void KeepGame()
     {
+        if (!SaveManager.Instance._playerData.haveSaveFile) return;
+
         SaveManager.Instance.settingPlayer = true;
         SceneManager.LoadScene("Main");
     }
