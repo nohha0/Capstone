@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Attack : CharacterStats
 {
-    PlayerController Playstats;
     Animator animator;
     float curTime;
     bool fireRangeOn = false;
@@ -24,8 +23,12 @@ public class Attack : CharacterStats
     public bool AttackLeftOn = true;
     public bool AttackRightOn = true;
 
+    CharacterStats playerStat;
+
+
     void Start()
     {
+        playerStat = GameObject.Find("Player").GetComponent<CharacterStats>();
         animator = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
     }
@@ -34,7 +37,6 @@ public class Attack : CharacterStats
     {
         if (Input.GetKeyDown(KeyCode.Z) && curTime <=0) // 공격버튼을 눌렀다면
         {
-
             if (rend.flipX)  //오른쪽 시선
             {
                 //공격할때마다 attackSpeed만큼 좌우전환 금지
@@ -48,11 +50,12 @@ public class Attack : CharacterStats
                     //Instantiate(AttackBox, Rpos.position, transform.rotation);
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponentInParent<Enemy>().TakeDamage(25 * attackPower);
-                        curTime = attackSpeed;
+                        collider.GetComponentInParent<Enemy>().TakeDamage(30 * playerStat.attackPower);
+                        curTime = playerStat.attackSpeed;
                     }
                 }
-            }else if(!rend.flipX)
+            }
+            else if(!rend.flipX)
             {
                 animator.SetTrigger("attack");
                 AttackRightOn = false;  //왼쪽 시선 금지
@@ -64,13 +67,14 @@ public class Attack : CharacterStats
                     //Instantiate(AttackBox, Lpos.position, transform.rotation);
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponentInParent<Enemy>().TakeDamage(25 * attackPower);
-                        curTime = attackSpeed;
+                        collider.GetComponentInParent<Enemy>().TakeDamage(30 * playerStat.attackPower);
+                        curTime = playerStat.attackSpeed;
                     }
                 }
             }
-            curTime = attackSpeed;
-        }else //누르지 않는다면 시간 단축
+            curTime = playerStat.attackSpeed;
+        }
+        else //누르지 않는다면 시간 단축
         {
             curTime -= Time.deltaTime;
         }
@@ -80,7 +84,7 @@ public class Attack : CharacterStats
             fireRangeOn = true;
             Vector2 playerPos = new Vector2(transform.position.x, transform.position.y+7);
             range_object = Instantiate(rangeObject, playerPos, transform.rotation);
-            Invoke("fireRangeOff", 1.5f);
+            Invoke("fireRangeOff", playerStat.attackSpeed);
         }
     }
 

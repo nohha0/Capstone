@@ -5,6 +5,7 @@ using UnityEngine;
 public class ForwardFireWave : MonoBehaviour
 {
     GameObject player;
+    CharacterStats playerStat;
     SpriteRenderer rend;
     public float speed;
     bool Xcon;
@@ -13,6 +14,7 @@ public class ForwardFireWave : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        playerStat = player.GetComponent<CharacterStats>();
         rend = GetComponent<SpriteRenderer>();
         Invoke("OnDestroy", 0.5f);
     }
@@ -58,7 +60,7 @@ public class ForwardFireWave : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponentInParent<Enemy>().TakeDamage(200);
+            collision.GetComponentInParent<Enemy>().TakeDamage(100 * playerStat.attackPower);
         }
     }
 

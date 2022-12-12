@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameManager manager;
     GameObject scanObject;
     public GameObject Heal;
+    public GameObject gameOverImage;
 
     public float walkSpeed;
     public float jumpForce;
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
             if (direction == 2) animator.SetTrigger("RightDash");
         }
 
-        if (Input.GetKeyDown(KeyCode.P) && onPuzzle)
+        if (Input.GetKeyDown(KeyCode.Space) && onPuzzle)
         {
             onPuzzle = false;
             movable = true;
@@ -236,7 +237,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PuzzleSpot"))
         {
-            if (Input.GetKeyDown(KeyCode.P) && !onPuzzle)
+            if (Input.GetKeyDown(KeyCode.Space) && !onPuzzle)
             {
                 Invoke("OnPuzzle", 0.5f);
                 movable = false;
@@ -264,12 +265,13 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("세이브");
                 stats.currentHP = stats.maxHP;
                 Instantiate(Heal, transform.position, transform.rotation);
+
                 SavePos.Respawn = other.gameObject.transform;
                 DieMoveStage = other.GetComponent<SaveStage>().SetStage;
-                
+
                 //JSON 파일 업데이트
-                SaveManager.Instance.SavePlayerDataToJson();
                 SaveManager.Instance._playerData.haveSaveFile = true;
+                SaveManager.Instance.SavePlayerDataToJson();
             }
             healtime -= Time.deltaTime;
         }
@@ -351,14 +353,25 @@ public class PlayerController : MonoBehaviour
     {
         if(HP.currentHP<=0)
         {
+            movable = false;
+
             animator.SetTrigger("Die");
-            //Destroy(gameObject,2);
 
-            SceneManager.LoadScene("Title");
+            Invoke("OnGameOverImage", 2f);
 
-            //화면 어두어짐
-            //Invoke("respown", 3);
+            Invoke("LoadSceneTitle", 5f);
         }
+    }
+
+
+    void OnGameOverImage()
+    {
+        gameOverImage.SetActive(true);
+    }
+
+    void LoadSceneTitle()
+    {
+        SceneManager.LoadScene("Title");
     }
 
     void movabletrue()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using static UnityEditor.PlayerSettings;
 
 public class Enemy : MonoBehaviour
@@ -11,9 +12,13 @@ public class Enemy : MonoBehaviour
     public bool         attacked;
     public float        mag;
     public float        Enhance_value;
+
+    public bool middleBoss1;
+    public bool middleBoss2;
+    public bool middleBoss3;
+    public bool FinalBoss;
+
     public ParticleSystem ps;
-
-
     protected GameObject        targetGameObject;
     protected Rigidbody2D       rigid;
     protected SpriteRenderer    spriteRend;
@@ -27,6 +32,7 @@ public class Enemy : MonoBehaviour
     public int DieStage;  //외 스테이지에서는 죽는다
 
     bool One;
+
     virtual protected void Start()
     {
         One = true;
@@ -102,14 +108,39 @@ public class Enemy : MonoBehaviour
     virtual public void DIE()
     {
         //ps.Play();
+
         speed = 0;
+        
         if (One)
         {
+            if (middleBoss1)
+            {
+                SaveManager.Instance._playerData.killedBoss1 = true;
+            }
+            else if (middleBoss2)
+            {
+                SaveManager.Instance._playerData.killedBoss2 = true;
+            }
+            else if (middleBoss3) 
+            {
+                SaveManager.Instance._playerData.killedBoss3 = true;
+            }
+            else if (FinalBoss)
+            {
+                SaveManager.Instance._playerData.clearAllGame = true;
+                Invoke("LoadOutroScene", 2f);
+            }
+
             GiveValue.expCurrent += Enhance_value;
             Destroy(gameObject);
             One = false;
         }
 
+    }
+
+    void LoadOutroScene()
+    {
+        SceneManager.LoadScene("Outro");
     }
 
     void IsMove()

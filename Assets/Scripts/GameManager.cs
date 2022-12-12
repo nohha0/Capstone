@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueBox;
     public Sprite dialogue;
 
+    public GameObject startPanel;
+
     public bool isAction;
     public PlayerController playerCon;
     public data currentStage;
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
         SettedOn = false;
         onDialogue = false;
         changed = false;
+        startPanel.SetActive(true);
+        Invoke("OffStartPanel", 1f);
     }
 
     void Update()
@@ -82,6 +86,9 @@ public class GameManager : MonoBehaviour
     void LifeUpdate()    // 현재목숨 UI 결정
     {
         int currentLife = Stats.currentHP;
+
+        if (currentLife < 0) return;
+
         for (int i = currentLife; i < UiLife.Length; i++)
         {
             UiLife[i].sprite = Change_img;
@@ -121,5 +128,10 @@ public class GameManager : MonoBehaviour
         onDialogue = false;
         playerCon.movable = true;
         dialogueBox.SetActive(false);
+    }
+
+    public void OffStartPanel()
+    {
+        startPanel.SetActive(false);
     }
 }

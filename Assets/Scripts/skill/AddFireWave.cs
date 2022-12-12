@@ -7,12 +7,13 @@ public class AddFireWave : MonoBehaviour
     //fire wave 스킬 컨트롤
     public GameObject firewave;
     public Transform pos;
-    public float cooltime;
     private float curtime;
+
+    CharacterStats playerStat;
 
     void Start()
     {
-
+        playerStat = GameObject.Find("Player").GetComponent<CharacterStats>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class AddFireWave : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && curtime <= 0)
         {
             Instantiate(firewave, pos.position, transform.rotation);
-            curtime = cooltime;
+            curtime = playerStat.attackSpeed;
         }
         curtime -= Time.deltaTime;
 

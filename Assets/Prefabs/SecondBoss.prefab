@@ -173,6 +173,10 @@ MonoBehaviour:
   attacked: 0
   mag: 500
   Enhance_value: 14400
+  middleBoss1: 0
+  middleBoss2: 1
+  middleBoss3: 0
+  FinalBoss: 0
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   DieStage: 0

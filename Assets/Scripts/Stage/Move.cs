@@ -51,13 +51,13 @@ public class Move : MonoBehaviour
             }
             if (NumDoor == 1)
             {
-                if(Puzzle.OpenPuzzle1)
+                if(SaveManager.Instance._playerData.solvedPuzzle1) 
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
-                else if (!Puzzle.OpenPuzzle1 && FirstKey)
+                else if (!SaveManager.Instance._playerData.solvedPuzzle1 && FirstKey)
                 {
                     GameObject.Find("Canvas").transform.Find("Æ©Åä¸®¾ó").transform.Find("ÆÛÁñ").transform.Find("S3").gameObject.SetActive(true);
                     //ºñÈ°¼ºÈ­ Æ©Åä¸®¾ó
@@ -66,13 +66,13 @@ public class Move : MonoBehaviour
             }
             if (NumDoor == 2)
             {
-                if (Puzzle.OpenPuzzle2)
+                if (SaveManager.Instance._playerData.solvedPuzzle2)
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
-                else if (!Puzzle.OpenPuzzle2&&FirstKey)
+                else if (!SaveManager.Instance._playerData.solvedPuzzle2 && FirstKey)
                 {
                     GameObject.Find("Canvas").transform.Find("Æ©Åä¸®¾ó").transform.Find("ÆÛÁñ").transform.Find("S6").gameObject.SetActive(true);
                     FirstKey = false;
@@ -80,13 +80,13 @@ public class Move : MonoBehaviour
             }
             if (NumDoor == 3)
             {
-                if (Puzzle.OpenPuzzle3)
+                if (SaveManager.Instance._playerData.solvedPuzzle3)
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
-                else if (!Puzzle.OpenPuzzle1 && FirstKey)
+                else if (!SaveManager.Instance._playerData.solvedPuzzle3 && FirstKey)
                 {
                     GameObject.Find("Canvas").transform.Find("Æ©Åä¸®¾ó").transform.Find("ÆÛÁñ").transform.Find("S7").gameObject.SetActive(true);
                     //ºñÈ°¼ºÈ­ Æ©Åä¸®¾ó

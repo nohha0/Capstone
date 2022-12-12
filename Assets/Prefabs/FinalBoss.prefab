@@ -275,7 +275,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 14.849999, y: 22.871946}
+    oldSize: {x: 5.9399996, y: 9.148778}
     newSize: {x: 6.57, y: 9.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -322,8 +322,13 @@ MonoBehaviour:
   attacked: 0
   mag: 100
   Enhance_value: 0
+  middleBoss1: 0
+  middleBoss2: 0
+  middleBoss3: 0
+  FinalBoss: 1
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
+  DieStage: 0
   WaterWave: {fileID: 8448801111772020772, guid: 1c91e54b5a9528844bd21a9fda456533, type: 3}
   height: -20
   Big_Water: {fileID: 1263350060056709761, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}

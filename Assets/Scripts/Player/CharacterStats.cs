@@ -14,9 +14,9 @@ public class CharacterStats : MonoBehaviour
     //강화 가능한 스텟
     public float attackPower = 1f;      //공격력
     public float avoidanceRate = 1f;    //회피율
-    public float attackSpeed = 1f;      //공격속도
+    public float attackSpeed = 2f;      //공격속도
     public float attackRange = 1f;      //공격범위
-    public int maxHP = 10;              //플레이어의 최대 목숨
+    public int maxHP = 4;              //플레이어의 당장 회복 가능한 최대 목숨 (구구절절)
 
     //각 스텟은 최대 7회까지 강화 가능함
     public int APCount = 0;
@@ -27,7 +27,6 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
-        maxHP = 10;
         currentHP = maxHP;
 
         //이렇게 귀찮게 찾아가는 이유는 UpgradePanel이 처음에 비활성화 상태이기 때문에~
@@ -41,7 +40,17 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage()
     {
-        currentHP--;
+        float avoid = Random.Range(1.0f, 10.0f);
+
+        if (avoid >= avoidanceRate)
+        {
+            currentHP--;
+        }
+        else
+        {
+            Debug.Log("공격을 회피하였다!");
+        }
+
     }
 
     public void StatUp(string spriteName)
@@ -58,25 +67,25 @@ public class CharacterStats : MonoBehaviour
                 if (AvoidCount >= 7) return;
                 avoidanceRate += 0.2f;
                 AvoidCount++;
-                Debug.Log("회피율 증가~!");
+                Debug.Log("회피율 증가");
                 break;
             case "3AttckSpeed_0":
                 if (ASCount >= 7) return;
-                attackSpeed += 0.2f;
+                attackSpeed -= 0.2f;
                 ASCount++;
-                Debug.Log("공격 속도 증가~!");
+                Debug.Log("공격 속도 증가");
                 break;
             case "4AttackRange_0":
                 if (ARCount >= 7) return;
                 attackRange += 0.2f;
                 ARCount++;
-                Debug.Log("공격 범위 증가~!");
+                Debug.Log("공격 범위 증가");
                 break;
             case "5HpUp_0":
                 if (HPCount >= 7) return;
                 maxHP++;
                 HPCount++;
-                Debug.Log("목숨 한 개 증가~!");
+                Debug.Log("목숨 한 개 증가");
                 break;
         }
     }

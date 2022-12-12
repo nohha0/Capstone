@@ -44,7 +44,16 @@ public class NextToon : MonoBehaviour
         if (toonIndex >= Toons.Length)
         {
             Debug.Log("현재가 마지막 페이지입니다.");
-            if(intro) GoMainScene();
+
+            if (intro)
+            {
+                SceneManager.LoadScene("Main");
+            }
+            else if (outro)
+            {
+                SceneManager.LoadScene("Title");
+            }
+
             return;
         }
 

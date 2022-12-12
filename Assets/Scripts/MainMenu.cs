@@ -11,11 +11,18 @@ public class MainMenu : MonoBehaviour
 
     public Button KeepBtn;
     public Button StoryBtn;
+
+    public GameObject gameStory;
     
     private void Update()
     {
         if(SaveManager.Instance._playerData.haveSaveFile) KeepBtn.image.sprite = keepSpr;
         if(SaveManager.Instance._playerData.clearAllGame) StoryBtn.image.sprite = storySpr;
+
+        if(gameStory.activeSelf && Input.GetKey(KeyCode.Space))
+        {
+            gameStory.SetActive(false);
+        }
     }
 
     public void GameStart()
@@ -33,7 +40,9 @@ public class MainMenu : MonoBehaviour
 
     public void StoryOfGame()
     {
+        if (!SaveManager.Instance._playerData.clearAllGame) return;
 
+        gameStory.SetActive(true);
     }
 
     public void QuitGame()

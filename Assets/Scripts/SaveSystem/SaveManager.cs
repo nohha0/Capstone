@@ -11,22 +11,25 @@ using UnityEngine.SceneManagement;
 public class PlayerData
 {
     public bool haveSaveFile;
-    public bool clearAllGame;
 
-    public bool solvedPuzzle1;
-    public bool solvedPuzzle2;
-    public bool solvedPuzzle3;
+    /* 퍼즐 클리어 여부 */
+    public bool solvedPuzzle1 = false;
+    public bool solvedPuzzle2 = false;
+    public bool solvedPuzzle3 = false;
 
-    public bool killedBoss1;
-    public bool killedBoss2;
-    public bool killedBoss3;
+    /* 보스 클리어 (스킬 획득) 여부 */
+    public bool killedBoss1 = false;
+    public bool killedBoss2 = false;
+    public bool killedBoss3 = false;
+    public bool clearAllGame = false;
 
+    /* 플레이어 정보 */
     public int level;
     public float exp;
-
     public Vector3 spawnPoint;
-    public int life;
+    public int stage;
 
+    /* 스텟 정보 */
     public float stat1_AP;
     public float stat2_AR;
     public float stat3_AS;
@@ -38,10 +41,6 @@ public class PlayerData
     public int stat3_ASCount;
     public int stat4_AVCount;
     public int stat5_HPCount;
-
-    public bool gotSkillDash;
-    public bool gotSkillBall;
-    public bool gotSkillRange;
 }
 
 
@@ -68,7 +67,6 @@ public class SaveManager : MonoBehaviour
             Debug.Log("인스턴스 파괴~");
         }
 
-        //LoadGameDataFromJson();
         LoadPlayerDataFromJson();
     }
 
@@ -77,7 +75,7 @@ public class SaveManager : MonoBehaviour
         if(settingPlayer)
         {
             settingPlayer = false;
-            Invoke("SetPlayerDataValues", 3f);
+            Invoke("SetPlayerDataValues", 0.5f);
         }
     }
 
@@ -89,7 +87,6 @@ public class SaveManager : MonoBehaviour
             {
                 return null;
             }
-
             return instance;
         }
     }
@@ -124,36 +121,50 @@ public class SaveManager : MonoBehaviour
     public void GetPlayerDataValues()
     {
         GameObject player = GameObject.Find("Player");
-
         Level playerLevel = player.GetComponent<Level>();
+        CharacterStats playerStat = player.GetComponent<CharacterStats>();
+        data playerData = GameObject.Find("Main Camera").GetComponent<data>();
+
+        _playerData.spawnPoint = playerData.Respawn.position;
+        _playerData.stage = playerData.Stage;
         _playerData.level = playerLevel.level;
         _playerData.exp = playerLevel.expCurrent;
         
-        CharacterStats playerStat = player.GetComponent<CharacterStats>();
-        _playerData.life = playerStat.maxHP;
         _playerData.stat1_AP = playerStat.attackPower;
         _playerData.stat2_AR = playerStat.attackRange;
         _playerData.stat3_AS = playerStat.attackSpeed;
         _playerData.stat4_AV = playerStat.avoidanceRate;
         _playerData.stat5_HP = playerStat.maxHP;
+
         _playerData.stat1_APCount = playerStat.APCount;
         _playerData.stat2_ARCount = playerStat.ARCount;
         _playerData.stat3_ASCount = playerStat.ASCount;
         _playerData.stat4_AVCount = playerStat.AvoidCount;
         _playerData.stat5_HPCount = playerStat.HPCount;
-
-        data playerData = GameObject.Find("Main Camera").GetComponent<data>();
-        _playerData.spawnPoint = playerData.Respawn.position;
     }
 
     public void SetPlayerDataValues()
     {
         GameObject player = GameObject.Find("Player");
         CharacterStats playerStat = player.gameObject.GetComponent<CharacterStats>();
+        Level playerLevel = player.GetComponent<Level>();
+        data playerData = GameObject.Find("Main Camera").GetComponent<data>();
 
-        playerStat.maxHP = _playerData.life;
-        //player.transform.position = new Vector3(0, 0, 0);
         player.transform.position = _playerData.spawnPoint;
+        playerData.Stage = _playerData.stage;
+        playerLevel.level = _playerData.level;
+        playerLevel.expCurrent = _playerData.exp;
 
+        playerStat.attackPower = _playerData.stat1_AP;
+        playerStat.attackRange = _playerData.stat2_AR;
+        playerStat.attackSpeed = _playerData.stat3_AS;
+        playerStat.avoidanceRate = _playerData.stat4_AV;
+        playerStat.maxHP = _playerData.stat5_HP;
+
+        playerStat.APCount = _playerData.stat1_APCount;
+        playerStat.ARCount = _playerData.stat2_ARCount;
+        playerStat.ASCount = _playerData.stat3_ASCount;
+        playerStat.AvoidCount = _playerData.stat4_AVCount;
+        playerStat.HPCount = _playerData.stat5_HPCount;
     }
 }
