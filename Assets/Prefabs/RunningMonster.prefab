@@ -171,8 +171,12 @@ MonoBehaviour:
   speed: 20
   HP: 50
   attacked: 0
-  mag: 100
-  Enhance_value: 150
+  mag: 90
+  Enhance_value: 200
+  middleBoss1: 0
+  middleBoss2: 0
+  middleBoss3: 0
+  FinalBoss: 0
   ps: {fileID: 7135793322511580446, guid: 36414cf29dd9b19489512a9036ed7266, type: 3}
   GiveValue: {fileID: 0}
   DieStage: 0

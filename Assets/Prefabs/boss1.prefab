@@ -172,7 +172,7 @@ MonoBehaviour:
   HP: 600
   attacked: 0
   mag: 500
-  Enhance_value: 6000
+  Enhance_value: 7000
   middleBoss1: 1
   middleBoss2: 0
   middleBoss3: 0

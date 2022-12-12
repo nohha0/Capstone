@@ -16,7 +16,7 @@ public class CharacterStats : MonoBehaviour
     public float avoidanceRate = 1f;    //회피율
     public float attackSpeed = 2f;      //공격속도
     public float attackRange = 1f;      //공격범위
-    public int maxHP = 4;              //플레이어의 당장 회복 가능한 최대 목숨 (구구절절)
+    public int maxHP = 5;              //플레이어의 당장 회복 가능한 최대 목숨 (구구절절)
 
     //각 스텟은 최대 7회까지 강화 가능함
     public int APCount = 0;

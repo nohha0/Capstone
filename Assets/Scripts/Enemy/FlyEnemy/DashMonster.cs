@@ -29,10 +29,16 @@ public class DashMonster : FlyingMonster
 
         if (HP <= 0)
         {
+            Destroy(transform.GetChild(0).gameObject);
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
             Invoke("DIE", 1.7f);
+            if (One)
+            {
+                GiveValue.expCurrent += Enhance_value;
+                One = false;
+            }
         }
         //-----------------------------------------------
 

@@ -67,6 +67,17 @@ public class FirstMiddleBoss : Enemy
         if (targetGameObject.transform.position.x > transform.position.x) spriteRend.flipX = true;
         else if (targetGameObject.transform.position.x < transform.position.x) spriteRend.flipX = false;
 
+
+        //---------------------------------
+        if (HP <= 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            //애니메이션 끝나면서 경험치 주셈
+            //애니함수 호출해야하는데 지금은 그냥 다이 스킬 획득 호출
+            DieAni();
+        }
+
     }
 
     void Rest()
@@ -128,10 +139,15 @@ public class FirstMiddleBoss : Enemy
 
     void DieAni()
     {
-        //플레이어 못움직이게
-        //파티클이 플레이어한테 흡수
-        //if 애니가 끝나면
-        //강해진것 같다는 텍스트 창 이후
-        //Invoke 스킬 튜토리얼
+        //애니가 끝나고, 경험치 획득후(파티클 획득)
+        GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("설명 텍스트").gameObject.SetActive(true);
+        Invoke("delaytutorial", 1f);
+        SaveManager.Instance._playerData.killedBoss1 = true;  //이거 키면 게임 오브젝트 삭제
+    }
+
+    void delaytutorial()
+    {
+        //아직 대시 없음
+        //GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("스킬0").gameObject.SetActive(true);
     }
 }

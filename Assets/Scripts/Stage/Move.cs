@@ -27,6 +27,7 @@ public class Move : MonoBehaviour
         PlayerPos = GameObject.Find("Player");
         Puzzle = GameObject.Find("GameManager").GetComponent<GameController>();
 
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -34,6 +35,8 @@ public class Move : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && !asDoor)
         {
             penelani.SetTrigger("Ææ³Ú °¡µ¿");
+            GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+            Invoke("IsMove", 1.3f);
             PlayerPos.transform.position = MoveSetPos;
             stage.Stage = ToStage;
         }
@@ -46,6 +49,8 @@ public class Move : MonoBehaviour
             if(NumDoor == 0)
             {
                 penelani.SetTrigger("Ææ³Ú °¡µ¿");
+                GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+                Invoke("IsMove", 1.3f);
                 PlayerPos.transform.position = MoveSetPos;
                 stage.Stage = ToStage;
             }
@@ -54,6 +59,8 @@ public class Move : MonoBehaviour
                 if(SaveManager.Instance._playerData.solvedPuzzle1) 
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
+                    GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+                    Invoke("IsMove", 1.3f);
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
@@ -69,6 +76,8 @@ public class Move : MonoBehaviour
                 if (SaveManager.Instance._playerData.solvedPuzzle2)
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
+                    GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+                    Invoke("IsMove", 1.3f);
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
@@ -83,6 +92,8 @@ public class Move : MonoBehaviour
                 if (SaveManager.Instance._playerData.solvedPuzzle3)
                 {
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
+                    GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+                    Invoke("IsMove", 1.3f);
                     PlayerPos.transform.position = MoveSetPos;
                     stage.Stage = ToStage;
                 }
@@ -96,4 +107,8 @@ public class Move : MonoBehaviour
         }
     }
 
+    void IsMove()
+    {
+        GameObject.Find("Player").GetComponent<PlayerController>().movable = true;
+    }
 }

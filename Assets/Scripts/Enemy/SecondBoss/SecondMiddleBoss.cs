@@ -92,6 +92,16 @@ public class SecondMiddleBoss : Enemy
                 }
             }
         }
+        //---------------------------------
+        if (HP <= 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            //애니메이션 끝나면서 경험치 주셈
+            //애니함수 호출해야하는데 지금은 그냥 다이 스킬 획득 호출
+            DieAni();
+        }
+
     }
 
 
@@ -201,5 +211,18 @@ public class SecondMiddleBoss : Enemy
     void OnPettern()
     {
         OnPattern = false;
+    }
+
+    void DieAni()
+    {
+        //애니가 끝나고, 경험치 획득후(파티클 획득)
+        GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("설명 텍스트").gameObject.SetActive(true);
+        Invoke("delaytutorial", 1f);
+        SaveManager.Instance._playerData.killedBoss1 = true;  //이거 키면 게임 오브젝트 삭제
+    }
+
+    void delaytutorial()
+    {
+        GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("스킬1").gameObject.SetActive(true);
     }
 }

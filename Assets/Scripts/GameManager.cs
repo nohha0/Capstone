@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         changed = false;
         startPanel.SetActive(true);
         Invoke("OffStartPanel", 1f);
+        MaxLife = Stats.maxHP;
     }
 
     void Update()
@@ -75,10 +76,18 @@ public class GameManager : MonoBehaviour
 
     void MaxLifeUpdate()
     {
-        int MaxLife = Stats.maxHP;
+        if(MaxLife<Stats.maxHP)
+        {
+            Stats.currentHP++;
+        }
+        MaxLife = Stats.maxHP;
         for (int i = MaxLife; i < UiLife.Length; i++)
         {
             UiLife[i].color = new Color(1, 1, 1, 0);
+        }
+        for (int i = 0; i < MaxLife; i++)
+        {
+            UiLife[i].color = new Color(1, 1, 1, 1);
         }
 
     }

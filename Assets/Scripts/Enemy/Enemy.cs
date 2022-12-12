@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
 
     public int DieStage;  //외 스테이지에서는 죽는다
 
-    bool One;
+    protected bool One;
+    public PlayerController player;
 
     virtual protected void Start()
     {
@@ -44,16 +45,23 @@ public class Enemy : MonoBehaviour
         DiecurStage = GameObject.Find("Main Camera").GetComponent<data>();
 
         GiveValue = GameObject.Find("Player").GetComponent<Level>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     virtual protected void Update()
     {
         if (HP <= 0)
         {
+            Destroy(transform.GetChild(0).gameObject);
             rigid.gravityScale = 300f;
             animator.SetTrigger("다이");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
             Invoke("DIE", 1.7f);
+            if (One)
+            {
+                GiveValue.expCurrent += Enhance_value;
+                One = false;
+            }
         }
         UpdateTarget();
 
@@ -85,10 +93,10 @@ public class Enemy : MonoBehaviour
             HP -= damage;
             attacked = true;
             Invoke("attackedOn", 1f);
-            Invoke("SpriteOn", 0.1f);
             MoveOn = false;
             if (HP > 0)
             {
+                Invoke("SpriteOn", 0.1f);
                 animator.SetTrigger("피격");
                 Invoke("IsMove", 0.5f);
             }
@@ -111,30 +119,25 @@ public class Enemy : MonoBehaviour
 
         speed = 0;
         
-        if (One)
+        if (middleBoss1)
         {
-            if (middleBoss1)
-            {
-                SaveManager.Instance._playerData.killedBoss1 = true;
-            }
-            else if (middleBoss2)
-            {
-                SaveManager.Instance._playerData.killedBoss2 = true;
-            }
-            else if (middleBoss3) 
-            {
-                SaveManager.Instance._playerData.killedBoss3 = true;
-            }
-            else if (FinalBoss)
-            {
-                SaveManager.Instance._playerData.clearAllGame = true;
-                Invoke("LoadOutroScene", 2f);
-            }
-
-            GiveValue.expCurrent += Enhance_value;
-            Destroy(gameObject);
-            One = false;
+            SaveManager.Instance._playerData.killedBoss1 = true;
         }
+        else if (middleBoss2)
+        {
+            SaveManager.Instance._playerData.killedBoss2 = true;
+        }
+        else if (middleBoss3)
+        {
+            SaveManager.Instance._playerData.killedBoss3 = true;
+        }
+        else if (FinalBoss)
+        {
+            SaveManager.Instance._playerData.clearAllGame = true;
+            Invoke("LoadOutroScene", 2f);
+        }
+
+        Destroy(gameObject);
 
     }
 

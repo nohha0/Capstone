@@ -230,7 +230,11 @@ MonoBehaviour:
   HP: 100
   attacked: 0
   mag: 70
-  Enhance_value: 300
+  Enhance_value: 350
+  middleBoss1: 0
+  middleBoss2: 0
+  middleBoss3: 0
+  FinalBoss: 0
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   DieStage: 0

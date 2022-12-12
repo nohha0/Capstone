@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     float healtime = 0.7f;
     int DieMoveStage;
-
+    bool NotLoop = false;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -259,6 +259,12 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "SavePoint")
         {
+
+            if(!KeyController.FirstSaveCol)
+            {
+                KeyController.FirstSaveCol = true;
+                GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("세이브 가능 튜토리얼").gameObject.SetActive(true);
+            }
             if (Input.GetKey(KeyCode.Space) && healtime <= 0)
             {
                 healtime = 0.7f;
@@ -279,17 +285,21 @@ public class PlayerController : MonoBehaviour
         {
             if (!KeyController.FirstStart)
             {
-                KeyController.FirstStart = true;
                 movable = false;
-                GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.SetActive(true);
-
                 
             }
-            if(!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
+            if (!KeyController.FirstStart)
+            {
+                KeyController.FirstStart = true;
+                Invoke("delay", 2.5f);
+            }
+            if (NotLoop&&!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
             {
                 movable = true;
             }
         }
+
+
 
     }
 
@@ -385,5 +395,11 @@ public class PlayerController : MonoBehaviour
         transform.position = SavePos.Respawn.position;
         stats.currentHP = stats.maxHP;
         Instantiate(Heal, transform.position, transform.rotation);
+    }
+
+    void delay()
+    {
+        NotLoop = true;
+        GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.SetActive(true);
     }
 }

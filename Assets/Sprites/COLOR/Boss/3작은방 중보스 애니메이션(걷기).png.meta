@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,9 +101,129 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_0"
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 192
+        width: 405
+        height: 853
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211bf87ecc8f70549ba1209c8860651f
+      internalID: 751796323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_1"
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 192
+        width: 475
+        height: 829
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ca48bccadcdb14d830bcfb11a9432d
+      internalID: 640002772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_2"
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 192
+        width: 405
+        height: 853
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a46026ecc01cf448544bb7de9100e2
+      internalID: 1955172821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_3"
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 192
+        width: 474
+        height: 851
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4579b95e2b763946adeee4bb247a170
+      internalID: -1225911593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +234,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_3": -1225911593
+      "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_0": 751796323
+      "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_2": 1955172821
+      "3\uC791\uC740\uBC29 \uC911\uBCF4\uC2A4 \uC560\uB2C8\uBA54\uC774\uC158(\uAC77\uAE30)_1": 640002772
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
