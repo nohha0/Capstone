@@ -79,7 +79,7 @@ public class Attack : CharacterStats
             curTime -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && !fireRangeOn)
+        if (Input.GetKeyDown(KeyCode.S) && !fireRangeOn && SaveManager.Instance._playerData.killedBoss3)
         {
             fireRangeOn = true;
             Vector2 playerPos = new Vector2(transform.position.x, transform.position.y+7);

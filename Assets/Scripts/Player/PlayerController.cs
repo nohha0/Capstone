@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool hasAttacked = false;   //피격 중복 금지
     public bool dashOn = false;
     public bool onPuzzle = false;
-    public bool movable = true;
+    public bool movable = false;
     public bool IsJump = true;
     bool IsDash = false;
     float time = 0.1f;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     float healtime = 0.7f;
     int DieMoveStage;
     bool NotLoop = false;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
         HP = GameObject.Find("Player").GetComponent<CharacterStats>();
         KeyController = GameObject.Find("GameManager").GetComponent<GameController>();
         //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+
+        Invoke("movabletrue", 2f);
     }
 
     void Update()
@@ -101,10 +104,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable)
+        if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable && SaveManager.Instance._playerData.killedBoss1)
         {
             dashOn = true;
-            //Dash();
             time = 0.1f;
             IsDash = true;
             Invoke("DashOn", 1);

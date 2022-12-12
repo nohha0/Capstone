@@ -14,9 +14,9 @@ public class CharacterStats : MonoBehaviour
     //강화 가능한 스텟
     public float attackPower = 1f;      //공격력
     public float avoidanceRate = 1f;    //회피율
-    public float attackSpeed = 2f;      //공격속도
+    public float attackSpeed = 1f;      //공격속도
     public float attackRange = 1f;      //공격범위
-    public int maxHP = 5;              //플레이어의 당장 회복 가능한 최대 목숨 (구구절절)
+    public int maxHP = 5;               //플레이어의 당장 회복 가능한 최대 목숨 (구구절절)
 
     //각 스텟은 최대 7회까지 강화 가능함
     public int APCount = 0;
@@ -70,8 +70,8 @@ public class CharacterStats : MonoBehaviour
                 Debug.Log("회피율 증가");
                 break;
             case "3AttckSpeed_0":
-                if (ASCount >= 7) return;
-                attackSpeed -= 0.2f;
+                if (ASCount >= 5) return;
+                attackSpeed -= 0.1f;
                 ASCount++;
                 Debug.Log("공격 속도 증가");
                 break;

@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(transform.GetChild(0).gameObject);
+
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
@@ -63,6 +64,7 @@ public class Enemy : MonoBehaviour
                 One = false;
             }
         }
+
         UpdateTarget();
 
     }

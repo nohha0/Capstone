@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     float itemCooldownTime = 5.0f;
     float updateTime = 0.0f;
+    float fadeTime = 1f;
+    bool onFadeIn;
 
     void Start()
     {
@@ -40,9 +42,15 @@ public class GameManager : MonoBehaviour
         SettedOn = false;
         onDialogue = false;
         changed = false;
+        onFadeIn = false;
         startPanel.SetActive(true);
-        Invoke("OffStartPanel", 1f);
+        Invoke("SetFadeIn", 1f);
         MaxLife = Stats.maxHP;
+    }
+
+    void SetFadeIn()
+    {
+        onFadeIn = true;
     }
 
     void Update()
@@ -52,7 +60,20 @@ public class GameManager : MonoBehaviour
         //Bar_con();
         Bar_con();
 
-        if(currentStage.Stage == 8 && !SettedOn)
+        if(startPanel.activeSelf)
+        {
+            if (fadeTime > 0)
+            {
+                startPanel.GetComponent<Image>().color = new Color(0,0,0, fadeTime/1f);
+            }
+            else
+            {
+                startPanel.SetActive(false);
+            }
+            fadeTime -= Time.deltaTime;
+        }
+
+        if (currentStage.Stage == 8 && !SettedOn)
         {
             SettedOn = true;
             Invoke("OnDialog", 1f);
@@ -139,8 +160,4 @@ public class GameManager : MonoBehaviour
         dialogueBox.SetActive(false);
     }
 
-    public void OffStartPanel()
-    {
-        startPanel.SetActive(false);
-    }
 }

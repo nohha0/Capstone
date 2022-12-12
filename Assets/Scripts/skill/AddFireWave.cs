@@ -16,10 +16,9 @@ public class AddFireWave : MonoBehaviour
         playerStat = GameObject.Find("Player").GetComponent<CharacterStats>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) && curtime <= 0)
+        if (Input.GetKey(KeyCode.A) && curtime <= 0 && SaveManager.Instance._playerData.killedBoss2)
         {
             Instantiate(firewave, pos.position, transform.rotation);
             curtime = playerStat.attackSpeed;

@@ -11,6 +11,7 @@ public class JumpingMonster : Enemy
     bool                    onWalk;
     float                   jumptime;
     bool                    NotRun = false;
+
     override protected void Start()
     {
         base.Start();
@@ -25,9 +26,8 @@ public class JumpingMonster : Enemy
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Platform"))
+        if (other.gameObject.CompareTag("Platform") && other.contacts[0].normal.y >= 0.8f)
         {
-            rigid.velocity = Vector2.zero;
             isGround = true;
         }
     }
@@ -43,18 +43,14 @@ public class JumpingMonster : Enemy
                 Vector2 direction = (targetGameObject.transform.position - transform.position).normalized;
                 rigid.velocity = new Vector2(direction.x * speed, 0f);
             }
-            if(NotRun&&MoveOn)
+            else if(NotRun&&MoveOn)
             {
                 rigid.velocity = Vector2.zero;
                 rigid.AddForce(new Vector2(distance.normalized.x * speed * 5, jumpForce));
-                isGround = false;
                 NotRun = false;
+                isGround = false;
             }
             jumptime -= Time.deltaTime;
-        }
-        else if (isGround)
-        {
-            rigid.velocity = Vector2.zero;
         }
 
         if (jumptime <= 0)
@@ -81,7 +77,6 @@ public class JumpingMonster : Enemy
 
         if (DiecurStage.Stage != DieStage)
         {
-            
             Destroy(gameObject);
         }
     }

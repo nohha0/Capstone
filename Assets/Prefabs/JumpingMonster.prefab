@@ -229,7 +229,7 @@ MonoBehaviour:
   speed: 30
   HP: 100
   attacked: 0
-  mag: 70
+  mag: 100
   Enhance_value: 350
   middleBoss1: 0
   middleBoss2: 0
@@ -238,5 +238,6 @@ MonoBehaviour:
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   DieStage: 0
+  player: {fileID: 0}
   number: 0
   jumpForce: 450
