@@ -7,7 +7,7 @@ public class SetLight : FlyingMonster
     public GameObject Lightwave;
     float cooltime = 5;
     float curtime;
-    float time = 0;
+    //float time = 0;
 
     override protected void Start()
     {

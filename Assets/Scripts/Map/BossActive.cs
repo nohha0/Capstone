@@ -63,7 +63,7 @@ public class BossActive : MonoBehaviour
         {
             First = false;
             //Debug.Log("콜라이더");
-            GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
+            GameObject.Find("Player").GetComponent<PlayerController>().IsMove = false;
             if(BossNum <=2)
             {
                 Shake.voidShake(3f);
@@ -97,7 +97,7 @@ public class BossActive : MonoBehaviour
     void Play()
     {
         Boss.GetComponent<Enemy>().BossPlay = true;
-        GameObject.Find("Player").GetComponent<PlayerController>().movable = true;
+        GameObject.Find("Player").GetComponent<PlayerController>().IsMove = true;
         Debug.Log("ㅡ");
     }
     void detail()

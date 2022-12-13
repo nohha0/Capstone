@@ -19,7 +19,7 @@ public class ActiveFalse : MonoBehaviour
     {
         if(gameObject.activeSelf)
         {
-            Move.movable = false;
+            Move.IsMove = false;
             if (time < 0.5f)
             {
                 image.color = new Color(1, 1, 1, time / 0.5f);
@@ -31,7 +31,7 @@ public class ActiveFalse : MonoBehaviour
                     gameObject.SetActive(false);
                     time = 0;
                     Debug.Log("คั");
-                    Move.movable = true;
+                    Move.IsMove = true;
                 }
             }
             time += Time.deltaTime;

@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public bool hasAttacked = false;   //피격 중복 금지
     public bool dashOn = false;
     public bool onPuzzle = false;
-    public bool movable;
+    public bool movable = true;
+    public bool IsMove = true;
     public bool IsJump = true;
     bool IsDash = false;
     float time = 0.1f;
@@ -70,7 +71,8 @@ public class PlayerController : MonoBehaviour
         //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
         //Invoke("movabletrue", 2f);
-        //InvokeRepeating("movablefalse", 1f, 1f);
+        //InvokeRepeating("movablefalse", 0.1f, 0.1f);
+        IsMove = true;
     }
 
     void Update()
@@ -80,7 +82,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("run", false);
 
         //캐릭터 이동/점프
-        if (Input.GetKeyDown(KeyCode.LeftControl) && jumpCount < 2 && movable&& IsJump)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && jumpCount < 2 && movable&& IsJump && IsMove)
         {
             Jump();
             animator.SetBool("jump", true);
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftControl))
             isLongJump = false;
 
-        if (Input.GetKey(KeyCode.LeftArrow)&&script.AttackLeftOn && movable)
+        if (Input.GetKey(KeyCode.LeftArrow)&&script.AttackLeftOn && movable&& IsMove)
         {
             direction = 1;
             spriteRenderer.flipX = false;
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && script.AttackRightOn && movable)
+        if (Input.GetKey(KeyCode.RightArrow) && script.AttackRightOn && movable&& IsMove)
         {
             direction = 2;
             spriteRenderer.flipX = true;
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("run", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable && SaveManager.Instance._playerData.killedBoss1)
+        if (Input.GetKeyDown(KeyCode.X) && !dashOn && movable && SaveManager.Instance._playerData.killedBoss1&& IsMove)
         {
             dashOn = true;
             time = 0.1f;
@@ -243,7 +245,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("thorn"))
         {
-            movable = false;
+            IsMove = false;
             Invoke("movabletrue", 1);
         }
 
@@ -307,18 +309,17 @@ public class PlayerController : MonoBehaviour
         {
             if (!KeyController.FirstStart)
             {
-                Debug.Log("동작정지");
-                movable = false;
+                IsMove = false;
                 
             }
             if (!KeyController.FirstStart)
             {
-                KeyController.FirstStart = true;
                 Invoke("delay", 2.5f);
+                KeyController.FirstStart = true;
             }
             if (NotLoop&&!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
             {
-                //movable = true;
+                IsMove = true;
             }
         }
 
@@ -411,11 +412,13 @@ public class PlayerController : MonoBehaviour
         Debug.Log("ㅡ");
 
         movable = true;
+        IsMove = true;
     }
 
     void movablefalse()
     {
         movable = false;
+        IsMove = false;
     }
     void respown()
     {
