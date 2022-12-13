@@ -110,5 +110,6 @@ public class Move : MonoBehaviour
     void IsMove()
     {
         GameObject.Find("Player").GetComponent<PlayerController>().movable = true;
+        Debug.Log("คั");
     }
 }

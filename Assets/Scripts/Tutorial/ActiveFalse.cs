@@ -30,6 +30,7 @@ public class ActiveFalse : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                     time = 0;
+                    Debug.Log("คั");
                     Move.movable = true;
                 }
             }

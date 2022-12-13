@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool hasAttacked = false;   //피격 중복 금지
     public bool dashOn = false;
     public bool onPuzzle = false;
-    public bool movable = true;
+    public bool movable;
     public bool IsJump = true;
     bool IsDash = false;
     float time = 0.1f;
@@ -70,10 +70,13 @@ public class PlayerController : MonoBehaviour
         //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
         //Invoke("movabletrue", 2f);
+        //InvokeRepeating("movablefalse", 1f, 1f);
     }
 
     void Update()
     {
+        //movable = false;
+        Debug.Log(movable);
         animator.SetBool("run", false);
 
         //캐릭터 이동/점프
@@ -134,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             onPuzzle = false;
             movable = true;
+            Debug.Log("ㅡ");
             if (puzzle1.activeSelf) puzzle1.SetActive(false);
             if (puzzle2.activeSelf) puzzle2.SetActive(false);
             if (puzzle3.activeSelf) puzzle3.SetActive(false);
@@ -242,6 +246,11 @@ public class PlayerController : MonoBehaviour
             movable = false;
             Invoke("movabletrue", 1);
         }
+
+        if (other.gameObject.CompareTag("Start"))
+        {
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -298,6 +307,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!KeyController.FirstStart)
             {
+                Debug.Log("동작정지");
                 movable = false;
                 
             }
@@ -308,7 +318,7 @@ public class PlayerController : MonoBehaviour
             }
             if (NotLoop&&!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
             {
-                movable = true;
+                //movable = true;
             }
         }
 
@@ -398,9 +408,15 @@ public class PlayerController : MonoBehaviour
 
     void movabletrue()
     {
+        Debug.Log("ㅡ");
+
         movable = true;
     }
 
+    void movablefalse()
+    {
+        movable = false;
+    }
     void respown()
     {
         SavePos.Stage = DieMoveStage;

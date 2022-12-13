@@ -98,6 +98,7 @@ public class BossActive : MonoBehaviour
     {
         Boss.GetComponent<Enemy>().BossPlay = true;
         GameObject.Find("Player").GetComponent<PlayerController>().movable = true;
+        Debug.Log("คั");
     }
     void detail()
     {
