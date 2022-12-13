@@ -18,7 +18,7 @@ public class PlayerData
     public bool solvedPuzzle3 = false;
 
     /* 보스 클리어 (스킬 획득) 여부 */
-    public bool killedBoss1 = true;
+    public bool killedBoss1 = false;
     public bool killedBoss2 = false;
     public bool killedBoss3 = false;
     public bool clearAllGame = false;
