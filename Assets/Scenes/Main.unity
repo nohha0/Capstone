@@ -14335,7 +14335,7 @@ MonoBehaviour:
   Respawn: {fileID: 219763294}
   Lcount: 0
   Rcount: 0
-  Stage: 3
+  Stage: 1
   E1Pos:
   - {x: 691, y: 137}
   - {x: 781, y: 137}
@@ -83176,11 +83176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1417
+      value: 50.2
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.z
