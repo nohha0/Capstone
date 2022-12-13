@@ -31,10 +31,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if(SaveManager.Instance._playerData.killedBoss1 && !Boss1Die)
-        {
 
-        }
     }
 
 

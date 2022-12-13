@@ -24,6 +24,7 @@ public class Attack : CharacterStats
     public bool AttackRightOn = true;
 
     CharacterStats playerStat;
+    PlayerController Move;
 
 
     void Start()
@@ -31,11 +32,12 @@ public class Attack : CharacterStats
         playerStat = GameObject.Find("Player").GetComponent<CharacterStats>();
         animator = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
+        Move = GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && curTime <=0) // 공격버튼을 눌렀다면
+        if (Move.movable&&Input.GetKeyDown(KeyCode.Z) && curTime <=0) // 공격버튼을 눌렀다면
         {
             if (rend.flipX)  //오른쪽 시선
             {

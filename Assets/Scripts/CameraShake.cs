@@ -26,6 +26,8 @@ public class CameraShake : MonoBehaviour
 
         }
 
+
+
     }
 
     public IEnumerator ShakeCoroution()
@@ -49,6 +51,13 @@ public class CameraShake : MonoBehaviour
         }
 
     }
+    public void voidShake(float a)
+    {
+        StartCoroutine(ShakeCoroution());
+        Shake.CameraController = false;
+        Invoke("Stopcoroutin", a);
+    }
+
     void Stopcoroutin()
     {
         StopCoroutine(ShakeCoroution());

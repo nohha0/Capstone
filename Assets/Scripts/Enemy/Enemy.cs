@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
     protected bool One;
     public PlayerController player;
 
+
+
+    public bool BossPlay = false;
     virtual protected void Start()
     {
         One = true;

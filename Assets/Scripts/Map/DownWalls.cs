@@ -33,7 +33,7 @@ public class DownWalls : MonoBehaviour
             if(firstTime)
             {
                 firstTime = false;
-                Invoke("SetOnBoss", 5f);
+                //Invoke("SetOnBoss", 5f);
             }
         }
     }

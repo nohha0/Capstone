@@ -55,8 +55,9 @@ public class FirstMiddleBoss : Enemy
 
     override protected void Update()
     {
+        //Debug.Log(BossPlay);
         base.Update();
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag &&BossPlay)
         {
             ChangeState();
             if (onBranch && !callBranch) CreateBranch();
@@ -148,6 +149,6 @@ public class FirstMiddleBoss : Enemy
     void delaytutorial()
     {
         //아직 대시 없음
-        //GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("스킬0").gameObject.SetActive(true);
+        GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("스킬0").gameObject.SetActive(true);
     }
 }

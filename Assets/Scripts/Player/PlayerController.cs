@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour
     float healtime = 0.7f;
     int DieMoveStage;
     bool NotLoop = false;
+    //
 
+    public GameObject Dashhh;
+    public ParticleSystem ps;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -111,8 +114,18 @@ public class PlayerController : MonoBehaviour
             IsDash = true;
             Invoke("DashOn", 1);
 
-            if (direction == 1) animator.SetTrigger("LeftDash");
-            if (direction == 2) animator.SetTrigger("RightDash");
+            if (direction == 1)
+            {
+                animator.SetTrigger("LeftDash");
+                Dashhh.GetComponent<SpriteRenderer>().flipX = false;
+                //Instantiate(Dashhh, new Vector2(transform.position.x -3,transform.position.y),transform.rotation);
+            }
+            if (direction == 2) 
+            {
+                animator.SetTrigger("RightDash");
+                Dashhh.GetComponent<SpriteRenderer>().flipX = true;
+                //Instantiate(Dashhh, new Vector2(transform.position.x + 3, transform.position.y), transform.rotation);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && onPuzzle)
@@ -270,9 +283,10 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && healtime <= 0)
             {
                 healtime = 0.7f;
-                Debug.Log("¼¼ÀÌºê");
                 stats.currentHP = stats.maxHP;
                 Instantiate(Heal, transform.position, transform.rotation);
+                ps.transform.position = new Vector2(transform.position.x, transform.position.y - 10);
+                ps.Play();
 
                 SavePos.Respawn = other.gameObject.transform;
                 DieMoveStage = other.GetComponent<SaveStage>().SetStage;

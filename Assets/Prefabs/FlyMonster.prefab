@@ -190,7 +190,7 @@ MonoBehaviour:
   HP: 300
   attacked: 0
   mag: 70
-  Enhance_value: 790
+  Enhance_value: 810
   middleBoss1: 0
   middleBoss2: 0
   middleBoss3: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   DieStage: 0
+  player: {fileID: 0}
   pos: {fileID: 3019643092784667976}
   FlipOn: 1
   Lightwave: {fileID: 9148211034722907798, guid: 8de24a915730166489e21503756b5b03, type: 3}
