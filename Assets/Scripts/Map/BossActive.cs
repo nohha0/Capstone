@@ -130,11 +130,6 @@ public class BossActive : MonoBehaviour
     void Boss3()
     {
         Boss.SetActive(true);
-        Invoke(" Boss3Color", 0.2f);
     }
 
-    void Boss3Color()
-    {
-        Boss.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-    }
 }
