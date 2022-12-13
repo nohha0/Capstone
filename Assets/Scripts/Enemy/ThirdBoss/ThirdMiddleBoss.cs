@@ -50,6 +50,8 @@ public class ThirdMiddleBoss : Enemy
     float timeUntilChangeState;
     bool onRest = false;
 
+
+    bool First = true;
     override protected void Start()
     {
         base.Start();
@@ -61,7 +63,6 @@ public class ThirdMiddleBoss : Enemy
         InvokeRepeating("OnActive", 5, 3);
 
 
-
     }
 
     override protected void Update()
@@ -69,7 +70,20 @@ public class ThirdMiddleBoss : Enemy
         base.Update();
         ChangeState();
 
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+        if(!gameObject.activeSelf)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 1);
+        }
+        if(gameObject.activeSelf&& First)
+        {
+            First = false;
+            Invoke(" Boss3Color", 0.2f);
+
+        }
+
+
+
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag&&BossPlay)
         {
             if (start)
             {
@@ -299,5 +313,10 @@ public class ThirdMiddleBoss : Enemy
     void delaytutorial()
     {
         GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("스킬2").gameObject.SetActive(true);
+    }
+
+    void Boss3Color()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 }

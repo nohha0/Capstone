@@ -65,7 +65,7 @@ public class SecondMiddleBoss : Enemy
     {
         base.Update();
 
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag &&BossPlay)
         {
             if (targetGameObject.transform.position.x > transform.position.x) spriteRend.flipX = true;
             else if (targetGameObject.transform.position.x < transform.position.x) spriteRend.flipX = false;
