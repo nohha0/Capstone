@@ -52,6 +52,7 @@ public class ThirdMiddleBoss : Enemy
 
 
     bool First = true;
+
     override protected void Start()
     {
         base.Start();

@@ -16,16 +16,17 @@ public class Level : MonoBehaviour
     public float expLeft = 1000;             //변수. 레벨업에 필요한 경험치
     int expBase = 1000;             //상수. 레벨1→레벨2 필요한 경험치
     float expMod = 1.21f;           //경험치 증가량 (지수)
-
+    bool onEnhance = false;
     public bool Wait = false;
     public bool isFirstUpgrade;
     public GameObject FirstUpgrade;
+    public GameObject enhanceBar;
 
     [SerializeField] UpgradePanelManager upgradePanel;
 
     float TO_LEVEL_UP
     {
-        get 
+        get
         {
             return expLeft;
         }
@@ -37,14 +38,23 @@ public class Level : MonoBehaviour
         Images = Resources.LoadAll<Sprite>("Upgrades");
     }
 
+    void StartEnhance()
+    {
+        enhanceBar.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        Wait = true;
+        Enhance();
+        onEnhance = false;
+    }
+
     private void Update()
     {
         CheckLevelUp();
 
-        if (levelCount > 0 && Wait==false)
+        if (levelCount > 0 && Wait==false && !onEnhance)
         {
-            Wait = true;
-            Enhance();
+            onEnhance = true;
+            enhanceBar.GetComponent<Image>().color = new Color(1, 0, 1, 1);
+            Invoke("StartEnhance", 1f);
         }
 
         if (Input.GetKeyDown(KeyCode.H))

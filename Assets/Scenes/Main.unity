@@ -14335,7 +14335,7 @@ MonoBehaviour:
   Respawn: {fileID: 219763294}
   Lcount: 0
   Rcount: 0
-  Stage: 7
+  Stage: 3
   E1Pos:
   - {x: 691, y: 137}
   - {x: 781, y: 137}
@@ -37406,10 +37406,10 @@ RectTransform:
   m_Children:
   - {fileID: 140734640}
   - {fileID: 723806788}
+  - {fileID: 1891205725}
   - {fileID: 1556976755}
   - {fileID: 1155710462}
   - {fileID: 136234874}
-  - {fileID: 1891205725}
   - {fileID: 2044273061}
   - {fileID: 118401517}
   - {fileID: 553910083}
@@ -73010,7 +73010,7 @@ RectTransform:
   - {fileID: 448232156}
   - {fileID: 1509603598}
   m_Father: {fileID: 1283264155}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -82355,7 +82355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411724395936212652, guid: 1ce7f619f77619944a2a86e74fab5ced, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1411724395936212652, guid: 1ce7f619f77619944a2a86e74fab5ced, type: 3}
       propertyPath: m_AnchorMax.x
@@ -82496,7 +82496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2511554836689701248, guid: 500b825b0ea8bd149aa5539a3c134250, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2511554836689701248, guid: 500b825b0ea8bd149aa5539a3c134250, type: 3}
       propertyPath: m_AnchorMax.x
@@ -83027,7 +83027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6581938359403984078, guid: 46c0a94ac60e3b8458d54af704eb0733, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6581938359403984078, guid: 46c0a94ac60e3b8458d54af704eb0733, type: 3}
       propertyPath: m_AnchorMax.x
@@ -83176,7 +83176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4880
+      value: 1417
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779653, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -83236,7 +83236,7 @@ PrefabInstance:
       objectReference: {fileID: 448232157}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: maxHP
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: APCount
@@ -83338,6 +83338,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.0183462
       objectReference: {fileID: 0}
+    - target: {fileID: 8647659956363779710, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
+      propertyPath: enhanceBar
+      value: 
+      objectReference: {fileID: 1562201042}
     - target: {fileID: 8647659956363779710, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: FirstUpgrade
       value: 

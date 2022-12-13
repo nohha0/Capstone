@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool hasAttacked = false;   //피격 중복 금지
     public bool dashOn = false;
     public bool onPuzzle = false;
-    public bool movable = false;
+    public bool movable = true;
     public bool IsJump = true;
     bool IsDash = false;
     float time = 0.1f;
@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Dashhh;
     public ParticleSystem ps;
+
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
         KeyController = GameObject.Find("GameManager").GetComponent<GameController>();
         //Shake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
 
-        Invoke("movabletrue", 2f);
+        //Invoke("movabletrue", 2f);
     }
 
     void Update()
@@ -138,6 +140,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("퍼즐 비활성화!");
         }
 
+        if(hasAttacked)
+        {
+            spriteRenderer.color = new Color(0.7f, 0.7f, 0.7f, 1f);
+        }
+
         if(IsDash)
         {
             //rigid.gravityScale = 0f;
@@ -199,6 +206,7 @@ public class PlayerController : MonoBehaviour
                 obj = other.gameObject;
             }
         }
+
         if (other.gameObject.CompareTag("thorn") && !hasAttacked)  //가시충돌
         {
             stats.TakeDamage();
@@ -223,23 +231,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
         {
-
             stats.TakeDamage();
             hasAttacked = true;
             Invoke("attackOn", 3);
-            //
             CameraController = true;
             animator.SetTrigger("Damage");
-            //
-            /*
-            if (HP.currentHP <= 0)
-            {
-                movable = false;
-                Invoke("movabletrue", 4);
-                animator.SetTrigger("Die");
-                Destroy(gameObject, 2);
-            }
-            */
         }
         if (other.gameObject.CompareTag("thorn"))
         {
@@ -297,6 +293,7 @@ public class PlayerController : MonoBehaviour
             }
             healtime -= Time.deltaTime;
         }
+
         if (other.gameObject.CompareTag("Start"))
         {
             if (!KeyController.FirstStart)
@@ -314,8 +311,6 @@ public class PlayerController : MonoBehaviour
                 movable = true;
             }
         }
-
-
 
     }
 
@@ -368,6 +363,7 @@ public class PlayerController : MonoBehaviour
     public void attackOn()
     {
         hasAttacked = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     public void DashOn()
