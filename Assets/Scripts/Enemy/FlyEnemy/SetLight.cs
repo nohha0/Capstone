@@ -21,7 +21,8 @@ public class SetLight : FlyingMonster
 
         if (HP <= 0)
         {
-            Destroy(transform.GetChild(0).gameObject);
+            transform.GetChild(0).tag = "Untagged";
+
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);

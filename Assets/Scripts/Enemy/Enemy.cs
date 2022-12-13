@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     {
         if (HP <= 0)
         {
-            Destroy(transform.GetChild(0).gameObject);
+            transform.GetChild(0).tag = "Untagged";
 
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
