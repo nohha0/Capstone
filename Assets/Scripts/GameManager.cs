@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     bool onDialogue;
     bool changed;
 
+
+    public GameObject skill_1;
+    public GameObject skill_2;
+    public GameObject skill_3;
+
     //-----------------------
     CharacterStats Stats;
     Level Bar;
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
         Invoke("SetFadeIn", 1f);
         MaxLife = Stats.maxHP;
         leval = Bar.level;
+
     }
 
     void SetFadeIn()
@@ -95,6 +101,7 @@ public class GameManager : MonoBehaviour
                 OffDialog();
             }
         }
+
     }
 
     void MaxLifeUpdate()
@@ -150,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         onDialogue = true;
         playerCon.movable = false;
-        //dialogueBox.SetActive(true);
+        dialogueBox.SetActive(true);
     }
 
     public void OffDialog()

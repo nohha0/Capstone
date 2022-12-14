@@ -6,11 +6,12 @@ using System.IO;
 using UnityEngine.SceneManagement;
 
 
-/* 데이터 타입 */
-
 public class PlayerData
 {
-    public bool haveSaveFile;
+    /* 게임 정보 */
+    public bool haveSaveFile = false;
+    public bool FirstSaveCol = false;
+    public bool FirstStart = false;
 
     /* 퍼즐 클리어 여부 */
     public bool solvedPuzzle1 = false;

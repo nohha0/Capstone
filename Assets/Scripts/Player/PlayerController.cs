@@ -146,6 +146,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("퍼즐 비활성화!");
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Title");
+        }
+
         if(hasAttacked)
         {
             spriteRenderer.color = new Color(0.7f, 0.7f, 0.7f, 1f);
@@ -282,9 +287,9 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "SavePoint")
         {
 
-            if(!KeyController.FirstSaveCol)
+            if(!SaveManager.Instance._playerData.FirstSaveCol)
             {
-                KeyController.FirstSaveCol = true;
+                SaveManager.Instance._playerData.FirstSaveCol = true;
                 GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("세이브 가능 튜토리얼").gameObject.SetActive(true);
             }
             if (Input.GetKey(KeyCode.Space) && healtime <= 0)
@@ -307,15 +312,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Start"))
         {
-            if (!KeyController.FirstStart)
+            if (!SaveManager.Instance._playerData.FirstStart)
             {
                 IsMove = false;
                 
             }
-            if (!KeyController.FirstStart)
+            if (!SaveManager.Instance._playerData.FirstStart)
             {
                 Invoke("delay", 2.5f);
-                KeyController.FirstStart = true;
+                SaveManager.Instance._playerData.FirstStart = true;
             }
             if (NotLoop&&!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
             {

@@ -33,10 +33,11 @@ public class Enemy : MonoBehaviour
 
     protected bool One;
     public PlayerController player;
-
-
+    GameManager gameManager;
 
     public bool BossPlay = false;
+
+
     virtual protected void Start()
     {
         One = true;
@@ -49,6 +50,8 @@ public class Enemy : MonoBehaviour
 
         GiveValue = GameObject.Find("Player").GetComponent<Level>();
         player = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     virtual protected void Update()
@@ -127,14 +130,17 @@ public class Enemy : MonoBehaviour
         if (middleBoss1)
         {
             SaveManager.Instance._playerData.killedBoss1 = true;
+            gameManager.skill_1.SetActive(true);
         }
         else if (middleBoss2)
         {
             SaveManager.Instance._playerData.killedBoss2 = true;
+            gameManager.skill_2.SetActive(true);
         }
         else if (middleBoss3)
         {
             SaveManager.Instance._playerData.killedBoss3 = true;
+            gameManager.skill_3.SetActive(true);
         }
         else if (FinalBoss)
         {

@@ -16,9 +16,14 @@ public class SecondMiddleBoss : Enemy
     Vector3 penPosition;
     Vector3 rotatingPenPosition;
     Vector2 distance;
+    Vector3 windPosition;
 
     float[] penXs;
     float[] penYs;
+
+    public Transform windPos;
+    float[] windYs;
+
 
     bool OnPattern = false;
     bool viewing;
@@ -26,15 +31,10 @@ public class SecondMiddleBoss : Enemy
     int rotatepens;
     int pens;
 
+    int countwind = 0;
+
     //Wind ------------------------------------------------------------------------------------
     public GameObject Windywave;
-
-    public float delray;
-    float curtime;
-    Vector3 setpos;
-    int i = 0;
-
-    private data script;
 
     float SetSkill;
     bool SetWindy = false;
@@ -42,11 +42,9 @@ public class SecondMiddleBoss : Enemy
     override protected void Start()
     {
         base.Start();
-        script = GameObject.Find("Main Camera").GetComponent<data>();
+
         firstPatten = false;
         viewing = false;
-
-        curtime = delray;
 
         penXs = new float[5];
         penYs = new float[2];
@@ -59,6 +57,13 @@ public class SecondMiddleBoss : Enemy
 
         penYs[0] = rotatePenPosObj.transform.position.y;
         penYs[1] = rotatePenPosObj.transform.position.y + 50f;
+
+        windYs = new float[3];
+
+        windYs[0] = windPos.position.y;
+        windYs[1] = windPos.position.y + 30;
+        windYs[2] = windPos.position.y + 60;
+
     }
 
     override protected void Update()
@@ -84,10 +89,7 @@ public class SecondMiddleBoss : Enemy
                 }
                 else
                 {
-                    i = 0;
-                    curtime = 0;
-                    OnPattern = true;
-                    Setpos();
+                    Patten2();
                     Debug.Log("111111111");
                 }
             }
@@ -106,6 +108,31 @@ public class SecondMiddleBoss : Enemy
 
 
     //Pen ------------------------------------------------------------------------------------
+
+    void Patten2()
+    {
+        OnPattern = true;
+
+        CreateWind();
+    }
+
+    void CreateWind()
+    {
+        if (countwind >= 10)
+        {
+            countwind = 0;
+            OnPattern = false;
+            return;
+        }
+        countwind++;
+        int Yindex = Random.Range(0, 3);
+
+        windPosition = new Vector3(windPos.position.x, windYs[Yindex], transform.position.z);
+        Instantiate(Windywave, windPosition, transform.rotation);
+
+        Invoke("CreateWind", 1);
+    }
+
 
     void Patten1()
     {
@@ -132,7 +159,7 @@ public class SecondMiddleBoss : Enemy
 
     void CreateRotatePen()
     {
-        if (rotatepens >= 4)
+        if (rotatepens >= 10)
         {
             rotatepens = 0;
             OnPattern = false;
@@ -164,54 +191,6 @@ public class SecondMiddleBoss : Enemy
 
     //Wind ------------------------------------------------------------------
 
-
-    void Setpos()
-    {
-
-        SetWindy = true;
-        
-    }
-
-    void InstantDOWN()
-    {
-        Vector3 setpos1 = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
-        Instantiate(Windywave, setpos1, transform.rotation);
-        script.Lcount++;
-    }
-    void InstantUP()
-    {
-        Vector3 setpos2 = new Vector3(transform.position.x + 10, transform.position.y + 45, transform.position.z);
-        Instantiate(Windywave, setpos2, transform.rotation);
-        script.Lcount++;
-    }
-
-    private void FixedUpdate()
-    {
-        if (SetWindy)
-        {
-            if (!spriteRend.flipX)
-            {
-                if (curtime <= 0 && i < 3)
-                {
-                    InstantDOWN();
-                    Invoke("InstantUP", 0.2f);
-                    curtime = delray;
-                    i++;
-                }
-            }
-            curtime -= Time.deltaTime;
-        }
-        if (i >= 3)
-        {
-            SetWindy = false;
-            Invoke("OnPettern", 7);
-            i = 0;
-        }
-    }
-    void OnPettern()
-    {
-        OnPattern = false;
-    }
 
     void DieAni()
     {

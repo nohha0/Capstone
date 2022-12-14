@@ -45,7 +45,8 @@ public class Attack : CharacterStats
                 animator.SetTrigger("attack");
                 AttackLeftOn = false;  //왼쪽 시선 금지
                 Invoke("NotMove", 0.4f);  //0.4초뒤 해제
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(Rpos.position, boxSize, 0);
+                Vector2 newBoxSize = new Vector2(boxSize.x * playerStat.attackRange, boxSize.y);
+                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(Rpos.position, newBoxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
                     //공격 이팩트 소환
@@ -62,7 +63,8 @@ public class Attack : CharacterStats
                 animator.SetTrigger("attack");
                 AttackRightOn = false;  //왼쪽 시선 금지
                 Invoke("NotMove", 0.4f);  //0.4초뒤 해제
-                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(Lpos.position, boxSize, 0);
+                Vector2 newBoxSize = new Vector2(boxSize.x * playerStat.attackRange, boxSize.y);
+                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(Lpos.position, newBoxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
                     //공격 이팩트 소환

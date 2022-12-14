@@ -41,6 +41,8 @@ public class PuzzleManager : MonoBehaviour
             {
                 SaveManager.Instance._playerData.solvedPuzzle3 = true;
             }
+            //만약 문 잠금 풀리는 사운드 넣으면 여기에다가
+            Invoke("SetOff", 1f);
         }
         FirstClear = false;
 
@@ -55,5 +57,10 @@ public class PuzzleManager : MonoBehaviour
     void Update()
     {
         IsClear();
+    }
+
+    void SetOff()
+    {
+        gameObject.SetActive(false);
     }
 }
