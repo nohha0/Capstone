@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public bool FirstSaveCol = false;
-    public bool FirstPuzzleCol = false;
 
     
     public bool Boss1Die = false;
