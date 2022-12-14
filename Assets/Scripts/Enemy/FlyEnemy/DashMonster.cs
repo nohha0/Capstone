@@ -6,10 +6,12 @@ public class DashMonster : FlyingMonster
 {
     Vector2 forward;
     bool setLook = true;
-    float cooltime = 6;
+    float cooltime = 5;
     float curtime;
     float Dashspeed = 110;
     public bool ani = false;
+
+    //Animator Ani;
 
     override protected void Start()
     {
@@ -20,6 +22,7 @@ public class DashMonster : FlyingMonster
         //GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         //Invoke("OnSetActive", 1f);
         DieStage = 6;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -47,21 +50,19 @@ public class DashMonster : FlyingMonster
 
         UpdateTarget();
 
-        if(curtime <=0)
-        {
-            if(ani)
-            {
 
-                if (setLook)
-                {
-                    forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
-                    setLook = false;
-                    FlipOn = false;
-                }
-                if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
-                    transform.Translate(forward * Dashspeed * Time.deltaTime);
-                Invoke("SETCUR", 1.5f);
+        if(curtime <= 0)
+        {
+            animator.SetTrigger("공격");
+            if (setLook)
+            {
+                forward = (targetGameObject.transform.position - transform.position).normalized; //방향 설정
+                setLook = false;
+                FlipOn = false;
             }
+            if ((targetGameObject.transform.position - transform.position).magnitude <= mag)
+                transform.Translate(forward * Dashspeed * Time.deltaTime);
+            Invoke("SETCUR", 1.5f);
 
         }
         curtime -= Time.deltaTime;

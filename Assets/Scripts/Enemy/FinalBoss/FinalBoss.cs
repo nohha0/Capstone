@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinalBoss : Enemy
 {
@@ -19,8 +20,6 @@ public class FinalBoss : Enemy
 
     //shin-------------------------------------------
     [SerializeField] GameObject Big_Water;
-    [SerializeField] GameObject Summon_Monster;
-    [SerializeField] GameObject MagicCircle;
     [SerializeField] Transform Base;
     SpriteRenderer rend;
     Vector3 Pos;
@@ -73,7 +72,6 @@ public class FinalBoss : Enemy
             timeUntilChangeState -= Time.deltaTime;
             if (Skill_SprayWater) Water_Teleport();
             if (Skill_Teleport) Teleport();
-            if (Skill_Summon) Summon();
 
         }
     }
@@ -117,20 +115,22 @@ public class FinalBoss : Enemy
             }
             else if (rand == 1)
             {
-                onWaterWave = true;
-                //onShooting = true;
+                //onWaterWave = true;
+                onShooting = true;
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
             }
             else if (rand == 2)
             {
                 Skill_SprayWater = true;
-                timeUntilChangeState = 47;
+                timeUntilChangeState = 30;
             }
-            else if(rand == 3)
+            else if (rand == 3)
             {
-                //Skill_Summon = true;
-                //timeUntilChangeState = 10f;
+                //onWaterWave = true;
+                onShooting = true;
+                Debug.Log("onShooting");
+                timeUntilChangeState = 5f;
             }
 
 
@@ -159,15 +159,6 @@ public class FinalBoss : Enemy
         Invoke("Set_BigWter", 1.5f);
     }
 
-    void Summon()
-    {
-        //gameObject.SetActive(false);
-        Skill_Summon = false;
-        Vector2 a = new Vector2(Base.position.x, Base.position.y - 10);
-        Instantiate(MagicCircle, a, transform.rotation);
-        Invoke("Summon_boss", 1f);
-        //Invoke("OnActive", 10f);
-    }
 
 
 
@@ -175,21 +166,20 @@ public class FinalBoss : Enemy
     void Teleport()    //텔포
     {
         //gameObject.SetActive(false);
+        //파란색 오브젝트 남기고 옴
+        //플립 변경
         Skill_Teleport = false;
-        float X = Random.Range(-50, 50);
-
+        float X = Random.Range(-65, 65);
+        if(X >15 && X> -15)
+        {
+            X = Random.Range(-50, 50);
+        }
         transform.position = new Vector2(PlayerPos.position.x + X, Base.position.y);
         //Invoke("OnActive", 1.5f);
     }
     void OnActive()
     {
         gameObject.SetActive(true);
-    }
-
-
-    void Summon_boss()
-    {
-        Instantiate(Summon_Monster, Base.position, transform.rotation);
     }
 
 

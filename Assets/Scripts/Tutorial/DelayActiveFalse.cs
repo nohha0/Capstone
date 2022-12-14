@@ -8,7 +8,7 @@ public class DelayActiveFalse : MonoBehaviour
     Text text;
     float time = 0;
 
-    float Starttime = 0.7f;
+    float Starttime = 0.3f;
 
     GameObject Upgrade;
     bool start = false;

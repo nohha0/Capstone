@@ -85,7 +85,7 @@ public class BossActive : MonoBehaviour
             {
                 ps.transform.position = Boss.transform.position;
                 ps.Play();
-                Invoke("Boss3", 5);
+                Invoke("Boss3", 5.4f);
             }
         }
 

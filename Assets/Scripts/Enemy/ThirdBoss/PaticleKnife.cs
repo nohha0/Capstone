@@ -10,19 +10,22 @@ public class PaticleKnife : MonoBehaviour
     Transform ThrBoss;
     public Transform PlayerPos;
     float AddTime = 4;  //추격 끝내고 날라가는 시간
-    float sp = 200;
+    float sp = 300;
     Vector2 direction;
     bool tr = true;
     Vector3 lookDir;
 
     Transform Reset;
 
+
+    float PlayPos;
+    float mainers;
+
     void Start()
     {
         ThrBoss = GameObject.Find("ThirdBoss").transform;
         PlayerPos = GameObject.Find("Player").transform;
-        transform.position = new Vector3(ThrBoss.position.x, ThrBoss.position.y + 30, 1);
-        Invoke("OnDestroy", 7);
+        Invoke("OnDestroy", 7f);
         Reset = transform;
     }
 
@@ -54,6 +57,9 @@ public class PaticleKnife : MonoBehaviour
             Instantiate(paticle, transform.position,PlayerPos.rotation);
         }
         AddTime -= Time.deltaTime;
+
+
+
     }
     private void OnDestroy()
     {

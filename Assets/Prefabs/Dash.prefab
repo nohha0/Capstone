@@ -45,9 +45,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -3}
+  m_Offset: {x: -0.30277443, y: -2.288772}
   serializedVersion: 2
-  m_Radius: 4.13
+  m_Radius: 5.144003
 --- !u!1 &7786876898494617750
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,9 +58,9 @@ GameObject:
   m_Component:
   - component: {fileID: 460047192360777597}
   - component: {fileID: 834672786076635817}
+  - component: {fileID: -4519907445410141057}
   - component: {fileID: 8338020984169773487}
   - component: {fileID: 1599616360732927838}
-  - component: {fileID: 4312773302526325797}
   - component: {fileID: 4312773302526325801}
   m_Layer: 7
   m_Name: Dash
@@ -137,6 +137,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-4519907445410141057
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786876898494617750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2870b7919de36d419d3bc2977e56727, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &8338020984169773487
 Rigidbody2D:
   serializedVersion: 4
@@ -152,7 +172,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -171,29 +191,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -3}
+  m_Offset: {x: -0.37845612, y: -2.303905}
   serializedVersion: 2
-  m_Radius: 4.13
---- !u!95 &4312773302526325797
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7786876898494617750}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b15f576f93fc94347a18d57be58fb1d5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Radius: 5.2045517
 --- !u!114 &4312773302526325801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   GiveValue: {fileID: 0}
   DieStage: 0
   player: {fileID: 0}
+  BossPlay: 0
   pos: {fileID: 460047192360777597}
   FlipOn: 1
   ani: 0

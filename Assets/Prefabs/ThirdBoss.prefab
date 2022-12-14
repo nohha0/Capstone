@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.51708984, y: -2.126318}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 15.064453, y: 30.253757}
   m_EdgeRadius: 0
 --- !u!1 &3509345777427173347
 GameObject:
@@ -217,6 +217,8 @@ MonoBehaviour:
   ps: {fileID: 0}
   GiveValue: {fileID: 0}
   DieStage: 0
+  player: {fileID: 0}
+  BossPlay: 0
   Knife_Pattern: 0
   Fly_1: {fileID: 0}
   Knife: {fileID: 1645852552249657770, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}

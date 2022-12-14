@@ -22,7 +22,12 @@ public class DownWalls : MonoBehaviour
     {
         if(Die.currentHP <= 0) animator.SetBool("DownUpdate", false);
 
-        if(BOSS == null) animator.SetBool("DownUpdate", false);
+        if(BOSS == null)
+        {
+            animator.SetBool("DownUpdate", false);
+            animator.SetBool("¹Ù´Ú¾÷", true);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,6 +36,7 @@ public class DownWalls : MonoBehaviour
         {
             Debug.Log("Ãæµ¹");
             animator.SetTrigger("Down");
+            animator.SetBool("¹Ù´Ú¾÷", false);
             animator.SetBool("DownUpdate", true);
             if(firstTime)
             {

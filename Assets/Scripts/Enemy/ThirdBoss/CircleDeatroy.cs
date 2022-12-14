@@ -14,9 +14,9 @@ public class CircleDeatroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time <= 2f) 
+        if (time <= 0.8f) 
         {
-            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 2);
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, time / 0.8f);
         }
         time += Time.deltaTime;
     }

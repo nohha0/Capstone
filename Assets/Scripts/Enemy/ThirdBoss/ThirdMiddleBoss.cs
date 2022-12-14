@@ -13,12 +13,14 @@ public class ThirdMiddleBoss : Enemy
     [SerializeField] protected GameObject Fly_1;
     [SerializeField] protected GameObject Knife;
     [SerializeField] protected GameObject MagicCircle;
+    [SerializeField] protected GameObject tell;
 
     [SerializeField] protected Transform BossPos;
     [SerializeField] protected Transform PlayerPos;
     [SerializeField] protected Transform BasePos;
+    [SerializeField] protected ParticleSystem ps;
 
-    int CurrentPos;         //중보스에 현위치를 알려줌
+    int CurrentPos =1;         //중보스에 현위치를 알려줌
     Transform SummonPos;    //몬스터 소환시 기점으로 하는 포스
     public SpriteRenderer rend;    //중보스 
 
@@ -99,8 +101,7 @@ public class ThirdMiddleBoss : Enemy
                 }
                 if (SummonOn)
                 {
-                    //SummonSkill();
-                    SummonOn = false;
+                    SummonSkill();
                     if (timeUntilChangeState <= 2)
                     {
                         Teleport();
@@ -128,20 +129,20 @@ public class ThirdMiddleBoss : Enemy
     void KnifeSkill()
     {
         Debug.Log("나이프");
-        Instantiate(Knife,transform);
+        Instantiate(Knife,new Vector2(BasePos.position.x,BasePos.position.y+45),transform.rotation);
     }
 
     void SummonSkill()
     {
+        SummonOn = false;
         Debug.Log("기본 소환");
-        for (int i = 0; i < 2; i++)
-        {
+        SummonSetPos();
+        Instantiate(MagicCircle, pos, transform.rotation);
+        Instantiate(Fly_1, pos, transform.rotation);
+        SummonSetPos();
+        Instantiate(Fly_1, pos, transform.rotation);
+        SummonSetPos();
 
-            SummonSetPos();
-            Instantiate(MagicCircle, pos, transform.rotation);
-            Instantiate(Fly_1, pos, transform.rotation);
-
-        }
 
     }
     //-------------------------------------------------------
@@ -161,10 +162,10 @@ public class ThirdMiddleBoss : Enemy
         }
         else
         {
+            DashOn = false;
             riged.velocity = Vector2.zero;   //동작 정지
             ForWardTime = 0;  //다시 0           
             Teleport();
-            DashOn = false;
             timeUntilChangeState = 0;
         }
         ForWardTime += Time.deltaTime;  //시간증가
@@ -172,45 +173,26 @@ public class ThirdMiddleBoss : Enemy
     //-----------------------------------------------------------
     void Teleport()
     {
-        gameObject.SetActive(false);
+        //파티클
         Debug.Log("텔포");
         int a;
         a = CurrentPos;
-        CurrentPos = Random.Range(0, 2);   //텔포 위치 정하는 함수         
-        if (CurrentPos == 0)   //왼쪽텔포
-        {
 
-            if (a == 0)
-            {
-                //오른쪽텔포
-                transform.position = new Vector2(BasePos.position.x + 80, BasePos.position.y);
-                rend.flipX = false;
-                CurrentPos = 1;
-            }
-            else
-            {
-                //왼쪽텔포
-                transform.position = new Vector2(BasePos.position.x - 80, BasePos.position.y);
-                rend.flipX = true;
-            }
-            Invoke("OnActive", 1f);
-        }
-        else if (CurrentPos == 1)  //오른쪽텔포
+        if (a == 0)
         {
-            if (a == 1)
-            {
-                //왼쪽텔포
-                transform.position = new Vector2(BasePos.position.x - 80, BasePos.position.y);
-                rend.flipX = true;
-                CurrentPos = 0;
-            }
-            else
-            {
-                //오른쪽텔포
-                transform.position = new Vector2(BasePos.position.x + 80, BasePos.position.y);
-                rend.flipX = false;
-            }
-            Invoke("OnActive", 1f);
+            //오른쪽텔포
+            //ps.Play();
+            transform.position = new Vector2(BasePos.position.x + 90, BasePos.position.y);
+            rend.flipX = false;
+            CurrentPos = 1;
+        }
+        else
+        {
+            //왼쪽텔포
+            //ps.Play();
+            transform.position = new Vector2(BasePos.position.x - 90, BasePos.position.y);
+            rend.flipX = true;
+            CurrentPos = 0;
         }
     }
     //-----------------------------------------------------------------------
@@ -219,7 +201,7 @@ public class ThirdMiddleBoss : Enemy
     {
         if (!onRest && timeUntilChangeState <= 0)
         {
-            timeUntilChangeState = 3f;
+            timeUntilChangeState = 1.5f;
             onRest = true;
             DashOn = false;
             SummonOn = false;
@@ -233,7 +215,7 @@ public class ThirdMiddleBoss : Enemy
             if (rand == 0)
             {
                 KnifeOn = true;
-                timeUntilChangeState = 13f;
+                timeUntilChangeState = 10f;
             }
             else if (rand == 1)
             {
@@ -245,7 +227,7 @@ public class ThirdMiddleBoss : Enemy
                 if(Summoncurtime <=0)
                 {
                     SummonOn = true;
-                    timeUntilChangeState = 8;
+                    timeUntilChangeState = 5;
                 }
             }
 

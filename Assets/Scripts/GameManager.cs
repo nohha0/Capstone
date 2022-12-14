@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
     public void OnDialog()
     {
         onDialogue = true;
-        playerCon.movable = false;
+        playerCon.IsMove = false;
         dialogueBox.SetActive(true);
     }
 
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
 
         onDialogue = false;
         Debug.Log("คั");
-        playerCon.movable = true;
+        playerCon.IsMove = true;
         dialogueBox.SetActive(false);
     }
 

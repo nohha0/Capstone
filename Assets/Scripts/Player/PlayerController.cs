@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //movable = false;
-        Debug.Log(movable);
         animator.SetBool("run", false);
 
         //캐릭터 이동/점프
