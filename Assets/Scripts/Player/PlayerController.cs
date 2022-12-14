@@ -125,13 +125,13 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("LeftDash");
                 Dashhh.GetComponent<SpriteRenderer>().flipX = false;
-                //Instantiate(Dashhh, new Vector2(transform.position.x -3,transform.position.y),transform.rotation);
+                Instantiate(Dashhh, new Vector2(transform.position.x -3,transform.position.y),transform.rotation);
             }
             if (direction == 2) 
             {
                 animator.SetTrigger("RightDash");
                 Dashhh.GetComponent<SpriteRenderer>().flipX = true;
-                //Instantiate(Dashhh, new Vector2(transform.position.x + 3, transform.position.y), transform.rotation);
+                Instantiate(Dashhh, new Vector2(transform.position.x + 3, transform.position.y), transform.rotation);
             }
         }
 
@@ -386,7 +386,7 @@ public class PlayerController : MonoBehaviour
     {
         if(HP.currentHP<=0)
         {
-            movable = false;
+            IsMove = false;
 
             animator.SetTrigger("Die");
 

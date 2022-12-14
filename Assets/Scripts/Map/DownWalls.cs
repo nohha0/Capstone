@@ -21,6 +21,8 @@ public class DownWalls : MonoBehaviour
     void Update()
     {
         if(Die.currentHP <= 0) animator.SetBool("DownUpdate", false);
+
+        if(BOSS == null) animator.SetBool("DownUpdate", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

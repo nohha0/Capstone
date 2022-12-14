@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     //-----------------------
     CharacterStats Stats;
     Level Bar;
+    int leval;
 
     float itemCooldownTime = 5.0f;
     float updateTime = 0.0f;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         startPanel.SetActive(true);
         Invoke("SetFadeIn", 1f);
         MaxLife = Stats.maxHP;
+        leval = Bar.level;
     }
 
     void SetFadeIn()
@@ -131,15 +133,15 @@ public class GameManager : MonoBehaviour
 
     void Bar_con()
     {
-        float bar = Bar.expCurrent / Bar.expLeft;
-        if (Enhance_Slider.fillAmount >= 1)
+        if(leval < Bar.level)
         {
+            leval = Bar.level;
             Enhance_Slider.fillAmount = 0;
-            updateTime = 0;
         }
+        float bar = Bar.expCurrent / Bar.expLeft;
         if (Enhance_Slider.fillAmount <= bar)
         {
-            updateTime -= Time.deltaTime;
+            //updateTime -= Time.deltaTime;
             Enhance_Slider.fillAmount += Time.deltaTime;
         }
     }

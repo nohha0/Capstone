@@ -9,15 +9,36 @@ public class ActiveFalse : MonoBehaviour
     float time = 0;
     Image image;
     PlayerController Move;
+
+    float Starttime = 0.7f;
+
+    GameObject Upgrade;
+    bool start = false;
     void Start()
     {
         Move = GameObject.Find("Player").GetComponent<PlayerController>();
         image = GetComponent<Image>();
+        image.color = new Color(1, 1, 1, 0);
+        Upgrade = GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("UpgradePanel").gameObject;
     }
 
     void Update()
     {
-        if(gameObject.activeSelf)
+        if(Starttime <= 0)
+        {
+            start = true;
+        }
+        if(Upgrade.activeSelf)
+        {
+            Starttime = 2f;
+        }
+        if(!Upgrade.activeSelf)
+        {
+            Starttime -= Time.deltaTime;
+        }
+
+
+        if(gameObject.activeSelf && start)
         {
             Move.IsMove = false;
             if (time < 0.5f)
@@ -30,7 +51,7 @@ public class ActiveFalse : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                     time = 0;
-                    Debug.Log("ㅡ");
+                    //Debug.Log("ㅡ");
                     Move.IsMove = true;
                 }
             }
@@ -38,4 +59,5 @@ public class ActiveFalse : MonoBehaviour
         }
 
     }
+
 }
