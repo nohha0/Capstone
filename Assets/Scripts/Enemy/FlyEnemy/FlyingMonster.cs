@@ -50,7 +50,7 @@ public class FlyingMonster : Enemy
 
    void SetPos()
     {
-        X = Random.Range(29f, 40f);
-        Y = Random.Range(22f, 30f);
+        X = Random.Range(20f, 30f);
+        Y = Random.Range(15f, 22f);
     }
 }

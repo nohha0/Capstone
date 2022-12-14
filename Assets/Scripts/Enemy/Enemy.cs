@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
             spriteRend.color = new Color(0.5f, 0.5f, 0.5f);
             HP -= damage;
             attacked = true;
-            Invoke("attackedOn", 1f);
+            Invoke("attackedOn", 0.45f);
             MoveOn = false;
             if (HP > 0)
             {
