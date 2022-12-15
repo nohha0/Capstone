@@ -12,6 +12,10 @@ public class PuzzleManager : MonoBehaviour
 
     GameController Puzzle;
 
+    public AudioSource audioSource;
+    public AudioClip drawer;
+    public AudioClip clear;
+
     public bool IsClear()
     {
         for (int i = 0; i < PuzzlePosSet.transform.childCount; i++)
@@ -41,7 +45,7 @@ public class PuzzleManager : MonoBehaviour
             {
                 SaveManager.Instance._playerData.solvedPuzzle3 = true;
             }
-            //만약 문 잠금 풀리는 사운드 넣으면 여기에다가
+            audioSource.PlayOneShot(clear);
             Invoke("SetOff", 1f);
         }
         FirstClear = false;
@@ -61,6 +65,7 @@ public class PuzzleManager : MonoBehaviour
 
     void SetOff()
     {
+        audioSource.PlayOneShot(drawer);
         gameObject.SetActive(false);
     }
 }

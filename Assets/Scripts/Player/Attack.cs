@@ -26,6 +26,11 @@ public class Attack : CharacterStats
     CharacterStats playerStat;
     PlayerController Move;
 
+    public AudioSource audioSource;
+    public AudioClip Knife;
+    public AudioClip fireRange;
+
+
 
     void Start()
     {
@@ -39,6 +44,8 @@ public class Attack : CharacterStats
     {
         if (Move.movable&&Input.GetKeyDown(KeyCode.Z) && curTime <=0) // 공격버튼을 눌렀다면
         {
+            audioSource.PlayOneShot(Knife);
+
             if (rend.flipX)  //오른쪽 시선
             {
                 //공격할때마다 attackSpeed만큼 좌우전환 금지
@@ -76,6 +83,7 @@ public class Attack : CharacterStats
                     }
                 }
             }
+
             curTime = playerStat.attackSpeed;
         }
         else //누르지 않는다면 시간 단축
@@ -85,6 +93,7 @@ public class Attack : CharacterStats
 
         if (Input.GetKeyDown(KeyCode.S) && !fireRangeOn && SaveManager.Instance._playerData.killedBoss3)
         {
+            audioSource.PlayOneShot(fireRange);
             fireRangeOn = true;
             Vector2 playerPos = new Vector2(transform.position.x, transform.position.y+7);
             range_object = Instantiate(rangeObject, playerPos, transform.rotation);

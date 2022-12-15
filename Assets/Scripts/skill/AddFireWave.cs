@@ -11,6 +11,9 @@ public class AddFireWave : MonoBehaviour
 
     CharacterStats playerStat;
 
+    public AudioSource audioSource;
+    public AudioClip fire;
+
     void Start()
     {
         playerStat = GameObject.Find("Player").GetComponent<CharacterStats>();
@@ -22,6 +25,8 @@ public class AddFireWave : MonoBehaviour
         {
             Instantiate(firewave, pos.position, transform.rotation);
             curtime = playerStat.attackSpeed;
+
+            audioSource.PlayOneShot(fire);
         }
         curtime -= Time.deltaTime;
 

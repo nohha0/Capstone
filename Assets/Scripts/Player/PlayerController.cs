@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour
     public GameObject Heal;
     public GameObject gameOverImage;
 
+
+    public AudioSource audioSource;
+    public AudioClip attaked;
+    public AudioClip die;
+    public AudioClip dash;
+    public AudioClip drawer;
+
+    //audioSource.PlayOneShot(attaked);
+
     public float walkSpeed;
     public float jumpForce;
     public float dashSpeed;
@@ -51,7 +60,6 @@ public class PlayerController : MonoBehaviour
     float healtime = 0.7f;
     int DieMoveStage;
     bool NotLoop = false;
-    //
 
     public GameObject Dashhh;
     public ParticleSystem ps;
@@ -125,17 +133,20 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("LeftDash");
                 Dashhh.GetComponent<SpriteRenderer>().flipX = false;
                 Instantiate(Dashhh, new Vector2(transform.position.x -3,transform.position.y),transform.rotation);
+                audioSource.PlayOneShot(dash);
             }
             if (direction == 2) 
             {
                 animator.SetTrigger("RightDash");
                 Dashhh.GetComponent<SpriteRenderer>().flipX = true;
                 Instantiate(Dashhh, new Vector2(transform.position.x + 3, transform.position.y), transform.rotation);
+                audioSource.PlayOneShot(dash);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && onPuzzle)
         {
+            audioSource.PlayOneShot(drawer);
             onPuzzle = false;
             movable = true;
             Debug.Log("คั");
@@ -242,6 +253,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
         {
             stats.TakeDamage();
+            audioSource.PlayOneShot(attaked);
             hasAttacked = true;
             Invoke("attackOn", 3);
             CameraController = true;
@@ -265,6 +277,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && !onPuzzle)
             {
+                audioSource.PlayOneShot(drawer);
                 Invoke("OnPuzzle", 0.5f);
                 movable = false;
                 switch (other.gameObject.name)
@@ -393,6 +406,8 @@ public class PlayerController : MonoBehaviour
             IsMove = false;
 
             animator.SetTrigger("Die");
+
+            //audioSource.PlayOneShot(die);
 
             Invoke("OnGameOverImage", 2f);
 
