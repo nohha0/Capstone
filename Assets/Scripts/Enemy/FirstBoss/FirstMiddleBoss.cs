@@ -55,6 +55,12 @@ public class FirstMiddleBoss : Enemy
 
     override protected void Update()
     {
+
+        if(HP <= 0)
+        {
+            Die.transform.position = transform.position;
+            Die.Play();
+        }
         //Debug.Log(BossPlay);
         base.Update();
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag &&BossPlay)

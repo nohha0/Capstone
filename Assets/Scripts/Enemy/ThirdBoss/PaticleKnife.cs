@@ -7,12 +7,15 @@ public class PaticleKnife : MonoBehaviour
     public GameObject paticle;
     GameObject targetGameObject;
 
+    Rigidbody2D rg;
     Transform ThrBoss;
+    public ParticleSystem Ps;
     public Transform PlayerPos;
-    float AddTime = 4;  //추격 끝내고 날라가는 시간
+    float AddTime = 3;  //추격 끝내고 날라가는 시간
     float sp = 300;
     Vector2 direction;
     bool tr = true;
+    bool PsStart = true;
     Vector3 lookDir;
 
     Transform Reset;
@@ -21,24 +24,31 @@ public class PaticleKnife : MonoBehaviour
     float PlayPos;
     float mainers;
 
+    bool move = true;
+    public GameObject Pss;
+
     void Start()
     {
+        //Ps.Stop();
         ThrBoss = GameObject.Find("ThirdBoss").transform;
         PlayerPos = GameObject.Find("Player").transform;
         Invoke("OnDestroy", 7f);
+        Destroy(gameObject, 15f);
         Reset = transform;
+
+        rg = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (AddTime >= 1)   //추격 함수
+        if (AddTime >= 1&&move)   //추격 함수
         {
             Vector3 dir = PlayerPos.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-           
+
         }
         if (AddTime <= 1)
         {
@@ -54,7 +64,16 @@ public class PaticleKnife : MonoBehaviour
         {
             //transform.Translate(direction * sp * Time.deltaTime);
             transform.position = Vector3.MoveTowards(Reset.position, direction, sp * Time.deltaTime);
-            Instantiate(paticle, transform.position,PlayerPos.rotation);
+            
+        }
+        if (AddTime < -1)
+        {
+            if (PsStart)
+            {
+                PsStart = false;
+                Pss.SetActive(true);
+            }
+
         }
         AddTime -= Time.deltaTime;
 
@@ -63,6 +82,6 @@ public class PaticleKnife : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Destroy(gameObject);
+        rg.velocity = Vector2.zero;
     }
 }

@@ -79,6 +79,16 @@ public class JumpingMonster : Enemy
         {
             Destroy(gameObject);
         }
+
+        if (HP <= 0)
+        {
+            transform.GetChild(0).tag = "Untagged";
+
+            rigid.gravityScale = 300f;
+            animator.SetTrigger("´ÙÀÌ");
+            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
+            Invoke("DIE", 2f);
+        }
     }
 
     public void OffWalk()

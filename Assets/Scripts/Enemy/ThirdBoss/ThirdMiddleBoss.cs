@@ -18,7 +18,7 @@ public class ThirdMiddleBoss : Enemy
     [SerializeField] protected Transform BossPos;
     [SerializeField] protected Transform PlayerPos;
     [SerializeField] protected Transform BasePos;
-    [SerializeField] protected ParticleSystem ps;
+    //[SerializeField] protected ParticleSystem ps;
 
     int CurrentPos =1;         //중보스에 현위치를 알려줌
     Transform SummonPos;    //몬스터 소환시 기점으로 하는 포스
@@ -35,7 +35,7 @@ public class ThirdMiddleBoss : Enemy
     protected bool cooltime = false;
     protected Vector3 pos;                //초기화 변수
 
-    protected float Summoncurtime = 0;
+    protected float Summoncurtime = 20;
     protected float Summoncooltime = 30;
 
     //protected float retelepotime;
@@ -54,6 +54,11 @@ public class ThirdMiddleBoss : Enemy
 
 
     bool First = true;
+
+    float Sumontime = 20;
+    bool aniF = true;
+
+    
 
     override protected void Start()
     {
@@ -86,7 +91,7 @@ public class ThirdMiddleBoss : Enemy
 
 
 
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag&&BossPlay)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag&&BossPlay && HP>300)
         {
             if (start)
             {
@@ -114,16 +119,21 @@ public class ThirdMiddleBoss : Enemy
         }
 
         //---------------------------------
-        if (HP <= 0)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
-            //애니메이션 끝나면서 경험치 주셈
-            //애니함수 호출해야하는데 지금은 그냥 다이 스킬 획득 호출
-            DieAni();
-        }
+
     }
 
+
+    private void FixedUpdate()
+    {
+        if (HP <= 300)
+        {
+            animator.SetTrigger("다이");
+            Die.transform.position = transform.position;
+            Die.Play();
+            Invoke("HP300", 2f);
+            
+        }
+    }
 
 
     void KnifeSkill()
@@ -141,7 +151,7 @@ public class ThirdMiddleBoss : Enemy
         Instantiate(Fly_1, pos, transform.rotation);
         SummonSetPos();
         Instantiate(Fly_1, pos, transform.rotation);
-        SummonSetPos();
+        Instantiate(MagicCircle, pos, transform.rotation);
 
 
     }
@@ -165,6 +175,7 @@ public class ThirdMiddleBoss : Enemy
             DashOn = false;
             riged.velocity = Vector2.zero;   //동작 정지
             ForWardTime = 0;  //다시 0           
+            aniF = true;
             Teleport();
             timeUntilChangeState = 0;
         }
@@ -219,13 +230,16 @@ public class ThirdMiddleBoss : Enemy
             }
             else if (rand == 1)
             {
-                DashOn = true;
+                //DashOn = true;
+                Invoke("DaOn", 0.8f);
+                animator.SetTrigger("대시");
                 timeUntilChangeState = 4f;
             }
             else if (rand == 2)
             {
                 if(Summoncurtime <=0)
                 {
+                    Summoncurtime = 20;
                     SummonOn = true;
                     timeUntilChangeState = 5;
                 }
@@ -237,20 +251,14 @@ public class ThirdMiddleBoss : Enemy
     //--------------------------------------------------------------
     void SummonSetPos()
     {
-        int SetPosInt = Random.Range(0, 2);
-        if (SetPosInt == 0)
+        int x = Random.Range(-60, 61);
+        int y = Random.Range(15, 22);
+        if (x > -20 && x < 20)
         {
-            //보스를 기점한 포스값
-            int x = Random.Range(-40, 41);
-            int y = Random.Range(10, 15);
-            pos = new Vector3(BossPos.position.x + x, BossPos.position.y + y, 1);
+            x = Random.Range(-60, 61);
         }
-        if (SetPosInt == 1)
-        {
-            int x = Random.Range(-40, 41);
-            int y = Random.Range(10, 15);
-            pos = new Vector3(PlayerPos.position.x + x, PlayerPos.position.y + y);
-        }
+
+        pos = new Vector3(PlayerPos.position.x + x, PlayerPos.position.y + y);
     }
 
     void OnActive()
@@ -302,4 +310,16 @@ public class ThirdMiddleBoss : Enemy
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
+
+    void DaOn()
+    {
+        DashOn = true;
+    }
+    void HP300()
+    {
+        HP = 0;
+        DieAni();
+    }
+
+
 }

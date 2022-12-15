@@ -36,7 +36,8 @@ public class Enemy : MonoBehaviour
     GameManager gameManager;
 
     public bool BossPlay = false;
-
+    public bool ImBoss;
+    public ParticleSystem Die;
 
     virtual protected void Start()
     {
@@ -63,12 +64,7 @@ public class Enemy : MonoBehaviour
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
-            Invoke("DIE", 1.7f);
-            if (One)
-            {
-                GiveValue.expCurrent += Enhance_value;
-                One = false;
-            }
+            Invoke("DIE", 2f);
         }
 
         UpdateTarget();
@@ -126,7 +122,13 @@ public class Enemy : MonoBehaviour
         //ps.Play();
 
         speed = 0;
-        
+
+        if (One)
+        {
+            GiveValue.expCurrent += Enhance_value;
+            One = false;
+        }
+
         if (middleBoss1)
         {
             SaveManager.Instance._playerData.killedBoss1 = true;

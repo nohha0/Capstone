@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class FinalBoss : Enemy
 {
-    Animator animator;
     //noh-----------------------------------------------
     public GameObject WaterWave; //ÇÁ¸®ÆÕ °¡Á®¿È
     public float height;
