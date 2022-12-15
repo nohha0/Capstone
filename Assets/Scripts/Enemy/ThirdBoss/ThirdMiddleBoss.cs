@@ -75,7 +75,7 @@ public class ThirdMiddleBoss : Enemy
 
     override protected void Update()
     {
-        base.Update();
+        //base.Update();
         ChangeState();
 
         if(!gameObject.activeSelf)
@@ -116,6 +116,7 @@ public class ThirdMiddleBoss : Enemy
                 timeUntilChangeState -= Time.deltaTime;
             }
 
+
         }
 
         //---------------------------------
@@ -123,14 +124,15 @@ public class ThirdMiddleBoss : Enemy
     }
 
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        if (HP <= 300)
+        if (HP <= 0)
         {
-            animator.SetTrigger("다이");
+            //animator.SetTrigger("다이");
             Die.transform.position = transform.position;
             Die.Play();
             Invoke("HP300", 2f);
+            Invoke("Die", 2f);
             
         }
     }

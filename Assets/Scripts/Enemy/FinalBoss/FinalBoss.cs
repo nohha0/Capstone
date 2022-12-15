@@ -53,7 +53,7 @@ public class FinalBoss : Enemy
         rend = GetComponent<SpriteRenderer>();
         Pos = new Vector3(Base.position.x + 4, Base.position.y + 55, 1);
         InvokeRepeating("OnActive", 5, 2);
-
+        animator = GetComponent<Animator>();
     }
 
     override protected void Update()
@@ -64,7 +64,7 @@ public class FinalBoss : Enemy
         {
             ChangeState();
 
-            if (onShooting) Shooting.SetActive(true);
+            if (onShooting) Shooting.SetActive(false) ;
             else Shooting.SetActive(false);
             if (onWaterWave && !callWaterWave) Wave();
             if (onRest) Rest();
@@ -72,6 +72,12 @@ public class FinalBoss : Enemy
             if (Skill_SprayWater) Water_Teleport();
             if (Skill_Teleport) Teleport();
 
+        }
+
+        if(HP <= 0)
+        {
+            animator.SetTrigger("´ÙÀÌ");
+            Invoke("Reset", 2f);
         }
     }
 
@@ -88,7 +94,7 @@ public class FinalBoss : Enemy
 
     void Rest()
     {
-
+        SaveManager.Instance._playerData.clearAllGame = true;
     }
 
     void ChangeState()
