@@ -18,7 +18,7 @@ public class DelayActiveFalse : MonoBehaviour
     {
         text = GetComponent<Text>();
         text.color = new Color(1, 1, 1, 0);
-        Upgrade = GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("스킬").transform.Find("UpgradePanel").gameObject;
+        Upgrade = GameObject.Find("Canvas").transform.Find("UpgradePanel").gameObject;
         if(Boss)
         {
             Starttime = 2f;
