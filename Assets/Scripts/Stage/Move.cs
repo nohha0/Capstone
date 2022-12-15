@@ -16,6 +16,10 @@ public class Move : MonoBehaviour
     public bool asDoor = false;
     bool FirstKey =true;
 
+
+    public AudioSource audioSource;
+    public AudioClip door;
+
     //--------------------------------
     GameController Puzzle;
 
@@ -43,11 +47,11 @@ public class Move : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-
         if (other.tag == "Player" && asDoor && Input.GetKey(KeyCode.Space))
         {
             if(NumDoor == 0)
             {
+                audioSource.PlayOneShot(door);
                 penelani.SetTrigger("Ææ³Ú °¡µ¿");
                 GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
                 Invoke("IsMove", 1.3f);
@@ -58,6 +62,7 @@ public class Move : MonoBehaviour
             {
                 if(SaveManager.Instance._playerData.solvedPuzzle1) 
                 {
+                    audioSource.PlayOneShot(door);
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
                     Invoke("IsMove", 1.3f);
@@ -75,6 +80,7 @@ public class Move : MonoBehaviour
             {
                 if (SaveManager.Instance._playerData.solvedPuzzle2)
                 {
+                    audioSource.PlayOneShot(door);
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
                     Invoke("IsMove", 1.3f);
@@ -91,6 +97,7 @@ public class Move : MonoBehaviour
             {
                 if (SaveManager.Instance._playerData.solvedPuzzle3)
                 {
+                    audioSource.PlayOneShot(door);
                     penelani.SetTrigger("Ææ³Ú °¡µ¿");
                     GameObject.Find("Player").GetComponent<PlayerController>().movable = false;
                     Invoke("IsMove", 1.3f);
