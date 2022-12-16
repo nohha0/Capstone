@@ -10085,7 +10085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 3600
+  HP: 3900
   attacked: 0
   mag: 100
   Enhance_value: 0
@@ -10102,6 +10102,8 @@ MonoBehaviour:
   Die: {fileID: 0}
   WaterWave: {fileID: 8448801111772020772, guid: 1c91e54b5a9528844bd21a9fda456533, type: 3}
   height: -20
+  Shooting: {fileID: 0}
+  Shooting2: {fileID: 0}
   Big_Water: {fileID: 1263350060056709761, guid: 25ff2f80f2404d543895b4fc5779dc72, type: 3}
   Base: {fileID: 0}
   PlayerPos: {fileID: 0}

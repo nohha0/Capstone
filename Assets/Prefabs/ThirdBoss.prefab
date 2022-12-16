@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  HP: 2300
+  HP: 2500
   attacked: 0
   mag: 500
   Enhance_value: 35000
@@ -219,10 +219,12 @@ MonoBehaviour:
   DieStage: 0
   player: {fileID: 0}
   BossPlay: 0
-  Knife_Pattern: 0
+  ImBoss: 0
+  Die: {fileID: 0}
   Fly_1: {fileID: 0}
   Knife: {fileID: 1645852552249657770, guid: 0675bcc0005c8894a86cb917cb3d5dfb, type: 3}
   MagicCircle: {fileID: 5978575417651614489, guid: 09e383f2194f40d4bb47739a93074174, type: 3}
+  tell: {fileID: 0}
   BossPos: {fileID: 4982462741797400771}
   PlayerPos: {fileID: 0}
   BasePos: {fileID: 0}

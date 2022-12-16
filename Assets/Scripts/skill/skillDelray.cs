@@ -8,7 +8,7 @@ public class skillDelray : MonoBehaviour
     public float MaxTime;
     float curtime;
     public int skillnum;
-
+    float bar;
     Image Im;
     void Start()
     {
@@ -31,14 +31,14 @@ public class skillDelray : MonoBehaviour
         {
             S();
         }
-        curtime = Time.deltaTime;
+        bar = curtime / MaxTime;
+        Im.fillAmount = bar;
+        curtime -= Time.deltaTime;
     }
 
     void X()
     {
-        float bar = curtime / MaxTime;
-        Im.fillAmount = bar;
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X) && curtime <= 0)
         {
             curtime = MaxTime;
         }
@@ -46,9 +46,7 @@ public class skillDelray : MonoBehaviour
 
     void A()
     {
-        float bar = curtime / MaxTime;
-        Im.fillAmount = bar;
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)&& curtime <= 0)
         {
             curtime = MaxTime;
         }
@@ -56,9 +54,7 @@ public class skillDelray : MonoBehaviour
 
     void S()
     {
-        float bar = curtime / MaxTime;
-        Im.fillAmount = bar;
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && curtime <= 0)
         {
             curtime = MaxTime;
         }

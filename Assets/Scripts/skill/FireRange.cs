@@ -15,7 +15,7 @@ public class FireRange : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponentInParent<Enemy>().TakeDamage(100 * playerStat.attackPower);
+            collision.GetComponentInParent<Enemy>().TakeDamage(40 * playerStat.attackPower);
             //Debug.Log("fireRange");
         }
     }
