@@ -167,7 +167,7 @@ public class SecondMiddleBoss : Enemy
         }
 
         rotatepens++;
-        int Xindex = Random.Range(0, 5); //0,1,2,3,4
+        int Xindex = Random.Range(0, 4); //0,1,2,3,4
         int Yindex = Random.Range(0, 2); //0,1
 
         rotatingPenPosition = new Vector3(penXs[Xindex], penYs[Yindex], transform.position.z);

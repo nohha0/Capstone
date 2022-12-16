@@ -31,7 +31,7 @@ public class Wind : MonoBehaviour
         else if (elapseTime <= timeToDestroy) //¿ª¹æÇâ
         {
             rend.flipX = true;
-            transform.Translate(new Vector2(speed * 2 * Time.deltaTime, 0f));
+            transform.Translate(new Vector2(speed * 1.5f * Time.deltaTime, 0f));
         }
         else
         {
