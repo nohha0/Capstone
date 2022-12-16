@@ -71,17 +71,12 @@ public class FirstMiddleBoss : Enemy
             if (onRest) Rest();
             timeUntilChangeState -= Time.deltaTime;
         }
+
         if (targetGameObject.transform.position.x > transform.position.x) spriteRend.flipX = true;
         else if (targetGameObject.transform.position.x < transform.position.x) spriteRend.flipX = false;
 
-
-        //---------------------------------
         if (HP <= 0)
         {
-            Destroy(transform.GetChild(0).gameObject);
-            spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
-            //애니메이션 끝나면서 경험치 주셈
-            //애니함수 호출해야하는데 지금은 그냥 다이 스킬 획득 호출
             DieAni();
         }
 

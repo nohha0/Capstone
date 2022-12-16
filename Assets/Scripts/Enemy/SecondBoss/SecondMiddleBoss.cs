@@ -49,11 +49,10 @@ public class SecondMiddleBoss : Enemy
         penXs = new float[4];
         penYs = new float[2];
 
-        penXs[0] = rotatePenPosObj.transform.position.x - 140f;
-        penXs[1] = rotatePenPosObj.transform.position.x - 70f;
-        penXs[2] = rotatePenPosObj.transform.position.x;
-        penXs[3] = rotatePenPosObj.transform.position.x + 70f;
-        penXs[4] = rotatePenPosObj.transform.position.x + 140f;
+        penXs[0] = rotatePenPosObj.transform.position.x;
+        penXs[1] = rotatePenPosObj.transform.position.x + 60f;
+        penXs[2] = rotatePenPosObj.transform.position.x + 120f;
+        penXs[3] = rotatePenPosObj.transform.position.x + 180f;
 
         penYs[0] = rotatePenPosObj.transform.position.y;
         penYs[1] = rotatePenPosObj.transform.position.y + 50f;
