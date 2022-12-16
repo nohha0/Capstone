@@ -74,7 +74,7 @@ public class ThirdMiddleBoss : Enemy
         base.Update();
         ChangeState();
 
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag && BossPlay && HP > 300)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag && BossPlay)
         {
             if (start)
             {

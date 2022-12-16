@@ -10,6 +10,9 @@ public class DownWalls : MonoBehaviour
     Animator animator;
     CharacterStats Die;
 
+    public bool IsDown = false;
+    bool Firstcoll = true;
+
     void Start()
     {
         firstTime = true;
@@ -20,13 +23,26 @@ public class DownWalls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Die.currentHP <= 0) animator.SetBool("DownUpdate", false);
+        if(Die.currentHP <= 0)
+        {
+            Firstcoll = true;
+            animator.SetBool("DownUpdate", false);
+            animator.SetBool("夥款機", true);
+        }
 
         if(BOSS == null)
         {
             animator.SetBool("DownUpdate", false);
             animator.SetBool("夥款機", true);
         }
+
+        if(IsDown)
+        {
+            animator.SetBool("夥款機", false);
+            animator.SetBool("DownUpdate", true);
+        }
+
+
 
     }
 
@@ -35,9 +51,11 @@ public class DownWalls : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("醱給");
-            animator.SetTrigger("Down");
-            animator.SetBool("夥款機", false);
-            animator.SetBool("DownUpdate", true);
+            if(Firstcoll)
+            {
+                Firstcoll = false;
+                animator.SetTrigger("Down");
+            }
             if(firstTime)
             {
                 firstTime = false;

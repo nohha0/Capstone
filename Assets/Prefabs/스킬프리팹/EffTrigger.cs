@@ -4,27 +4,39 @@ using UnityEngine;
 
 public class EffTrigger : MonoBehaviour
 {
-    ParticleSystem m;
-    ParticleSystem.Particle[] mP;
+    public bool hasAttacked = false;
 
+    SpriteRenderer spriteRenderer;
+    public ParticleSystem part;
     void Start()
     {
+        part = GetComponent<ParticleSystem>();
 
-        m = GetComponent<ParticleSystem>();
-        mP = new ParticleSystem.Particle[m.main.maxParticles];
+        spriteRenderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
 
-    private void OnTriggerExit2D(Collider2D ot)
-    {
-        if(ot.gameObject.CompareTag("Player"))
+        if (hasAttacked)
         {
+            spriteRenderer.color = new Color(0.7f, 0.7f, 0.7f, 1f);
+        }
+    }
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.tag == "Player" && !hasAttacked)
+        {
+            hasAttacked = true;
+            Invoke("attackOn", 3);
             GameObject.Find("Player").GetComponent<CharacterStats>().TakeDamage();
         }
+    }
+
+
+    public void attackOn()
+    {
+        hasAttacked = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 }

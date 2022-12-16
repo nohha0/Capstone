@@ -110,11 +110,10 @@ public class FinalBoss : Enemy
             {
                 onWaterWave = true;
                 Debug.Log("onWaterWave");
-                timeUntilChangeState = 5f;
+                timeUntilChangeState = 4f;
             }
             else if (rand == 1)
             {
-                //onWaterWave = true;
                 onShooting = true;
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
@@ -122,11 +121,10 @@ public class FinalBoss : Enemy
             else if (rand == 2)
             {
                 Skill_SprayWater = true;
-                timeUntilChangeState = 30;
+                timeUntilChangeState = 20;
             }
             else if (rand == 3)
             {
-                //onWaterWave = true;
                 onShooting = true;
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
