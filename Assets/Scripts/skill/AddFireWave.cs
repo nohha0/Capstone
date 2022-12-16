@@ -24,7 +24,7 @@ public class AddFireWave : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && curtime <= 0 && SaveManager.Instance._playerData.killedBoss2)
         {
             Instantiate(firewave, pos.position, transform.rotation);
-            curtime = playerStat.attackSpeed;
+            curtime = 6;
 
             audioSource.PlayOneShot(fire);
         }

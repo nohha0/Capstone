@@ -9,7 +9,8 @@ public class FinalBoss : Enemy
     public GameObject WaterWave; //프리팹 가져옴
     public float height;
 
-    GameObject Shooting;
+    public GameObject Shooting;
+    public GameObject Shooting2;
 
     float timeUntilChangeState;
     bool onShooting;
@@ -34,14 +35,16 @@ public class FinalBoss : Enemy
 
 
     //-----------------------------------------
-    int curtell = 0;
+    int curtell = 1;
 
     override protected void Start()
     {
         //noh-----------------------------------------------
         base.Start(); //attacked(쿨타임), targetGameObject, rigid, spriteRend, animator 초기화
-        Shooting = gameObject.transform.Find("슈팅아래").gameObject;
+        //Shooting = gameObject.transform.Find("슈팅아래").gameObject;
+        //Shooting2 = gameObject.transform.Find("슈팅아래오른").gameObject;
         Shooting.SetActive(false);
+        Shooting2.SetActive(false);
         timeUntilChangeState = 0f;
         onShooting = false;
         onWaterWave = false;
@@ -63,8 +66,6 @@ public class FinalBoss : Enemy
         {
             ChangeState();
 
-            if (onShooting) Shooting.SetActive(true) ;
-            else Shooting.SetActive(false);
             if (onWaterWave && !callWaterWave) Wave();
             if (onRest) Rest();
             timeUntilChangeState -= Time.deltaTime;
@@ -96,7 +97,7 @@ public class FinalBoss : Enemy
         if (!onRest && timeUntilChangeState <= 0)
         {
             onRest = true;
-            timeUntilChangeState = 3.5f;
+            timeUntilChangeState = 1.5f;
             onWaterWave = false;
             callWaterWave = false;
             onShooting = false;
@@ -110,15 +111,19 @@ public class FinalBoss : Enemy
             {
                 Teleport();
                 onShooting = true;
+                if (!rend.flipX) Shooting.SetActive(true);
+                if (rend.flipX) Shooting2.SetActive(true);
                 Debug.Log("onShooting");
-                timeUntilChangeState = 5f;
+                timeUntilChangeState = 3f;
             }
             else if (rand == 1)
             {
                 Teleport();
                 onShooting = true;
+                if (!rend.flipX) Shooting.SetActive(true);
+                if (rend.flipX) Shooting2.SetActive(true);
                 Debug.Log("onShooting");
-                timeUntilChangeState = 5f;
+                timeUntilChangeState = 3f;
             }
             else if (rand == 2)
             {
@@ -161,26 +166,18 @@ public class FinalBoss : Enemy
 
     void Teleport()    //텔포
     {
-        //gameObject.SetActive(false);
-        //파란색 오브젝트 남기고 옴
-        //플립 변경
-        Skill_Teleport = false;
-        float X = Random.Range(190, 190);
-        if(X >40 && X> -40)
-        {
-            X = Random.Range(-70, 70);
-        }
-        transform.position = new Vector2(PlayerPos.position.x + X, Base.position.y);
-        //Invoke("OnActive", 1.5f);
-
 
         if(curtell == 0 )
         {
-            transform.position = new Vector2(PlayerPos.position.x + 200, Base.position.y);
+            rend.flipX = false;
+            transform.position = new Vector2(Base.position.x + 100, Base.position.y);
+            curtell = 1;
         }
-        if (curtell == 0)
+        if (curtell == 1)
         {
-            transform.position = new Vector2(PlayerPos.position.x - 200, Base.position.y);
+            rend.flipX = true;
+            transform.position = new Vector2(Base.position.x - 100, Base.position.y);
+            curtell = 0;
         }
     }
     void OnActive()

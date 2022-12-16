@@ -74,7 +74,7 @@ public class CameraCon : MonoBehaviour
             limitMinX = 5327f;
             limitMaxX = 5589.8f;
             limitMinY = -107.9f;
-            limitMaxY = 28.7f;
+            limitMaxY = 22.1f;
         }
     }
 

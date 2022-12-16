@@ -134,10 +134,6 @@ public class ThirdMiddleBoss : Enemy
         SummonSetPos();
         Instantiate(MagicCircle, pos, transform.rotation);
         Instantiate(Fly_1, pos, transform.rotation);
-        SummonSetPos();
-        Instantiate(Fly_1, pos, transform.rotation);
-        Instantiate(MagicCircle, pos, transform.rotation);
-
 
     }
     //-------------------------------------------------------
