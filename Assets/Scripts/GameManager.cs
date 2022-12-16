@@ -110,7 +110,9 @@ public class GameManager : MonoBehaviour
         {
             Stats.currentHP++;
         }
+
         MaxLife = Stats.maxHP;
+
         for (int i = MaxLife; i < UiLife.Length; i++)
         {
             UiLife[i].color = new Color(1, 1, 1, 0);

@@ -4,10 +4,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class ThirdMiddleBoss : Enemy
-{
-    //시전할 스킬 랜덤값으로 고름
-    List<string> SetSkill = new List<string> { "Knife", "Forward", "Summon", "Telepo" };
-    public int Knife_Pattern;     //나이프 패턴, 접근 가능
+{ //시전할 스킬 랜덤값으로 고름 List SetSkill = new List { "Knife", "Forward", "Summon", "Telepo" }; public int Knife_Pattern; //나이프 패턴, 접근 가능
 
     //몬스터 소환프리팹
     [SerializeField] protected GameObject Fly_1;
@@ -20,7 +17,7 @@ public class ThirdMiddleBoss : Enemy
     [SerializeField] protected Transform BasePos;
     //[SerializeField] protected ParticleSystem ps;
 
-    int CurrentPos =1;         //중보스에 현위치를 알려줌
+    int CurrentPos = 1;         //중보스에 현위치를 알려줌
     Transform SummonPos;    //몬스터 소환시 기점으로 하는 포스
     public SpriteRenderer rend;    //중보스 
 
@@ -58,7 +55,7 @@ public class ThirdMiddleBoss : Enemy
     float Sumontime = 20;
     bool aniF = true;
 
-    
+
 
     override protected void Start()
     {
@@ -70,28 +67,14 @@ public class ThirdMiddleBoss : Enemy
         Invoke("OnStart", 2);
         InvokeRepeating("OnActive", 5, 3);
 
-
     }
 
     override protected void Update()
     {
-        //base.Update();
+        base.Update();
         ChangeState();
 
-        if(!gameObject.activeSelf)
-        {
-            GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 1);
-        }
-        if(gameObject.activeSelf&& First)
-        {
-            First = false;
-            Invoke(" Boss3Color", 0.2f);
-
-        }
-
-
-
-        if ((targetGameObject.transform.position - transform.position).magnitude <= mag&&BossPlay && HP>300)
+        if ((targetGameObject.transform.position - transform.position).magnitude <= mag && BossPlay && HP > 300)
         {
             if (start)
             {
@@ -132,8 +115,8 @@ public class ThirdMiddleBoss : Enemy
             Die.transform.position = transform.position;
             Die.Play();
             Invoke("HP300", 2f);
-            Invoke("Die", 2f);
-            
+            //Invoke("다이", 2f);
+
         }
     }
 
@@ -141,7 +124,7 @@ public class ThirdMiddleBoss : Enemy
     void KnifeSkill()
     {
         Debug.Log("나이프");
-        Instantiate(Knife,new Vector2(BasePos.position.x,BasePos.position.y+45),transform.rotation);
+        Instantiate(Knife, new Vector2(BasePos.position.x, BasePos.position.y + 45), transform.rotation);
     }
 
     void SummonSkill()
@@ -219,11 +202,10 @@ public class ThirdMiddleBoss : Enemy
             DashOn = false;
             SummonOn = false;
             KnifeOn = false;
-}
+        }
         if (onRest && timeUntilChangeState <= 0)
         {
-            onRest = false;
-            int rand = Random.Range(0, 3);
+            onRest = false; int rand = Random.Range(0, 3);
 
             if (rand == 0)
             {
@@ -239,7 +221,7 @@ public class ThirdMiddleBoss : Enemy
             }
             else if (rand == 2)
             {
-                if(Summoncurtime <=0)
+                if (Summoncurtime <= 0)
                 {
                     Summoncurtime = 20;
                     SummonOn = true;
@@ -281,7 +263,7 @@ public class ThirdMiddleBoss : Enemy
     {
         Debug.Log("shake");
         Vector3 root = transform.position;
-        for (float cool = 10f;cool >=0;)
+        for (float cool = 10f; cool >= 0;)
         {
             float randx = Random.Range(-1f, 1f);
             float randy = Random.Range(-1f, 1f);
@@ -322,6 +304,4 @@ public class ThirdMiddleBoss : Enemy
         HP = 0;
         DieAni();
     }
-
-
 }

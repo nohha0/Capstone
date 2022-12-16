@@ -31,7 +31,6 @@ public class FinalBoss : Enemy
     bool Skill_Summon = false;
 
     float summoncool = 60;
-    //
 
 
     //-----------------------------------------
@@ -71,14 +70,8 @@ public class FinalBoss : Enemy
             timeUntilChangeState -= Time.deltaTime;
             if (Skill_SprayWater) Water_Teleport();
             if (Skill_Teleport) Teleport();
-
         }
 
-        if(HP <= 0)
-        {
-            animator.SetTrigger("´ÙÀÌ");
-            Invoke("Reset", 2f);
-        }
     }
 
     //noh----------------------------------------------------
@@ -94,7 +87,8 @@ public class FinalBoss : Enemy
 
     void Rest()
     {
-        SaveManager.Instance._playerData.clearAllGame = true;
+        //SaveManager.Instance._playerData.clearAllGame = true;
+        //LoadOutroScene();
     }
 
     void ChangeState()

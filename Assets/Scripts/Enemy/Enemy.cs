@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour
     public bool BossPlay = false;
     public bool ImBoss;
     public ParticleSystem Die;
+    bool inside = false;
 
     virtual protected void Start()
     {
@@ -57,10 +59,11 @@ public class Enemy : MonoBehaviour
 
     virtual protected void Update()
     {
-        if (HP <= 0)
+        if (HP <= 0 && !inside)
         {
-            transform.GetChild(0).tag = "Untagged";
+            inside = true;
 
+            transform.GetChild(0).tag = "Untagged";
             rigid.gravityScale = 300f;
             animator.SetTrigger("´ÙÀÌ");
             spriteRend.color = new Color(0.8f, 0.8f, 0.8f);
@@ -68,7 +71,6 @@ public class Enemy : MonoBehaviour
         }
 
         UpdateTarget();
-
     }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
@@ -147,14 +149,15 @@ public class Enemy : MonoBehaviour
         else if (FinalBoss)
         {
             SaveManager.Instance._playerData.clearAllGame = true;
-            Invoke("LoadOutroScene", 2f);
+            //Invoke("LoadOutroScene", 2f);
+            LoadOutroScene();
+            return;
         }
 
         Destroy(gameObject);
-
     }
 
-    void LoadOutroScene()
+    public void LoadOutroScene()
     {
         SceneManager.LoadScene("Outro");
     }
@@ -163,6 +166,4 @@ public class Enemy : MonoBehaviour
     {
         MoveOn = true;
     }
-
-
 }

@@ -20,7 +20,7 @@ public class rotatePEN : MonoBehaviour
         gameObject.tag = "Untagged"; //1초동안 플레이어에게 위치를 예고하는 용도
         penSprite.color = new Color(0.3f,0.3f,0.3f);
         rotatingOn = false;
-        Invoke("Destroy", 8);
+        Invoke("Destroy", 5);
         Invoke("OnTag", 2);
     }
 

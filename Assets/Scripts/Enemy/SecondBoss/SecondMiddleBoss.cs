@@ -46,7 +46,7 @@ public class SecondMiddleBoss : Enemy
         firstPatten = false;
         viewing = false;
 
-        penXs = new float[5];
+        penXs = new float[4];
         penYs = new float[2];
 
         penXs[0] = rotatePenPosObj.transform.position.x - 140f;
