@@ -8057,7 +8057,6 @@ GameObject:
   - component: {fileID: 442139475}
   - component: {fileID: 442139474}
   - component: {fileID: 442139477}
-  - component: {fileID: 442139476}
   m_Layer: 5
   m_Name: "\uBC31\uADF8\uB77C\uC6B4\uB4DC"
   m_TagString: Untagged
@@ -8123,20 +8122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442139472}
   m_CullTransparentMesh: 1
---- !u!114 &442139476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442139472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30bd2bd0f43c9e64dbbb05cf32c05bdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxTime: 0
-  skillnum: 0
 --- !u!114 &442139477
 MonoBehaviour:
   m_ObjectHideFlags: 0
