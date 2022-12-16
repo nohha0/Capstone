@@ -14,14 +14,14 @@ public class PlayerData
     public bool FirstStart = false;
 
     /* 퍼즐 클리어 여부 */
-    public bool solvedPuzzle1 = false;
-    public bool solvedPuzzle2 = false;
-    public bool solvedPuzzle3 = false;
+    public bool solvedPuzzle1 = true;
+    public bool solvedPuzzle2 = true;
+    public bool solvedPuzzle3 = true;
 
     /* 보스 클리어 (스킬 획득) 여부 */
-    public bool killedBoss1 = false;
-    public bool killedBoss2 = false;
-    public bool killedBoss3 = false;
+    public bool killedBoss1 = true;
+    public bool killedBoss2 = true;
+    public bool killedBoss3 = true;
     public bool clearAllGame = false;
 
     /* 플레이어 정보 */

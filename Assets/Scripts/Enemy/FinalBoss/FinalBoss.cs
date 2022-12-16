@@ -109,21 +109,32 @@ public class FinalBoss : Enemy
 
             if (rand == 0)
             {
-                Teleport();
+                /*
+                 * Teleport();
                 onShooting = true;
                 if (!rend.flipX) Shooting.SetActive(true);
                 if (rend.flipX) Shooting2.SetActive(true);
+                 */
                 Debug.Log("onShooting");
-                timeUntilChangeState = 3f;
+                //timeUntilChangeState = 3f;
+                Teleport();
+                onWaterWave = true;
+                Debug.Log("onWaterWave");
+                timeUntilChangeState = 4f;
             }
             else if (rand == 1)
             {
-                Teleport();
+                /*
+                 * Teleport();
                 onShooting = true;
                 if (!rend.flipX) Shooting.SetActive(true);
                 if (rend.flipX) Shooting2.SetActive(true);
+                 */
                 Debug.Log("onShooting");
-                timeUntilChangeState = 3f;
+                //timeUntilChangeState = 3f;
+                Debug.Log("스프레이");
+                Skill_SprayWater = true;
+                timeUntilChangeState = 23;
             }
             else if (rand == 2)
             {
