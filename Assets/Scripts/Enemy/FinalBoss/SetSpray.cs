@@ -9,7 +9,7 @@ public class SetSpray : MonoBehaviour
     float time2 = 3;
     void Start()
     {
-        Invoke("OnDestroy", 40);
+        Invoke("OnDestroy", 20);
     }
 
     // Update is called once per frame

@@ -72,7 +72,7 @@ public class CameraCon : MonoBehaviour
         if (stage.Stage == 8)
         {
             limitMinX = 5327f;
-            limitMaxX = 5631.4f;
+            limitMaxX = 5589.8f;
             limitMinY = -107.9f;
             limitMaxY = 28.7f;
         }

@@ -34,13 +34,13 @@ public class FinalBoss : Enemy
 
 
     //-----------------------------------------
-
+    int curtell = 0;
 
     override protected void Start()
     {
         //noh-----------------------------------------------
         base.Start(); //attacked(쿨타임), targetGameObject, rigid, spriteRend, animator 초기화
-        Shooting = gameObject.transform.Find("ShootingWater").gameObject;
+        Shooting = gameObject.transform.Find("슈팅아래").gameObject;
         Shooting.SetActive(false);
         timeUntilChangeState = 0f;
         onShooting = false;
@@ -63,7 +63,7 @@ public class FinalBoss : Enemy
         {
             ChangeState();
 
-            if (onShooting) Shooting.SetActive(false) ;
+            if (onShooting) Shooting.SetActive(true) ;
             else Shooting.SetActive(false);
             if (onWaterWave && !callWaterWave) Wave();
             if (onRest) Rest();
@@ -96,7 +96,7 @@ public class FinalBoss : Enemy
         if (!onRest && timeUntilChangeState <= 0)
         {
             onRest = true;
-            timeUntilChangeState = 1.5f;
+            timeUntilChangeState = 3.5f;
             onWaterWave = false;
             callWaterWave = false;
             onShooting = false;
@@ -108,26 +108,30 @@ public class FinalBoss : Enemy
 
             if (rand == 0)
             {
-                onWaterWave = true;
-                Debug.Log("onWaterWave");
-                timeUntilChangeState = 4f;
+                Teleport();
+                onShooting = true;
+                Debug.Log("onShooting");
+                timeUntilChangeState = 5f;
             }
             else if (rand == 1)
             {
+                Teleport();
                 onShooting = true;
                 Debug.Log("onShooting");
                 timeUntilChangeState = 5f;
             }
             else if (rand == 2)
             {
+                Debug.Log("스프레이");
                 Skill_SprayWater = true;
-                timeUntilChangeState = 20;
+                timeUntilChangeState = 23;
             }
             else if (rand == 3)
             {
-                onShooting = true;
-                Debug.Log("onShooting");
-                timeUntilChangeState = 5f;
+                Teleport();
+                onWaterWave = true;
+                Debug.Log("onWaterWave");
+                timeUntilChangeState = 4f;
             }
 
 
@@ -138,22 +142,17 @@ public class FinalBoss : Enemy
     //shin-------------------------------------------
     void Set_BigWter()
     {
-        if (a == 0)
-        {
-            Instantiate(Big_Water, Pos, transform.rotation);
-            a++;
-        }
+        Skill_SprayWater = false;
+        Instantiate(Big_Water, Pos, transform.rotation);
 
     }
 
     void Water_Teleport()   //물폭탄 소환을 하기 위한 텔포
     {
         Skill_SprayWater = false;  //스킬 재 동작 금지
-        gameObject.SetActive(false);
         transform.position = new Vector2(Base.position.x, Base.position.y);
         rend.flipX = false;
-        Invoke("OnActive", 1f);
-        Invoke("Set_BigWter", 1.5f);
+        Invoke("Set_BigWter", 0.5f);
     }
 
 
@@ -166,13 +165,23 @@ public class FinalBoss : Enemy
         //파란색 오브젝트 남기고 옴
         //플립 변경
         Skill_Teleport = false;
-        float X = Random.Range(-65, 65);
-        if(X >15 && X> -15)
+        float X = Random.Range(190, 190);
+        if(X >40 && X> -40)
         {
-            X = Random.Range(-50, 50);
+            X = Random.Range(-70, 70);
         }
         transform.position = new Vector2(PlayerPos.position.x + X, Base.position.y);
         //Invoke("OnActive", 1.5f);
+
+
+        if(curtell == 0 )
+        {
+            transform.position = new Vector2(PlayerPos.position.x + 200, Base.position.y);
+        }
+        if (curtell == 0)
+        {
+            transform.position = new Vector2(PlayerPos.position.x - 200, Base.position.y);
+        }
     }
     void OnActive()
     {

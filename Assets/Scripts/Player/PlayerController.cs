@@ -250,15 +250,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
-        {
-            stats.TakeDamage();
-            audioSource.PlayOneShot(attaked);
-            hasAttacked = true;
-            Invoke("attackOn", 3);
-            CameraController = true;
-            animator.SetTrigger("Damage");
-        }
+        
         if (other.gameObject.CompareTag("thorn"))
         {
             IsMove = false;
@@ -273,6 +265,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Enemy") && !hasAttacked)
+        {
+            stats.TakeDamage();
+            audioSource.PlayOneShot(attaked);
+            hasAttacked = true;
+            Invoke("attackOn", 3);
+            CameraController = true;
+            animator.SetTrigger("Damage");
+        }
+
         if (other.gameObject.CompareTag("PuzzleSpot"))
         {
             if (Input.GetKeyDown(KeyCode.Space) && !onPuzzle)
@@ -339,6 +341,7 @@ public class PlayerController : MonoBehaviour
                 IsMove = true;
             }
         }
+
 
     }
 
