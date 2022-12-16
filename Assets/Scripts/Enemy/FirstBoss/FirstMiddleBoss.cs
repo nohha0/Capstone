@@ -40,11 +40,14 @@ public class FirstMiddleBoss : Enemy
         timeUntilChangeState = 0f;
         smallPosNum = 0;
 
-        branchXs = new float[2];
-        for (int i = 0; i < 2; i++)
-        {
-            branchXs[i] = bigbasePosition.position.x + (bigDistance * i);
-        }
+        branchXs = new float[4];
+
+
+        branchXs[0] = bigbasePosition.position.x;
+        branchXs[1] = bigbasePosition.position.x + 50f;
+        branchXs[2] = bigbasePosition.position.x + 100f;
+        branchXs[3] = bigbasePosition.position.x + 150f;
+
 
         smallbranchXs = new float[20];
         for (int i = 0; i < 20; i++)    
@@ -55,14 +58,14 @@ public class FirstMiddleBoss : Enemy
 
     override protected void Update()
     {
-
         if(HP <= 0)
         {
             Die.transform.position = transform.position;
             Die.Play();
         }
-        //Debug.Log(BossPlay);
+
         base.Update();
+
         if ((targetGameObject.transform.position - transform.position).magnitude <= mag &&BossPlay)
         {
             ChangeState();
@@ -92,10 +95,10 @@ public class FirstMiddleBoss : Enemy
         if (!onBranch) return;
         callBranch = true;
 
-        int randPos = Random.Range(0, 2);
+        int randPos = Random.Range(0, 4);
         branchPosition = new Vector3(branchXs[randPos], bigbasePosition.position.y, transform.position.z);
         Instantiate(branch, branchPosition, transform.rotation);
-        Invoke("CreateBranch", 3);
+        Invoke("CreateBranch", 2);
     }
 
     void ThrowScissors()
@@ -122,20 +125,24 @@ public class FirstMiddleBoss : Enemy
             smallPosNum = 0;
 
             onRest = true;
-            timeUntilChangeState = 5f;
+            timeUntilChangeState = 3f;
         }
         else if (onRest && timeUntilChangeState <= 0)
         {
             onRest = false;
-            timeUntilChangeState = 10f;
 
             int rand = Random.Range(0, 2);
-            Debug.Log(rand);
 
             if (rand == 0)
+            {
+                timeUntilChangeState = 8f;
                 onBranch = true;
+            }
             else
-                onScissors = true;
+            {
+                timeUntilChangeState = 12f;
+                onScissors = true; //»õÆÐÅÏ
+            }
         }
     }
 
