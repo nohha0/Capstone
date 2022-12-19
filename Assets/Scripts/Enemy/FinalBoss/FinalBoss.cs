@@ -34,6 +34,7 @@ public class FinalBoss : Enemy
     float summoncool = 60;
 
 
+
     //-----------------------------------------
     int curtell = 1;
 
@@ -170,8 +171,6 @@ public class FinalBoss : Enemy
         rend.flipX = false;
         Invoke("Set_BigWter", 0.5f);
     }
-
-
 
 
 

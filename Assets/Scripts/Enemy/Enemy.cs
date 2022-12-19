@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+
+
     virtual protected void Update()
     {
         if (HP <= 0 && !inside)
