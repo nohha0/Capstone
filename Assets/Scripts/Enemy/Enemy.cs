@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
             if (HP > 0)
             {
                 Invoke("SpriteOn", 0.1f);
-                animator.SetTrigger("피격");
+                if(!FinalBoss) animator.SetTrigger("피격");
                 Invoke("IsMove", 0.5f);
             }
         }
