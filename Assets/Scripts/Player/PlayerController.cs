@@ -302,11 +302,12 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "SavePoint")
         {
 
-            if(!SaveManager.Instance._playerData.FirstSaveCol)
+            if(SaveManager.Instance._playerData.FirstSaveCol)
             {
-                SaveManager.Instance._playerData.FirstSaveCol = true;
+                SaveManager.Instance._playerData.FirstSaveCol = false;
                 GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("세이브 가능 튜토리얼").gameObject.SetActive(true);
             }
+
             if (Input.GetKey(KeyCode.Space) && healtime <= 0)
             {
                 healtime = 0.7f;
@@ -327,15 +328,14 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Start"))
         {
-            if (!SaveManager.Instance._playerData.FirstStart)
+            if (SaveManager.Instance._playerData.FirstStart)
             {
                 IsMove = false;
-                
             }
-            if (!SaveManager.Instance._playerData.FirstStart)
+            if (SaveManager.Instance._playerData.FirstStart)
             {
                 Invoke("delay", 2.5f);
-                SaveManager.Instance._playerData.FirstStart = true;
+                SaveManager.Instance._playerData.FirstStart = false;
             }
             if (NotLoop&&!GameObject.Find("Canvas").transform.Find("튜토리얼").transform.Find("키조작").gameObject.activeSelf)
             {

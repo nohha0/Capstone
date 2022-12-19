@@ -10,18 +10,20 @@ public class PlayerData
 {
     /* 게임 정보 */
     public bool haveSaveFile = false;
-    public bool FirstSaveCol = false;
-    public bool FirstStart = false;
+
+    public bool FirstSaveCol = true; //튜토 보고나면 false로 바뀌게
+    public bool FirstStart = true;
+    public bool FirstUpgrade = true;
 
     /* 퍼즐 클리어 여부 */
-    public bool solvedPuzzle1 = true;
-    public bool solvedPuzzle2 = true;
-    public bool solvedPuzzle3 = true;
+    public bool solvedPuzzle1 = false;
+    public bool solvedPuzzle2 = false;
+    public bool solvedPuzzle3 = false;
 
     /* 보스 클리어 (스킬 획득) 여부 */
-    public bool killedBoss1 = true;
-    public bool killedBoss2 = true;
-    public bool killedBoss3 = true;
+    public bool killedBoss1 = false;
+    public bool killedBoss2 = false;
+    public bool killedBoss3 = false;
     public bool clearAllGame = false;
 
     /* 플레이어 정보 */

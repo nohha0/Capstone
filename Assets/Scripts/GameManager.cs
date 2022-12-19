@@ -68,7 +68,16 @@ public class GameManager : MonoBehaviour
         //Bar_con();
         Bar_con();
 
-        if(startPanel.activeSelf)
+        if (SaveManager.Instance._playerData.killedBoss1)
+            skill_1.SetActive(true);
+        if (SaveManager.Instance._playerData.killedBoss2)
+            skill_2.SetActive(true);
+        if (SaveManager.Instance._playerData.killedBoss3)
+            skill_3.SetActive(true);
+
+
+
+        if (startPanel.activeSelf)
         {
             if (fadeTime > 0)
             {
@@ -102,6 +111,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        
     }
 
     void MaxLifeUpdate()

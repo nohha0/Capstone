@@ -136,17 +136,14 @@ public class Enemy : MonoBehaviour
         if (middleBoss1)
         {
             SaveManager.Instance._playerData.killedBoss1 = true;
-            gameManager.skill_1.SetActive(true);
         }
         else if (middleBoss2)
         {
             SaveManager.Instance._playerData.killedBoss2 = true;
-            gameManager.skill_2.SetActive(true);
         }
         else if (middleBoss3)
         {
             SaveManager.Instance._playerData.killedBoss3 = true;
-            gameManager.skill_3.SetActive(true);
         }
         else if (FinalBoss)
         {

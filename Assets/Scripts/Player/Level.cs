@@ -18,7 +18,6 @@ public class Level : MonoBehaviour
     float expMod = 1.21f;           //경험치 증가량 (지수)
     bool onEnhance = false;
     public bool Wait = false;
-    public bool isFirstUpgrade;
     public GameObject FirstUpgrade;
     public GameObject enhanceBar;
 
@@ -34,7 +33,6 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        isFirstUpgrade = true;
         Images = Resources.LoadAll<Sprite>("Upgrades");
     }
 
@@ -87,9 +85,9 @@ public class Level : MonoBehaviour
 
     public void Enhance()
     {
-        if(isFirstUpgrade)
+        if(SaveManager.Instance._playerData.FirstUpgrade)
         {
-            isFirstUpgrade = false;
+            SaveManager.Instance._playerData.FirstUpgrade = false;
             FirstUpgrade.SetActive(true);
         }
 

@@ -4884,7 +4884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &261819142
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14527,7 +14527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &509207003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16658,7 +16658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &597485371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -91086,7 +91086,7 @@ PrefabInstance:
       objectReference: {fileID: 448232157}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: maxHP
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: APCount
@@ -91094,7 +91094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: currentHP
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8647659956363779698, guid: b1396211c7249a84081853ffb992e8f3, type: 3}
       propertyPath: attackSpeed
